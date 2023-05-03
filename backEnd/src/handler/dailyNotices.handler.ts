@@ -1,14 +1,16 @@
 import express, { Request, Response } from 'express'; 
 import mongoose from 'mongoose';
 import validateSchema from '../middleware/validateSchema';
-import { createDailyNotices, getDailyNoticesByUserId, updateDailyNotices, getOne, deleteDailyNoticesByUserId } from '../service/dailyNotices.service';
-import { createDailyNoticesSchema, updateDailyNoticesSchema, getDailyNoticesByIdSchema } from '../schema/dailyNotices.schema';
+import { createDailyNotices, getDailyNoticesByUserId, updateDailyNotices, getAllDailyNotices, getOne, deleteDailyNoticesByUserId } from '../service/dailyNotices.service';
+import { createDailyNoticesSchema, updateDailyNoticesSchema, getDailyNoticesByIdSchema, getDailyNoticesSchema } from '../schema/dailyNotices.schema';
 const dailyNoticesHandler = express.Router();
 let gameId: number;
 let currentPlayer: string
 
 dailyNoticesHandler.get("/:userId", validateSchema(getDailyNoticesByIdSchema), async (req: Request, res: Response) => {
+    console.log("/:userId")
     const userId = req.params.userId
+    console.log("userId", userId)
     try{
         const userGames = await getDailyNoticesByUserId(userId);
         return res.status(200).send(userGames);
@@ -17,11 +19,11 @@ dailyNoticesHandler.get("/:userId", validateSchema(getDailyNoticesByIdSchema), a
     }
 });
 
-dailyNoticesHandler.get("/", validateSchema(getDailyNoticesByIdSchema), async (req: Request, res: Response) => {
+dailyNoticesHandler.get("/", validateSchema(getDailyNoticesSchema), async (req: Request, res: Response) => {
     const userId = req.userId
     try{
-        const userGames = await getDailyNoticesByUserId(userId);
-        return res.status(200).send(userGames);
+        const dn = await getAllDailyNotices();
+        return res.status(200).send(dn);
     }catch (err) {
         return res.status(500).send(err);
     }
@@ -40,11 +42,10 @@ dailyNoticesHandler.get("/:userId/:gameId", validateSchema(getDailyNoticesByIdSc
 
 
 dailyNoticesHandler.post("/", validateSchema(createDailyNoticesSchema), async (req: Request, res: Response) => {
-     const game = req.body
-     currentPlayer = game.result
-     const userId = new mongoose.Types.ObjectId(req.userId)
-     const newGame = await createDailyNotices({ ...game, userId})
-     return res.status(200).json({"message":`${currentPlayer}`})
+    const r = req.body
+        const newGame = await createDailyNotices(r)
+        return res.status(200).send(newGame)
+     
  })
 
 

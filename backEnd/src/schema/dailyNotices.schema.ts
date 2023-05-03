@@ -2,21 +2,21 @@ import { object, string, number, array, TypeOf, any } from 'zod';
 
 const payload = {
     body: object ({
-
+        title: string({
+            required_error: "Title is required",
+        }),
         message: string({
             required_error: "Message is required",
         }),
-        author: string({
-            required_error: "Author is required",
-        }),
-        start_date: string({
+        startDate: string({
             required_error: "Start date is required",
         }),
-        expiry_date: string({
+        expiryDate: string({
             required_error: "Expiry date is required",
-        })
+        }),
     })
 }
+
 
 const getParams = {
   params: object({
@@ -26,9 +26,9 @@ const getParams = {
   }),
 }
 
-
+//this works for getting ALL dailyNotices
 export const getDailyNoticesSchema = object ({
-    ...payload,
+    
 })
 
 export const getDailyNoticesByIdSchema = object({

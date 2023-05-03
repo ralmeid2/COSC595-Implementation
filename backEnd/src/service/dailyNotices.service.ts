@@ -6,6 +6,10 @@ export async function getDailyNoticesByUserId(userId: string) {
     return await dailyNoticesModel.find({ userId: userId} ).lean()
 }
 
+export async function getAllDailyNotices(){
+  return await dailyNoticesModel.find()
+}
+
 export async function getOne(query: FilterQuery<DailyNoticesDocument>){
     return await dailyNoticesModel.findOne(query)
 }
