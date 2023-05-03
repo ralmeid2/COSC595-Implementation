@@ -2,6 +2,11 @@ import { UserContext } from '../context'
 import { useContext } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import style from './Header.module.css'
+
+import Weather from './Weather'
+import logo from '../images/SEC-logo-name.png'
+import placeHolderWeatherIcon from '../images/placeholder/rain.png'
+
 export default function Header() {
   const navigate = useNavigate()
   const location = useLocation()
@@ -33,10 +38,17 @@ export default function Header() {
     }
   }
 
+  const weatherData = {
+    temperature: 20,
+    iconUrl: placeHolderWeatherIcon
+  }
   return (
     <header className={style.header}>
       <div className={style.container}>
-        <Link to="/">St Edmond's College Canberra  </Link>
+        <Link to="/">
+            <img src={logo} alt="logo" className={style.logo} />
+        </Link>
+        <Weather  weatherData={weatherData}/>
         <div className={style.actions}>
           { getActions() }
         </div>
