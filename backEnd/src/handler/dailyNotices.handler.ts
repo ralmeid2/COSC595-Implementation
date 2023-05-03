@@ -55,6 +55,15 @@ dailyNoticesHandler.get("/:userId/:gameId", validateSchema(getDailyNoticesByIdSc
 });
 
 
+<<<<<<< HEAD
+=======
+dailyNoticesHandler.post("/", validateSchema(createDailyNoticesSchema), async (req: Request, res: Response) => {
+    const r = req.body
+        const newGame = await createDailyNotices(r)
+        return res.status(200).send(newGame)
+     
+ })
+>>>>>>> 55d1cc5cf700bd7f9837e58e9fdf8b373c182418
 
  dailyNoticesHandler.delete("/:userId/:gameId", validateSchema(updateDailyNoticesSchema), async (req: Request, res: Response) => {
      const gameId = req.params.gameId as unknown as number
