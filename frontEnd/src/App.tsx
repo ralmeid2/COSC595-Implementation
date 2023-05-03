@@ -1,7 +1,7 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { Home, Login, SignUp, Dashboard, Claire } from './pages'
-import { Header, UserProvider } from './components'
+import { Header, UserProvider, Timer } from './components'
 import './App.css';
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
         <Route path="*" element={<Navigate to="/" replace />}/>
       </Routes>
     </main> 
+    <Timer />
     </UserProvider>
   );
 }
