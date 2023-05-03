@@ -7,5 +7,5 @@ type MessageProps = {
 }
 
 export default function Message ({ variant, message }: MessageProps) {
-    return <div className={`${style.message} ${style[variant]}`}>{message}</div>
+    return <div className={`${style.message} ${style[variant]}`}>{message} Testing</div>
 }
