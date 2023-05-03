@@ -47,8 +47,7 @@ dailyNoticesHandler.post("/", validateSchema(createDailyNoticesSchema), async (r
         return res.status(200).send(newGame)
      
  })
-
-
+// test comment
  dailyNoticesHandler.delete("/:userId/:gameId", validateSchema(updateDailyNoticesSchema), async (req: Request, res: Response) => {
      const gameId = req.params.gameId as unknown as number
      const userId = req.params.userId
