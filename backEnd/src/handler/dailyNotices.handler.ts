@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express'; 
 import mongoose from 'mongoose';
 import validateSchema from '../middleware/validateSchema';
-import { createDailyNotices, getDailyNoticesByUserId, updateDailyNotices, getAllDailyNotices, getOne, deleteDailyNoticesByUserId } from '../service/dailyNotices.service';
+import { createDailyNotices, getDailyNoticesByUserId, updateDailyNotices, updateDailyNotice, getAllDailyNotices, getOne, deleteDailyNoticesByUserId, deleteDailyNoticesById } from '../service/dailyNotices.service';
 import { createDailyNoticesSchema, updateDailyNoticesSchema, getDailyNoticesByIdSchema, getDailyNoticesSchema } from '../schema/dailyNotices.schema';
 const dailyNoticesHandler = express.Router();
 let gameId: number;
@@ -16,7 +16,7 @@ dailyNoticesHandler.get("/:userId", validateSchema(getDailyNoticesByIdSchema), a
         return res.status(200).send(userGames);
     }catch (err) {
         return res.status(500).send(err);
-    }
+    } 
 });
 
 dailyNoticesHandler.get("/", validateSchema(getDailyNoticesSchema), async (req: Request, res: Response) => {
@@ -26,6 +26,29 @@ dailyNoticesHandler.get("/", validateSchema(getDailyNoticesSchema), async (req: 
         return res.status(200).send(dn);
     }catch (err) {
         return res.status(500).send(err);
+    }
+});
+
+dailyNoticesHandler.put("/", validateSchema(getDailyNoticesSchema), async (req: Request, res: Response) => {
+    try{
+        const result = await updateDailyNotices(req.body)
+        res.status(200).send(result)
+        console.log(result)
+    }catch (err) {
+        console.log(err)
+        return res.status(500).send(err)
+    }
+});
+
+dailyNoticesHandler.delete("/delete/:noticeId", validateSchema(getDailyNoticesSchema), async (req: Request, res: Response) => {
+    try{
+        console.log("in del handler")
+        const noticeId = req.params.noticeId
+        console.log(noticeId)
+        const result = await deleteDailyNoticesById(noticeId)
+        res.status(200).send(result)
+    }catch (err) {
+        return res.status(500).send(err)
     }
 });
 
@@ -40,7 +63,6 @@ dailyNoticesHandler.get("/:userId/:gameId", validateSchema(getDailyNoticesByIdSc
     }
 });
 
-
 dailyNoticesHandler.post("/", validateSchema(createDailyNoticesSchema), async (req: Request, res: Response) => {
     const r = req.body
         const newGame = await createDailyNotices(r)
@@ -53,13 +75,6 @@ dailyNoticesHandler.post("/", validateSchema(createDailyNoticesSchema), async (r
      const userId = req.params.userId
      const deleteGameUpdate = await deleteDailyNoticesByUserId({gameId: { $eq: gameId}, userId: {$eq: userId}})
      return res.status(200).send(deleteGameUpdate)
- })
-
- dailyNoticesHandler.put("/", validateSchema(updateDailyNoticesSchema), async (req: Request, res: Response) => {
-     const gameUpdate = req.body
-     const userId = new mongoose.Types.ObjectId(req.userId)
-     gameId = gameUpdate.gameId
-     return res.status(200).json({"message":`${currentPlayer}`})
  })
 
 export default dailyNoticesHandler;

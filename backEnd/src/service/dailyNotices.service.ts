@@ -15,26 +15,23 @@ export async function getOne(query: FilterQuery<DailyNoticesDocument>){
 }
 
 export async function updateDailyNotices(
-  userId: Types.ObjectId,
-  input: DocumentDefinition<DailyNoticesDocument>
+  dailyNotice: DocumentDefinition<DailyNoticesDocument>
 ) {
-  return dailyNoticesModel.findOneAndUpdate(
-    {
-      userId: new mongoose.Types.ObjectId(userId)
-    },
-    input,
-    { new: true } // new option to true to return the document after update was applied.
+  const result = await dailyNoticesModel.findByIdAndUpdate(
+    dailyNotice.id,
+    dailyNotice,
+    { new : true }
   )
+  return result
 }
 
 export async function createDailyNotices(
   input: DocumentDefinition<DailyNoticesDocument>
-  
 ) 
 {
-  return dailyNoticesModel.create(input)
+  return await dailyNoticesModel.create(input)
 }
 
-export async function deleteDailyNoticesByUserId(query: FilterQuery<DailyNoticesDocument>) {
-  return dailyNoticesModel.findOneAndDelete(query)
+export async function deleteDailyNoticesById(dailyNoticeId: String) {
+  return await dailyNoticesModel.findByIdAndDelete(dailyNoticeId)
 }
