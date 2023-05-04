@@ -40,7 +40,7 @@ dailyNoticesHandler.put("/", validateSchema(getDailyNoticesSchema), async (req: 
     }
 });
 
-dailyNoticesHandler.delete("/delete/:noticeId", validateSchema(getDailyNoticesSchema), async (req: Request, res: Response) => {
+dailyNoticesHandler.delete("/:noticeId", validateSchema(getDailyNoticesSchema), async (req: Request, res: Response) => {
     try{
         console.log("in del handler")
         const noticeId = req.params.noticeId
@@ -70,11 +70,11 @@ dailyNoticesHandler.post("/", validateSchema(createDailyNoticesSchema), async (r
      
  })
 
- dailyNoticesHandler.delete("/:userId/:gameId", validateSchema(updateDailyNoticesSchema), async (req: Request, res: Response) => {
-     const gameId = req.params.gameId as unknown as number
-     const userId = req.params.userId
-     const deleteGameUpdate = await deleteDailyNoticesByUserId({gameId: { $eq: gameId}, userId: {$eq: userId}})
-     return res.status(200).send(deleteGameUpdate)
- })
+//  dailyNoticesHandler.delete("/:userId/:gameId", validateSchema(updateDailyNoticesSchema), async (req: Request, res: Response) => {
+//      const gameId = req.params.gameId as unknown as number
+//      const userId = req.params.userId
+//      const deleteGameUpdate = await deleteDailyNoticesByUserId({gameId: { $eq: gameId}, userId: {$eq: userId}})
+//      return res.status(200).send(deleteGameUpdate)
+//  })
 
 export default dailyNoticesHandler;
