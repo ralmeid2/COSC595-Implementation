@@ -14,6 +14,8 @@ export default function Ben(){
     const [errorMessage, setErrorMessage] = useState("")
     const [dailyNotices, setDailyNotices] = useState <DailyNotices[]>([])
 
+  
+
     const updateDailyNotice = async () => {
       console.log(dailyNotices[3]._id)
       try{
@@ -47,6 +49,16 @@ export default function Ben(){
         return res
       }
       catch(err){
+        return err
+      }
+    }
+
+    const getWeather = async () => {
+      try{
+        const res = await get (`/api/weather`)
+        console.log(res)
+      } catch (err) {
+        console.log(err)
         return err
       }
     }
@@ -144,6 +156,10 @@ export default function Ben(){
         <div>
           <Button onClick={updateDailyNotice}
         >Update daily notice</Button>
+        </div>
+        <div>
+          <Button onClick={getWeather}
+        >Get Weather</Button>
         </div>
         
         <div>

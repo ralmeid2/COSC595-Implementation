@@ -3,6 +3,7 @@
  import connectDB from './util/connectDB'; 
 import dailyNoticesHandler from './handler/dailyNotices.handler'
 import authHandler from './handler/auth.handler';
+import weatherHandler from './handler/weather.handler';
 
  dotenv.config();
  connectDB();
@@ -11,5 +12,6 @@ import authHandler from './handler/auth.handler';
  app.use(express.json({ limit: '500kb' }));
  app.use('/api/dailyNotices', dailyNoticesHandler)
  app.use('/api/auth', authHandler)
+ app.use('/api/weather', weatherHandler)
 
  export default app;
