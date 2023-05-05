@@ -28,35 +28,3 @@ export async function getWeather() {
     console.log(err)
   }
 }
-
-//     let output
-//     https
-//       .get(weatherApiurl + params, (resp: ResponseType) => {
-//         let data = "" 
-
-//         resp.on("data", (chunk: Object) => {
-//           data += chunk
-//         });
-
-//         resp.on("end", () => {
-//           let result = JSON.parse(data);
-//           console.log(result)
-//           // here is a comment
-          
-//           output = {
-//             current_temp: result.current_weather.temperature,
-//             weathercode: result.current_weather.weathercode,
-//             time: result.current_weather.time
-//           }
-
-//           return output
-
-//         });
-        
-//       })
-//       .on("error", (err: any) => {
-//         output = { error: "Could not get weather data." }
-//         console.log("Error: " + err.message);
-//       })
-      
-// }
