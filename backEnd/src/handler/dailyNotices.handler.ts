@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express'; 
 import mongoose from 'mongoose';
 import validateSchema from '../middleware/validateSchema';
-import { createDailyNotices, getDailyNoticesByUserId, updateDailyNotices, getAllDailyNotices, getOne, deleteDailyNoticesByUserId } from '../service/dailyNotices.service';
+import { createDailyNotices, getDailyNoticesByUserId, updateDailyNotices, getAllDailyNotices, getOne, deleteDailyNoticesById } from '../service/dailyNotices.service';
 import { createDailyNoticesSchema, updateDailyNoticesSchema, getDailyNoticesByIdSchema, getDailyNoticesSchema } from '../schema/dailyNotices.schema';
 const dailyNoticesHandler = express.Router();
 let gameId: number;
@@ -17,18 +17,11 @@ dailyNoticesHandler.get("/", validateSchema(getDailyNoticesSchema), async (req: 
     }
 });
 
-
 dailyNoticesHandler.post("/", validateSchema(createDailyNoticesSchema), async (req: Request, res: Response) => {
     const r = req.body
-        const newGame = await createDailyNotices(r)
-        return res.status(200).send(newGame)
-     
+        const newDailyNotice = await createDailyNotices(r)
+        return res.status(200).send(newDailyNotice)
  })
-
-
-
-
-
 
 dailyNoticesHandler.get("/:userId", validateSchema(getDailyNoticesByIdSchema), async (req: Request, res: Response) => {
     console.log("/:userId")
@@ -39,9 +32,31 @@ dailyNoticesHandler.get("/:userId", validateSchema(getDailyNoticesByIdSchema), a
         return res.status(200).send(userGames);
     }catch (err) {
         return res.status(500).send(err);
+    } 
+});
+
+dailyNoticesHandler.put("/", validateSchema(getDailyNoticesSchema), async (req: Request, res: Response) => {
+    try{
+        const result = await updateDailyNotices(req.body)
+        res.status(200).send(result)
+        console.log(result)
+    }catch (err) {
+        console.log(err)
+        return res.status(500).send(err)
     }
 });
 
+dailyNoticesHandler.delete("/:noticeId", validateSchema(getDailyNoticesSchema), async (req: Request, res: Response) => {
+    try{
+        console.log("in del handler")
+        const noticeId = req.params.noticeId
+        console.log(noticeId)
+        const result = await deleteDailyNoticesById(noticeId)
+        res.status(200).send(result)
+    }catch (err) {
+        return res.status(500).send(err)
+    }
+});
 
 dailyNoticesHandler.get("/:userId/:gameId", validateSchema(getDailyNoticesByIdSchema), async (req: Request, res: Response) => {
     const g_Id = req.params.gameId
@@ -54,29 +69,11 @@ dailyNoticesHandler.get("/:userId/:gameId", validateSchema(getDailyNoticesByIdSc
     }
 });
 
-
-<<<<<<< HEAD
-=======
-dailyNoticesHandler.post("/", validateSchema(createDailyNoticesSchema), async (req: Request, res: Response) => {
-    const r = req.body
-        const newGame = await createDailyNotices(r)
-        return res.status(200).send(newGame)
-     
- })
->>>>>>> 55d1cc5cf700bd7f9837e58e9fdf8b373c182418
-
- dailyNoticesHandler.delete("/:userId/:gameId", validateSchema(updateDailyNoticesSchema), async (req: Request, res: Response) => {
-     const gameId = req.params.gameId as unknown as number
-     const userId = req.params.userId
-     const deleteGameUpdate = await deleteDailyNoticesByUserId({gameId: { $eq: gameId}, userId: {$eq: userId}})
-     return res.status(200).send(deleteGameUpdate)
- })
-
- dailyNoticesHandler.put("/", validateSchema(updateDailyNoticesSchema), async (req: Request, res: Response) => {
-     const gameUpdate = req.body
-     const userId = new mongoose.Types.ObjectId(req.userId)
-     gameId = gameUpdate.gameId
-     return res.status(200).json({"message":`${currentPlayer}`})
- })
+//  dailyNoticesHandler.delete("/:userId/:gameId", validateSchema(updateDailyNoticesSchema), async (req: Request, res: Response) => {
+//      const gameId = req.params.gameId as unknown as number
+//      const userId = req.params.userId
+//      const deleteGameUpdate = await deleteDailyNoticesByUserId({gameId: { $eq: gameId}, userId: {$eq: userId}})
+//      return res.status(200).send(deleteGameUpdate)
+//  })
 
 export default dailyNoticesHandler;
