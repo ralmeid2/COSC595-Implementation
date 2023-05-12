@@ -4,7 +4,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom'
 import style from './Header.module.css'
 
 import Weather from './Weather'
-import logo from '../images/SEC-logo-name.png'
+import logo from '../images/logo-white.svg'
 
 export default function Header() {
   const navigate = useNavigate()
@@ -52,6 +52,8 @@ export default function Header() {
        <button className={style.action} onClick={() => {logout()
         navigate('/')}}>Logout</button>
       </>
+      } else if (location.pathname = '/display'){
+        return false
       }
       else{
         return <>
