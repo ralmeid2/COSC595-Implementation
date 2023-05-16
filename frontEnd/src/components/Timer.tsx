@@ -3,7 +3,7 @@ import React from 'react'
 
 
 export default function Timer () {
-    return <div>Current Period: {getCurrentPeriod()}</div>
+    return <h1>{getCurrentPeriod()}</h1>
 }
 
 function getMillis() {
@@ -31,6 +31,7 @@ const getCurrentPeriod = () => {
             return period.name
         }
     }
+    return "See you tomorrow"
 }
 
 const timetable = 

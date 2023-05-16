@@ -2,6 +2,7 @@
   font-size: 2.5rem;
   padding: 1rem;
   background-image:url('../images/header1.jpg');
+  background-size:cover;
   color: #4f4747;
   font-weight: bolder;
   text-align: center;
