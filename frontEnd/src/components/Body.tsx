@@ -5,6 +5,11 @@ import style from './Body.module.css'
 import Timer from './Timer'
 import PointsChart from './PointsChart'
 
+import {DailyNotice} from "../types";
+import DailyNoticesView from "./DailyNotices";
+
+
+
 
 export default function Body() {
   const houses = [
@@ -14,8 +19,36 @@ export default function Body() {
     { name: 'O\'Brien', points: 90, color: '#DEDEDE' },
     { name: 'Rice', points: 90, color: '#1E8A4E' },
     { name: 'Tracy', points: 90, color: '#1A2B95' },
-    
   ];
+
+  const [noticesData, setNoticesData] = useState<Array<DailyNotice>>([]);
+  const [dailyNoticesLoading, setDailyNoticesLoading] = useState<boolean>(true);
+
+  // Fetch notices data from the API
+  useEffect(() => {
+    const fetchNoticesData = async () => {
+      try {
+        setDailyNoticesLoading(true);
+        const response = await fetch("/api/dailyNotices");
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+
+        setNoticesData(data);
+
+      } catch (error) {
+        console.error("There was a problem with the fetch operation:", error);
+      } finally {
+        setDailyNoticesLoading(false);
+      }
+    };
+
+    fetchNoticesData();
+  }, []);
+
   return (
 
       <div className = {style.container} >
@@ -24,12 +57,11 @@ export default function Body() {
             <Timer/>
         </div>
         <div className = {style.component} >
-            <h3>Space for a component</h3>
-            <p>Content goes here</p>
-        </div>  
+            <DailyNoticesView noticesData={noticesData} isLoading={dailyNoticesLoading} />
+        </div>
         <div className = {style.component} >
         <PointsChart houses={houses} />
-          </div>      
+          </div>
 
       </div>
 

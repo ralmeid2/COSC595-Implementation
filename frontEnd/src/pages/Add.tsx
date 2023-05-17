@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button, Input, Message } from '../components'
 import { post, get } from '../utils/http'
-import { DailyNotices } from '../types/DailyNotices'
+import { DailyNotice } from '../types/DailyNotice'
 
 
 
@@ -15,7 +15,7 @@ export default function Add(){
     const [startDate, setStartDate] = useState("")
     const [expiryDate, setExpiryDate] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
-    const [dailyNotices, setDailyNotices] = useState <DailyNotices[]>([])
+    const [dailyNotices, setDailyNotices] = useState <DailyNotice[]>([])
 
     const addDailyNotice = async () => {
       navigate('/add')
@@ -63,7 +63,6 @@ export default function Add(){
       }
     }
 
-    
 
     return (
       <div>
@@ -110,7 +109,7 @@ export default function Add(){
               setMessage(e.target.value)
             }}
           />
-    
+
           <Input
             name="startDate"
             placeholder="Start Date"
@@ -135,9 +134,18 @@ export default function Add(){
           >
             Submit
           </Button>
+<<<<<<< HEAD:frontEnd/src/pages/Add.tsx
          
+=======
+          <Button onClick={fetchDailyNotices}
+            type="submit"
+          >
+            View Daily Notices
+          </Button>
+
+>>>>>>> c6e856e64b8cc8506154c89f1127abe38bfd03b7:frontEnd/src/pages/Claire.tsx
         </form>
-        
+
         <div>
           { dailyNotices.map(
             ({ _id, title, message, startDate, expiryDate }) => {
@@ -146,11 +154,15 @@ export default function Add(){
                 {title} {message} {startDate} {expiryDate}
                 </div>
               )}
-             
+
           )}
-          
+
           </div>
         </div>
       )
+<<<<<<< HEAD:frontEnd/src/pages/Add.tsx
 
 }
+=======
+}
+>>>>>>> c6e856e64b8cc8506154c89f1127abe38bfd03b7:frontEnd/src/pages/Claire.tsx

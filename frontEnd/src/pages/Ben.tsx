@@ -2,7 +2,7 @@ import style from './Login.module.css'
 import { useState } from 'react'
 import { Button, Input, Message } from '../components'
 import { post, get, put } from '../utils/http'
-import { DailyNotices } from '../types/DailyNotices'
+import { DailyNotice } from '../types/DailyNotice'
 
 
 
@@ -12,9 +12,9 @@ export default function Ben(){
     const [startDate, setStartDate] = useState("")
     const [expiryDate, setExpiryDate] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
-    const [dailyNotices, setDailyNotices] = useState <DailyNotices[]>([])
+    const [dailyNotices, setDailyNotices] = useState <DailyNotice[]>([])
 
-  
+
 
     const updateDailyNotice = async () => {
       console.log(dailyNotices[3]._id)
@@ -65,7 +65,7 @@ export default function Ben(){
 
     const fetchDailyNotices = async () => {
       try{
-        const dn = await get<DailyNotices[]>(`/api/dailyNotices`)
+        const dn = await get<DailyNotice[]>(`/api/dailyNotices`)
         setDailyNotices(dn)
         setTitle("")
         setMessage("")
@@ -112,7 +112,7 @@ export default function Ben(){
               setMessage(e.target.value)
             }}
           />
-    
+
           <Input
             name="startDate"
             placeholder="Start Date"
@@ -142,9 +142,9 @@ export default function Ben(){
           >
             View Daily Notices
           </Button>
-         
-          
-         
+
+
+
         </form>
         <div>
           <Button onClick={populateFields}
@@ -161,7 +161,7 @@ export default function Ben(){
           <Button onClick={getWeather}
         >Get Weather</Button>
         </div>
-        
+
         <div>
           { dailyNotices.map(
             ({ _id, title, message, startDate, expiryDate }) => {
@@ -170,9 +170,9 @@ export default function Ben(){
                 {title} {message} {startDate} {expiryDate}
                 </div>
               )}
-             
+
           )}
-          
+
           </div>
         </div>
       )
