@@ -1,12 +1,11 @@
 .button{
     display: grid;
     justify-content: center;
-    background-color: #777764;
-    width: 350px;
-    color: #4f4747;
-    height: 30px;
+    background-color: white;
+    width: 150px;
+    height: 25px;
     border-radius: 0.5rem;
-    margin: 5px;
-    border: solid #4f4747;
+    border: solid black;
+    margin: 10px;
     font-weight: bolder;
 }

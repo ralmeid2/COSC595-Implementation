@@ -1,6 +1,10 @@
+
 export { default as Home } from './Home'
 export { default as Login } from './Login'
 export { default as SignUp } from './SignUp'
 export { default as Dashboard } from './Dashboard'
-export { default as Claire } from './Claire'
+export { default as Add } from './Add'
+export { default as Edit } from './Edit'
+export { default as Delete } from './Delete'
 export { default as Ben } from './Ben'
+export { default as ManageDailyNotices } from './ManageDailyNotices'

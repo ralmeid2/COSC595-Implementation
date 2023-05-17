@@ -1,0 +1,26 @@
+.checkList {
+    padding-left: 10%;
+    padding-top: 5%;
+    padding-right: 10%;
+    padding-bottom: 5%;
+    width: 60%;
+    position: relative;
+    display: flexbox;
+    margin: 10px;
+    justify-content: space-between;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: space-between;
+    border: 3rem;
+    margin: auto;
+    color: white;
+}
+
+.item {
+    padding: 10px;
+    font-size: 18px;
+}

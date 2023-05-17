@@ -1,4 +1,5 @@
 import { object, string, number, array, TypeOf, any } from 'zod';
+import mongoose from 'mongoose';
 
 const payload = {
     body: object ({
@@ -17,14 +18,15 @@ const payload = {
     })
 }
 
-
 const getParams = {
   params: object({
-    userId: string({
-      required_error: 'User id is required',
+    id: string({
+      required_error: 'Doc id is required',
     }),
   }),
 }
+
+
 
 //this works for getting ALL dailyNotices
 export const getDailyNoticesSchema = object ({
@@ -32,7 +34,7 @@ export const getDailyNoticesSchema = object ({
 })
 
 export const getDailyNoticesByIdSchema = object({
-    ...getParams,
+
 })
 export const createDailyNoticesSchema = object({
     ...payload,

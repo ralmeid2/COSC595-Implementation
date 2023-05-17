@@ -1,18 +1,48 @@
-import style from './Login.module.css'
+import style from './Add.module.css'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Button, Input, Message } from '../components'
 import { post, get } from '../utils/http'
 import { DailyNotices } from '../types/DailyNotices'
 
 
 
-export default function Claire(){
+export default function Add(){
+    const navigate = useNavigate()
     const [title, setTitle] = useState("")
+    const [author, setAuthor] = useState("")
     const [message, setMessage] = useState("")
     const [startDate, setStartDate] = useState("")
     const [expiryDate, setExpiryDate] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
     const [dailyNotices, setDailyNotices] = useState <DailyNotices[]>([])
+
+    const addDailyNotice = async () => {
+      navigate('/add')
+    }
+
+    const fetchDailyNotices = async () => {
+      try{
+        const dn = await get<DailyNotices[]>(`/api/dailyNotices`)
+        setDailyNotices(dn)
+        setTitle("")
+        setAuthor("")
+        setMessage("")
+        setStartDate("")
+        setExpiryDate("")
+        return dn
+      }catch(err){
+        return err
+      }
+    }
+
+    const deleteDailyNotice = async () => {
+      navigate('/delete')
+    }
+
+    const editDailyNotice = async () => {
+      navigate('/edit')
+    }
 
     const postToDB = async () => {
         try{
@@ -33,22 +63,27 @@ export default function Claire(){
       }
     }
 
-    const fetchDailyNotices = async () => {
-      try{
-        const dn = await get<DailyNotices[]>(`/api/dailyNotices`)
-        setDailyNotices(dn)
-        setTitle("")
-        setMessage("")
-        setStartDate("")
-        setExpiryDate("")
-        return dn
-      }catch(err){
-        return err
-      }
-    }
+    
 
     return (
       <div>
+        <div className={style.buttonContainer}>
+         <Button onClick={fetchDailyNotices}
+            type="submit"
+          >
+            Add Daily Notice
+          </Button>
+          <Button onClick={editDailyNotice}
+            type="submit"
+          >
+            Edit Daily Notice
+          </Button>
+          <Button onClick={deleteDailyNotice}
+            type="submit"
+          >
+            Delete Daily Notice
+          </Button>
+        </div>
         <form id = "input"
           className={style.container}
           onSubmit={(e) => {
@@ -100,11 +135,6 @@ export default function Claire(){
           >
             Submit
           </Button>
-          <Button onClick={fetchDailyNotices}
-            type="submit"
-          >
-            View Daily Notices
-          </Button>
          
         </form>
         
@@ -122,4 +152,5 @@ export default function Claire(){
           </div>
         </div>
       )
+
 }

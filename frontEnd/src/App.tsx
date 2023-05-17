@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { Home, Login, SignUp, Dashboard, Claire, Ben } from './pages'
+import { Home, Login, SignUp, Dashboard, Add, Edit, Delete, Ben, ManageDailyNotices } from './pages'
 import { Header, UserProvider, Timer, Body } from './components'
 import './App.css';
 
@@ -15,7 +15,10 @@ function App() {
         <Route path="dashboard" element={ <Dashboard /> }/>
         <Route path="login" element={ <Login /> }/>
         <Route path="sign-up" element={ <SignUp /> }/>
-        <Route path="claire" element={ <Claire /> }/>
+        <Route path="manage-daily-notices" element={ <ManageDailyNotices /> }/>
+        <Route path="add" element={ <Add /> }/>
+        <Route path="edit" element={ <Edit /> }/>
+        <Route path="delete" element={ <Delete /> }/>
         <Route path="ben" element={ <Ben /> }/>
         <Route path="*" element={<Navigate to="/" replace />}/>
       </Routes>

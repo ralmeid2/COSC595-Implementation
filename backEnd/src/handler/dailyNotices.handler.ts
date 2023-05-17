@@ -23,17 +23,16 @@ dailyNoticesHandler.post("/", validateSchema(createDailyNoticesSchema), async (r
         return res.status(200).send(newDailyNotice)
  })
 
-dailyNoticesHandler.get("/:userId", validateSchema(getDailyNoticesByIdSchema), async (req: Request, res: Response) => {
-    console.log("/:userId")
-    const userId = req.params.userId
-    console.log("userId", userId)
+dailyNoticesHandler.get("/:_id", validateSchema(getDailyNoticesByIdSchema), async (req: Request, res: Response) => {
+    const id = new mongoose.Types.ObjectId(req.params.id)
     try{
-        const userGames = await getDailyNoticesByUserId(userId);
-        return res.status(200).send(userGames);
+        const oneDoc = await getOne(id);
+        return res.status(200).send(oneDoc);
     }catch (err) {
         return res.status(500).send(err);
     } 
 });
+
 
 dailyNoticesHandler.put("/", validateSchema(getDailyNoticesSchema), async (req: Request, res: Response) => {
     try{
