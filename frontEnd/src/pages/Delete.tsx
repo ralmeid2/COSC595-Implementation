@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button, Input, Message } from '../components'
 import { post, get } from '../utils/http'
-import { DailyNotices } from '../types/DailyNotices'
+import { DailyNotice } from '../types/DailyNotice'
 
 
 
@@ -16,7 +16,7 @@ export default function Delete(){
     const [expiryDate, setExpiryDate] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
     const [checked, setChecked] = useState<string[]>([]);
-    const [dailyNotices, setDailyNotices] = useState <DailyNotices[]>([])
+    const [dailyNotices, setDailyNotices] = useState <DailyNotice[]>([])
 
     const handleCheck = (event: { target: { checked: any; value: any } }) => {
     var updatedList = [...checked];
@@ -46,7 +46,7 @@ export default function Delete(){
     
     const fetchDailyNotices = useCallback(async () => {
       try{
-        const dn = await get<DailyNotices[]>(`/api/dailyNotices`)
+        const dn = await get<DailyNotice[]>(`/api/dailyNotices`)
         setDailyNotices(dn)
         setTitle("")
         setAuthor("")

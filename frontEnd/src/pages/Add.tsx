@@ -23,7 +23,7 @@ export default function Add(){
 
     const fetchDailyNotices = async () => {
       try{
-        const dn = await get<DailyNotices[]>(`/api/dailyNotices`)
+        const dn = await get<DailyNotice[]>(`/api/dailyNotices`)
         setDailyNotices(dn)
         setTitle("")
         setAuthor("")
@@ -134,16 +134,13 @@ export default function Add(){
           >
             Submit
           </Button>
-<<<<<<< HEAD:frontEnd/src/pages/Add.tsx
-         
-=======
           <Button onClick={fetchDailyNotices}
             type="submit"
           >
             View Daily Notices
           </Button>
 
->>>>>>> c6e856e64b8cc8506154c89f1127abe38bfd03b7:frontEnd/src/pages/Claire.tsx
+
         </form>
 
         <div>
@@ -160,9 +157,6 @@ export default function Add(){
           </div>
         </div>
       )
-<<<<<<< HEAD:frontEnd/src/pages/Add.tsx
 
 }
-=======
-}
->>>>>>> c6e856e64b8cc8506154c89f1127abe38bfd03b7:frontEnd/src/pages/Claire.tsx
+

@@ -3,7 +3,7 @@ import { useState, useCallback, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button, Input, Message } from '../components'
 import { post, get } from '../utils/http'
-import { DailyNotices } from '../types/DailyNotices'
+import { DailyNotice } from '../types/DailyNotice'
 
 
 
@@ -16,8 +16,8 @@ export default function Edit(){
     const [expiryDate, setExpiryDate] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
     const [checked, setChecked] = useState<string[]>([]);
-    const [dailyNotices, setDailyNotices] = useState <DailyNotices[]>([])
-    const [dNotice, setDNotice] = useState <DailyNotices>()
+    const [dailyNotices, setDailyNotices] = useState <DailyNotice[]>([])
+    const [dNotice, setDNotice] = useState <DailyNotice>()
 
     const addDailyNotice = async () => {
         navigate('/add')
@@ -48,7 +48,7 @@ export default function Edit(){
     
     const fetchDailyNotices = useCallback(async () => {
       try{
-        const dn = await get<DailyNotices[]>(`/api/dailyNotices`)
+        const dn = await get<DailyNotice[]>(`/api/dailyNotices`)
         setDailyNotices(dn)
         setTitle("")
         setAuthor("")
@@ -63,7 +63,7 @@ export default function Edit(){
 
     const fetchOneDailyNotice = useCallback(async () => {
       try{
-        const d = await get<DailyNotices>(`/api/dailyNotices/${checked}`)
+        const d = await get<DailyNotice>(`/api/dailyNotices/${checked}`)
         setTitle("")
         setAuthor("")
         setMessage("")
