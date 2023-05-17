@@ -11,7 +11,7 @@ export default function Weather({ weatherData, isLoading }: WeatherProps) {
         return () => clearInterval(timer);
     }, []);
 
-    if (isLoading || !weatherData) 
+    if (isLoading || !weatherData)
         return <div className={styles.weatherContainer}>Loading weather...</div>;
 
     return (

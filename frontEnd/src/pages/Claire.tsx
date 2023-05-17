@@ -2,7 +2,7 @@ import style from './Login.module.css'
 import { useState } from 'react'
 import { Button, Input, Message } from '../components'
 import { post, get } from '../utils/http'
-import { DailyNotices } from '../types/DailyNotices'
+import { DailyNotice } from '../types/DailyNotice'
 
 
 
@@ -12,7 +12,7 @@ export default function Claire(){
     const [startDate, setStartDate] = useState("")
     const [expiryDate, setExpiryDate] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
-    const [dailyNotices, setDailyNotices] = useState <DailyNotices[]>([])
+    const [dailyNotices, setDailyNotices] = useState <DailyNotice[]>([])
 
     const postToDB = async () => {
         try{
@@ -35,7 +35,7 @@ export default function Claire(){
 
     const fetchDailyNotices = async () => {
       try{
-        const dn = await get<DailyNotices[]>(`/api/dailyNotices`)
+        const dn = await get<DailyNotice[]>(`/api/dailyNotices`)
         setDailyNotices(dn)
         setTitle("")
         setMessage("")
@@ -75,7 +75,7 @@ export default function Claire(){
               setMessage(e.target.value)
             }}
           />
-    
+
           <Input
             name="startDate"
             placeholder="Start Date"
@@ -105,9 +105,9 @@ export default function Claire(){
           >
             View Daily Notices
           </Button>
-         
+
         </form>
-        
+
         <div>
           { dailyNotices.map(
             ({ _id, title, message, startDate, expiryDate }) => {
@@ -116,9 +116,9 @@ export default function Claire(){
                 {title} {message} {startDate} {expiryDate}
                 </div>
               )}
-             
+
           )}
-          
+
           </div>
         </div>
       )

@@ -1,4 +1,4 @@
-export type DailyNotices = {
+export type DailyNotice = {
     _id: string
     title: string
     message: string
