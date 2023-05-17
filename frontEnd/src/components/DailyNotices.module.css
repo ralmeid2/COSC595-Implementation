@@ -13,6 +13,10 @@
     justify-content: space-around;
 }
 
+.notice {
+    margin-bottom: 15px;
+}
+
 .noticeTitle {
     font-size: 1.2rem;
     font-weight: bold;
