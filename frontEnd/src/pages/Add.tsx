@@ -134,11 +134,6 @@ export default function Add(){
           >
             Submit
           </Button>
-          <Button onClick={fetchDailyNotices}
-            type="submit"
-          >
-            View Daily Notices
-          </Button>
 
 
         </form>

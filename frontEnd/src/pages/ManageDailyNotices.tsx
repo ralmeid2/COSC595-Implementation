@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button, Input, Message } from '../components'
 import { post, get } from '../utils/http'
-import { DailyNotices } from '../types/DailyNotices'
+import { DailyNotice } from '../types/DailyNotice'
 
 
 
@@ -15,7 +15,7 @@ export default function Claire(){
     const [startDate, setStartDate] = useState("")
     const [expiryDate, setExpiryDate] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
-    const [dailyNotices, setDailyNotices] = useState <DailyNotices[]>([])
+    const [dailyNotices, setDailyNotices] = useState <DailyNotice[]>([])
 
     const addDailyNotice = async () => {
        navigate('/add')
@@ -32,7 +32,7 @@ export default function Claire(){
 
     const fetchDailyNotices = async () => {
       try{
-        const dn = await get<DailyNotices[]>(`/api/dailyNotices`)
+        const dn = await get<DailyNotice[]>(`/api/dailyNotices`)
         setDailyNotices(dn)
         setTitle("")
         setAuthor("")
