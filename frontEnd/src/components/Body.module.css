@@ -1,20 +1,32 @@
 .container {
     margin: 0 auto;
     box-sizing: border-box;
-  }
-  
-  .component {
-    width: calc(50% - 70px);
+}
+
+.columnHolder {
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+
+}
+
+.leftColumn {
+    width: 530px;
+}
+
+.rightColumn {
+    width: 530px;
+}
+
+.component {
     margin-right: 20px;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    float: left;
-    display: inline-block;
     border-radius: 3%;
-  }
-  
-  .clearfix::after {
+}
+
+.clearfix::after {
     content: "";
     clear: both;
     display: table;
-  }
+}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { Home, Login, SignUp, Dashboard, Add, Edit, Delete, Ben, ManageDailyNotices } from './pages'
-import { Header, UserProvider, Timer, Body } from './components'
+import { Home, Login, SignUp, Dashboard, Add, Edit, Delete, Ben, ManageDailyNotices, Display, Photo } from './pages'
+import { Header, UserProvider } from './components'
 import './App.css';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
     <main className="main">
       <Routes>
         <Route path="/" element={ <Home /> }/>
-        <Route path="display" element={<Body />}/>
+        <Route path="photo" element={<Photo />}/>
         <Route path="dashboard" element={ <Dashboard /> }/>
         <Route path="login" element={ <Login /> }/>
         <Route path="sign-up" element={ <SignUp /> }/>
@@ -20,7 +20,7 @@ function App() {
         <Route path="edit" element={ <Edit /> }/>
         <Route path="delete" element={ <Delete /> }/>
         <Route path="ben" element={ <Ben /> }/>
-        <Route path="*" element={<Navigate to="/" replace />}/>
+        <Route path="display" element={<Display />}/>
       </Routes>
     </main> 
     </UserProvider>
