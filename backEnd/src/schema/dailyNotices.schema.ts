@@ -34,15 +34,16 @@ export const getDailyNoticesSchema = object ({
 })
 
 export const getDailyNoticesByIdSchema = object({
-
+    ...getParams,
 })
 export const createDailyNoticesSchema = object({
     ...payload,
 })
 
 export const updateDailyNoticesSchema = object({
-    ...payload,
+    ...getParams,
 })
+
 
 
 export type getGamesByIdInput = TypeOf<typeof getDailyNoticesByIdSchema>

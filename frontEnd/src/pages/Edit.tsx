@@ -1,8 +1,8 @@
 import style from './Edit.module.css'
 import { useState, useCallback, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Button, Input, Message } from '../components'
-import { post, get } from '../utils/http'
+import { Button, Input } from '../components'
+import { put, get } from '../utils/http'
 import { DailyNotice } from '../types/DailyNotice'
 
 
@@ -10,14 +10,12 @@ import { DailyNotice } from '../types/DailyNotice'
 export default function Edit(){
     const navigate = useNavigate()
     const [title, setTitle] = useState("")
-    const [author, setAuthor] = useState("")
     const [message, setMessage] = useState("")
     const [startDate, setStartDate] = useState("")
     const [expiryDate, setExpiryDate] = useState("")
-    const [errorMessage, setErrorMessage] = useState("")
-    const [checked, setChecked] = useState<string[]>([]);
+    const [selected, setSelected] = useState(false)
     const [dailyNotices, setDailyNotices] = useState <DailyNotice[]>([])
-    const [dNotice, setDNotice] = useState <DailyNotice>()
+    const [editDailyNotices, setEditDailyNotices] = useState <DailyNotice[]>([])
 
     const addDailyNotice = async () => {
         navigate('/add')
@@ -35,49 +33,135 @@ export default function Edit(){
         fetchDailyNotices()
     }, [])
 
-    const handleCheck = (event: { target: { checked: any; value: any } }) => {
-    fetchOneDailyNotice()
-    var updatedList = [...checked];
-    if (event.target.checked) {
-        updatedList = [...checked, event.target.value];
-    } else {
-        updatedList.splice(checked.indexOf(event.target.value), 1);
-    }   
-    setChecked(updatedList);
-    };
+    const putToDB = async () => {
+      const id = editDailyNotices[0]._id
+        try{
+        const res = await put (`/api/dailyNotices/${id}`, {
+            title: title,
+            message: message,
+            startDate: startDate,
+            expiryDate: expiryDate
+        })
+        setSelected(false)
+        fetchDailyNotices()
+        return res
+      }
+      catch(err){
+        return err
+      }
+    }
     
     const fetchDailyNotices = useCallback(async () => {
       try{
         const dn = await get<DailyNotice[]>(`/api/dailyNotices`)
         setDailyNotices(dn)
-        setTitle("")
-        setAuthor("")
-        setMessage("")
-        setStartDate("")
-        setExpiryDate("")
         return dn
       }catch(err){
         return err
       }
     },[])
 
-    const fetchOneDailyNotice = useCallback(async () => {
+    const fetchOneDailyNotice = useCallback(async (id: string) =>  {
       try{
-        const d = await get<DailyNotice>(`/api/dailyNotices/${checked}`)
-        setTitle("")
-        setAuthor("")
-        setMessage("")
-        setStartDate("")
-        setExpiryDate("")
+        const d = await get<DailyNotice[]>(`/api/dailyNotices/${id}`)
+        setEditDailyNotices(d)
+        populateForm(d)
         return d
       }catch(err){
         return err
       }
     },[])
 
-    
+  
 
-    return (
+    const populateForm = async (d: DailyNotice[]) => {
+      setTitle(d[0].title)
+      setMessage(d[0].message)
+      setStartDate(d[0].startDate)
+      setExpiryDate(d[0].expiryDate)
+    }
+
+    const radioHandler = (id: string) => {
+      const confirm = window.confirm("Are you sure you want to edit this notice?")
+      if (confirm === true){
+        setSelected(true)
+        fetchOneDailyNotice(id)
+      }
+    }
+
+    if (selected === true){
+      return (
+        <div>
+        <div className={style.buttonContainer}>
+         <Button onClick={addDailyNotice}
+            type="submit"
+          >
+            Add Daily Notice
+          </Button>
+          <Button onClick={editDailyNotice}
+            type="submit"
+          >
+            Edit Daily Notice
+          </Button>
+          <Button onClick={deleteDailyNotice}
+            type="submit"
+          >
+            Delete Daily Notice
+          </Button>
+        </div>
+        <form id = "input"
+          className={style.container}
+          onSubmit={(e) => {
+            e.preventDefault()
+            putToDB()
+          }}
+        >
+          <Input
+            name="title"
+            placeholder="Title"
+            value={title}
+            onChange={(e) => {
+              setTitle(e.target.value)
+            }}
+          />
+          <Input
+            name="message"
+            placeholder="Message"
+            value={message}
+            onChange={(e) => {
+              setMessage(e.target.value)
+            }}
+          />
+
+          <Input
+            name="startDate"
+            placeholder="Start Date"
+            value={startDate}
+            onChange={(e) => {
+              setStartDate(e.target.value)
+            }}
+          />
+           <Input
+            name="expiryDate"
+            placeholder="Expiry Date"
+            value={expiryDate}
+            onChange={(e) => {
+              setExpiryDate(e.target.value)
+            }}
+          />
+          <Button
+            type="submit"
+            disabled={!title || !message || !startDate || !expiryDate}
+          >
+            Submit
+          </Button>
+
+
+        </form>
+        </div>
+      )
+    }else{
+        return (
       <div>
         <div className={style.buttonContainer}>
          <Button onClick={addDailyNotice}
@@ -102,7 +186,7 @@ export default function Edit(){
             ({ _id, title, message, startDate, expiryDate }) => {
               return(
                 <div className={style.item} key={_id}>
-                <input value={_id} type="checkbox" onChange={handleCheck} />
+                <input value={_id} type="radio" id={_id} onChange={()=>radioHandler(_id)} />
                 {title} {message} {startDate} {expiryDate}
                 </div>
               )}
@@ -112,5 +196,8 @@ export default function Edit(){
           </div>
         </div>
       )
+    }
+
+    
 
 }

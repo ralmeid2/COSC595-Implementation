@@ -2,38 +2,20 @@ import style from './Add.module.css'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button, Input, Message } from '../components'
-import { post, get } from '../utils/http'
-import { DailyNotice } from '../types/DailyNotice'
+import { post } from '../utils/http'
 
 
 
 export default function Add(){
     const navigate = useNavigate()
     const [title, setTitle] = useState("")
-    const [author, setAuthor] = useState("")
     const [message, setMessage] = useState("")
     const [startDate, setStartDate] = useState("")
     const [expiryDate, setExpiryDate] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
-    const [dailyNotices, setDailyNotices] = useState <DailyNotice[]>([])
 
     const addDailyNotice = async () => {
       navigate('/add')
-    }
-
-    const fetchDailyNotices = async () => {
-      try{
-        const dn = await get<DailyNotice[]>(`/api/dailyNotices`)
-        setDailyNotices(dn)
-        setTitle("")
-        setAuthor("")
-        setMessage("")
-        setStartDate("")
-        setExpiryDate("")
-        return dn
-      }catch(err){
-        return err
-      }
     }
 
     const deleteDailyNotice = async () => {
@@ -56,6 +38,7 @@ export default function Add(){
         setMessage("")
         setStartDate("")
         setExpiryDate("")
+        alert("Your daily notice has been added")
         return res
       }
       catch(err){
@@ -67,7 +50,7 @@ export default function Add(){
     return (
       <div>
         <div className={style.buttonContainer}>
-         <Button onClick={fetchDailyNotices}
+         <Button onClick={addDailyNotice}
             type="submit"
           >
             Add Daily Notice
@@ -137,19 +120,6 @@ export default function Add(){
 
 
         </form>
-
-        <div>
-          { dailyNotices.map(
-            ({ _id, title, message, startDate, expiryDate }) => {
-              return(
-                <div className={style.list} key={_id}>
-                {title} {message} {startDate} {expiryDate}
-                </div>
-              )}
-
-          )}
-
-          </div>
         </div>
       )
 

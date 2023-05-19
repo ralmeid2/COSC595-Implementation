@@ -1,32 +1,15 @@
 import style from './Edit.module.css'
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Button, Input, Message } from '../components'
-import { post, get } from '../utils/http'
+import { Button } from '../components'
+import { del, get } from '../utils/http'
 import { DailyNotice } from '../types/DailyNotice'
 
 
 
 export default function Delete(){
     const navigate = useNavigate()
-    const [title, setTitle] = useState("")
-    const [author, setAuthor] = useState("")
-    const [message, setMessage] = useState("")
-    const [startDate, setStartDate] = useState("")
-    const [expiryDate, setExpiryDate] = useState("")
-    const [errorMessage, setErrorMessage] = useState("")
-    const [checked, setChecked] = useState<string[]>([]);
     const [dailyNotices, setDailyNotices] = useState <DailyNotice[]>([])
-
-    const handleCheck = (event: { target: { checked: any; value: any } }) => {
-    var updatedList = [...checked];
-    if (event.target.checked) {
-        updatedList = [...checked, event.target.value];
-    } else {
-        updatedList.splice(checked.indexOf(event.target.value), 1);
-    }
-    setChecked(updatedList);
-    };
 
     const addDailyNotice = async () => {
         navigate('/add')
@@ -40,26 +23,43 @@ export default function Delete(){
         navigate('/delete')
     }
 
+
     useEffect(() => {
         fetchDailyNotices()
     }, [])
+
+
+  const radioHandler = (id: string) => {
+      const confirm = window.confirm("Are you sure you want to delete this notice?")
+      if (confirm === true){
+        deleteOneDailyNotice(id)
+      }
+      
+  };
+
     
     const fetchDailyNotices = useCallback(async () => {
       try{
         const dn = await get<DailyNotice[]>(`/api/dailyNotices`)
         setDailyNotices(dn)
-        setTitle("")
-        setAuthor("")
-        setMessage("")
-        setStartDate("")
-        setExpiryDate("")
         return dn
       }catch(err){
         return err
       }
     },[])
 
-     return (
+    const deleteOneDailyNotice = async (id: string) => {
+      try{
+        const d = await del(`/api/dailyNotices/${id}`)
+        fetchDailyNotices()
+        return d
+      }catch(err){
+        return err
+      }
+    }
+    
+
+    return (
       <div>
         <div className={style.buttonContainer}>
          <Button onClick={addDailyNotice}
@@ -78,13 +78,13 @@ export default function Delete(){
             Delete Daily Notice
           </Button>
         </div>
-        
         <div className={style.checkList}>
           { dailyNotices.map(
             ({ _id, title, message, startDate, expiryDate }) => {
               return(
                 <div className={style.item} key={_id}>
-                <input value={_id} type="checkbox" onChange={handleCheck} />
+                <input value={_id} type="radio" id={_id} onChange={()=>radioHandler(_id)} />
+                
                 {title} {message} {startDate} {expiryDate}
                 </div>
               )}
@@ -94,4 +94,5 @@ export default function Delete(){
           </div>
         </div>
       )
+
 }

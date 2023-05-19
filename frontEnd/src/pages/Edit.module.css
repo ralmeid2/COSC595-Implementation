@@ -1,22 +1,42 @@
 .checkList {
-    padding-left: 10%;
-    padding-top: 5%;
+    padding-left: 14%;
+    padding-top: 2%;
     padding-right: 10%;
     padding-bottom: 5%;
-    width: 60%;
+    width: 50%;
     position: relative;
     display: flexbox;
     margin: 10px;
     justify-content: space-between;
 }
 
-.buttonContainer {
+.container {
     display: flex;
-    flex-direction: row;
-    width: 90%;
+    flex-direction: column;
+    width: 70%;
+    max-width: 1200px;
     justify-content: space-between;
     border: 3rem;
     margin: auto;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    justify-content: space-between;
+    border: 3rem;
+    margin: auto;
+    color: white;
+}
+
+.horizontalContainer {
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    border: 3rem;
+    margin-left: 70%;
+    margin-top: 30%;
     color: white;
 }
 
