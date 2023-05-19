@@ -12,7 +12,7 @@ Version 1.0
 
 Postman Collection Link: https://www.getpostman.com/collections/1393d5f5a1c6e2396bbd
 
-MongoDB Credentials: email: clairegradyhanoi@gmail.com password: uneawp22
+MongoDB Credentials: email: clairegrady@me.com password: cosc594groupa
 
 User Credentials for Gomoku: username: admin and password: admin have been setup. Alternatively, you can just register as a new user.
 
