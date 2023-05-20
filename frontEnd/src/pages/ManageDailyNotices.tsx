@@ -1,14 +1,14 @@
 import style from './Add.module.css'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Button, Input, Message } from '../components'
+import { Button, Input, Message, Header, AdminMenu } from '../components'
 import { post, get } from '../utils/http'
 import { DailyNotice } from '../types/DailyNotice'
+import AdminOptions from './AdminOptions'
 
 
 
 export default function Claire(){
-    const navigate = useNavigate()
     const [title, setTitle] = useState("")
     const [author, setAuthor] = useState("")
     const [message, setMessage] = useState("")
@@ -17,17 +17,6 @@ export default function Claire(){
     const [errorMessage, setErrorMessage] = useState("")
     const [dailyNotices, setDailyNotices] = useState <DailyNotice[]>([])
 
-    const addDailyNotice = async () => {
-       navigate('/add')
-    }
-
-    const editDailyNotices = async () => {
-       navigate('/edit')
-    }
-
-    const deleteDailyNotice = async () => {
-       navigate('/delete')
-    }
 
 
     const fetchDailyNotices = async () => {
@@ -48,23 +37,7 @@ export default function Claire(){
 
     return (
       <div>
-        <div className={style.buttonContainer}>
-         <Button onClick={addDailyNotice}
-            type="submit"
-          >
-            Add Daily Notice
-          </Button>
-          <Button onClick={editDailyNotices}
-            type="submit"
-          >
-            Edit Daily Notice
-          </Button>
-          <Button onClick={deleteDailyNotice}
-            type="submit"
-          >
-            Delete Daily Notice
-          </Button>
-       </div>
+        <AdminMenu />
        </div>
        
       )

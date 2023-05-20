@@ -5,6 +5,7 @@ import dailyNoticesHandler from './handler/dailyNotices.handler'
 import photoHandler from './handler/photo.handler';
 import authHandler from './handler/auth.handler';
 import weatherHandler from './handler/weather.handler';
+import optionsHandler from './handler/options.handler';
 
  dotenv.config();
  connectDB();
@@ -16,5 +17,6 @@ import weatherHandler from './handler/weather.handler';
  app.use('/api/auth', authHandler)
  app.use('/api/weather', weatherHandler)
  app.use('/api/photo', photoHandler)
+ app.use('/api/options', optionsHandler)
 
  export default app;

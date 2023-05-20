@@ -4,25 +4,28 @@
 }
 
 .columnHolder {
-    display: flex;
-    flex-direction: row;
-    align-content: space-between;
+    width:1080px;
 
 }
 
-.leftColumn {
-    width: 530px;
+.leftSide {
+    width:500px;
+    margin:20px;
+    float:left;
+    display:block;
 }
 
-.rightColumn {
-    width: 530px;
+.rightSide {
+    width:500px;
+    float:left;
+    display:block;
+    margin-left:20px;
 }
 
-.component {
-    margin-right: 20px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    border-radius: 3%;
+.componentContainer {
+    width: 1080px;
+    display:flex;
+    padding:20px
 }
 
 .clearfix::after {
@@ -30,3 +33,10 @@
     clear: both;
     display: table;
 }
+
+.bcmessage {
+    padding:40px;
+    text-align: center;
+    font-size: 60px;
+}
+

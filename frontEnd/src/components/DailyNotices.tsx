@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import styles from './DailyNotices.module.css';
 import {DailyNotice} from "../types";
 
-export default function DailyNoticesView({ noticesData, isLoading }: DailyNoticesProps) {
+
+ 
+export default function DailyNoticesView({ isFullScreen, noticesData, isLoading }: DailyNoticesProps) {
 
   if (isLoading) {
     return <p>Loading notices...</p>;
@@ -30,10 +32,10 @@ export default function DailyNoticesView({ noticesData, isLoading }: DailyNotice
   notices.sort((a, b) => {
     return new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
   })
-
+    const containerStyle = isFullScreen? styles.fullScreen : styles.multiScreen
     // Otherwise, display the notices
     return (
-      <div className={styles.noticesContainer}>
+      <div className={containerStyle}>
         <div className={styles.title}>Today's Notices</div>
         <div className={styles.noticesInfoContainer}>
           {notices.map((notice) => (
@@ -53,6 +55,7 @@ export default function DailyNoticesView({ noticesData, isLoading }: DailyNotice
 interface DailyNoticesProps {
     noticesData: Array<DailyNotice>
     isLoading: boolean;
+    isFullScreen: boolean;
 }
 
 

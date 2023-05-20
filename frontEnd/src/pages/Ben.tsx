@@ -1,6 +1,6 @@
 import style from './Login.module.css'
 import { useState } from 'react'
-import { Button, Input, Message } from '../components'
+import { Button, Input, Message, Header } from '../components'
 import { post, get, put } from '../utils/http'
 import { DailyNotice } from '../types/DailyNotice'
 
@@ -86,6 +86,7 @@ export default function Ben(){
 
     return (
       <div>
+        <Header />
         <form id = "input"
           className={style.container}
           onSubmit={(e) => {

@@ -1,4 +1,5 @@
-.slideshow img{
-    width:1060px;
-    margin-top:20px
+.slideshow img {
+    display: inline-block;
+    width: 1080px;
+    margin-top: 20px
 }

@@ -1,35 +1,13 @@
-.weatherContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    text-align: left;
-    margin: 0 auto;
-    padding: 1rem;
-    width: 30%;
-    background-color: #f5f5f5;
-    border-radius: 10px;
+.fullScreen {
+    font-size: xx-large;
+    text-align: center;
 }
 
-.weatherTitle, .time {
-    font-size: 1rem;
+.multiScreen {
+    padding:20px;
+    text-align:center;
+    box-shadow: 2px 2px 10px #888888;
+    border-radius:10px;
+    font-size:25px;
+    margin-bottom:20px;
 }
-
-.weatherInfoContainer {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-}
-
-.temperature {
-    font-size: 60px;
-}
-
-.weatherIcon {
-    width: 100px;
-    height: 100px;
-}
-
-.superscript {
-    font-size: 50%;
-}
-

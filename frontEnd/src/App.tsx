@@ -1,13 +1,12 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { Home, Login, SignUp, Dashboard, Add, Edit, Delete, Ben, ManageDailyNotices, Display, Photo } from './pages'
-import { Header, UserProvider } from './components'
+import { Home, Login, SignUp, Dashboard, Add, Edit, Delete, Ben, ManageDailyNotices, Display, Photo, AdminOptions } from './pages'
+import { UserProvider } from './components'
 import './App.css';
 
 function App() {
   return (
     <UserProvider>
-    <Header />
     <main className="main">
       <Routes>
         <Route path="/" element={ <Home /> }/>
@@ -21,6 +20,7 @@ function App() {
         <Route path="delete" element={ <Delete /> }/>
         <Route path="ben" element={ <Ben /> }/>
         <Route path="display" element={<Display />}/>
+        <Route path="admin-options" element={<AdminOptions />}/>
       </Routes>
     </main> 
     </UserProvider>

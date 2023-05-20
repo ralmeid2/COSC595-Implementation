@@ -1,9 +1,17 @@
 import style from './Timer.module.css'
 import React from 'react'
 
+interface TimerProps {
+    isFullScreen: boolean;
+}
 
-export default function Timer () {
-    return <h1>{getCurrentPeriod()}</h1>
+export default function Timer ({ isFullScreen }: TimerProps) {
+    
+    const containerStyle = isFullScreen? style.fullScreen : style.multiScreen
+    
+    return <div className = {containerStyle}>
+        <h1>{getCurrentPeriod()}</h1>
+    </div>
 }
 
 function getMillis() {
