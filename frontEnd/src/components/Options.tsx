@@ -1,5 +1,8 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 
+import Button from "./Button";
+import styles from './Options.module.css';
+
 interface OptionData {
   timer: boolean;
   points: boolean;
@@ -74,70 +77,80 @@ const Options: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.optionsForm}>
       <h1>Select Display Mode</h1>
-      <label>
+      <label className={styles.label}>
         <input
           type="checkbox"
           name="multiComponentView"
+          className={styles.checkbox}
           checked={options.multiComponentView}
           onChange={handleCheckboxChange}
         />
         Multi Component View
       </label>
-      <br />
       <h1>Select Options to Display in Single Mode</h1>
-      <label>
-        Timer:
-        <input
-          type="checkbox"
-          name="timer"
-          checked={options.timer}
-          onChange={handleCheckboxChange}
-        />
-      </label>
+      <div className={styles.optionsContainer}>
+        <div className={styles.column}>
+          <label className={styles.label}>
+            Timer:
+            <input
+              type="checkbox"
+              name="timer"
+              className={styles.checkbox}
+              checked={options.timer}
+              onChange={handleCheckboxChange}
+            />
+          </label>
+          <br />
+          <label className={styles.label}>
+            Points:
+            <input
+              type="checkbox"
+              name="points"
+              className={styles.checkbox}
+              checked={options.points}
+              onChange={handleCheckboxChange}
+            />
+          </label>
+        </div>
+        <div className={styles.column}>
+          <label className={styles.label}>
+            Events:
+            <input
+              type="checkbox"
+              name="events"
+              className={styles.checkbox}
+              checked={options.events}
+              onChange={handleCheckboxChange}
+            />
+          </label>
+          <br />
+          <label className={styles.label}>
+            Notices:
+            <input
+              type="checkbox"
+              name="notices"
+              className={styles.checkbox}
+              checked={options.notices}
+              onChange={handleCheckboxChange}
+            />
+          </label>
+        </div>
+      </div>
       <br />
-      <label>
-        Points:
-        <input
-          type="checkbox"
-          name="points"
-          checked={options.points}
-          onChange={handleCheckboxChange}
-        />
-      </label>
-      <br />
-      <label>
-        Events:
-        <input
-          type="checkbox"
-          name="events"
-          checked={options.events}
-          onChange={handleCheckboxChange}
-        />
-      </label>
-      <br />
-      <label>
-        Notices:
-        <input
-          type="checkbox"
-          name="notices"
-          checked={options.notices}
-          onChange={handleCheckboxChange}
-        />
-      </label>
-      <br />
-      <label>
+      <label className={styles.label}>
         Broadcast:
         <input
           type="checkbox"
           name="broadcast"
+          className={styles.checkbox}
           checked={options.broadcast}
           onChange={handleCheckboxChange}
         />
       </label>
       <br />
-      <label>
+      <label className={styles.label}>
         Broadcast Message:
         <textarea
           name="broadcastMessage"
@@ -146,9 +159,11 @@ const Options: React.FC = () => {
         />
       </label>
       <br />
-      <button type="submit">Submit</button>
+      <Button type="submit">Submit</Button>
     </form>
   );
+
+
 };
 
 export default Options;
