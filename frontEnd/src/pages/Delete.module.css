@@ -1,0 +1,15 @@
+.list {
+  list-style: none;
+  margin: 20px 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  padding: 3px 0;
+}
+
+.item:hover {
+  color: #dc1515;
+  cursor: pointer;
+}
