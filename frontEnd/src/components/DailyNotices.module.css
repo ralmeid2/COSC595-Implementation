@@ -26,6 +26,11 @@
     height:600px
 }
 
+.fullScreen, .multiScreen {
+    /* For absolute positioning to work with pagination */
+    position: relative;
+}
+
 .notice {
     margin-bottom: 15px;
 }
@@ -34,4 +39,27 @@
     font-size: 1.2rem;
     font-weight: bold;
     color: #042b5e;
+}
+
+.indicatorContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+    /* So they display at the bottom of the page */
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
+
+.indicator {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: #ccc;
+    border-radius: 50%;
+}
+
+.activeIndicator {
+    background-color: #042b5e;
 }
