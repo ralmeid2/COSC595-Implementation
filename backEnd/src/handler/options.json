@@ -1,9 +1,9 @@
 {
-  "timer": false,
-  "points": false,
-  "events": false,
+  "timer": true,
+  "points": true,
+  "events": true,
   "notices": true,
-  "multiComponentView": false,
-  "broadcast": false,
+  "multiComponentView": true,
+  "broadcast": true,
   "broadcastMessage": "This is a Test Message"
 }

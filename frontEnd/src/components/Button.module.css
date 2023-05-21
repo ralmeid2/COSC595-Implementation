@@ -1,11 +1,18 @@
 .button{
-    display: grid;
-    justify-content: center;
-    background-color: white;
-    width: 150px;
-    height: 25px;
-    border-radius: 0.5rem;
-    border: solid black;
-    margin: 10px;
-    font-weight: bolder;
+    background-color: #2c3e50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background-color: #3498db;
+    transform: translateY(-2px);
+}
+
+.button:active {
+    transform: translateY(1px);
 }
