@@ -9,30 +9,30 @@ import AdminOptions from './AdminOptions'
 
 
 export default function Claire(){
-    const [title, setTitle] = useState("")
-    const [author, setAuthor] = useState("")
-    const [message, setMessage] = useState("")
-    const [startDate, setStartDate] = useState("")
-    const [expiryDate, setExpiryDate] = useState("")
-    const [errorMessage, setErrorMessage] = useState("")
-    const [dailyNotices, setDailyNotices] = useState <DailyNotice[]>([])
+    // const [title, setTitle] = useState("")
+    // const [author, setAuthor] = useState("")
+    // const [message, setMessage] = useState("")
+    // const [startDate, setStartDate] = useState("")
+    // const [expiryDate, setExpiryDate] = useState("")
+    // const [errorMessage, setErrorMessage] = useState("")
+    // const [dailyNotices, setDailyNotices] = useState <DailyNotice[]>([])
 
 
 
-    const fetchDailyNotices = async () => {
-      try{
-        const dn = await get<DailyNotice[]>(`/api/dailyNotices`)
-        setDailyNotices(dn)
-        setTitle("")
-        setAuthor("")
-        setMessage("")
-        setStartDate("")
-        setExpiryDate("")
-        return dn
-      }catch(err){
-        return err
-      }
-    }
+    // const fetchDailyNotices = async () => {
+    //   try{
+    //     const dn = await get<DailyNotice[]>(`/api/dailyNotices`)
+    //     setDailyNotices(dn)
+    //     setTitle("")
+    //     setAuthor("")
+    //     setMessage("")
+    //     setStartDate("")
+    //     setExpiryDate("")
+    //     return dn
+    //   }catch(err){
+    //     return err
+    //   }
+    // }
     
 
     return (
