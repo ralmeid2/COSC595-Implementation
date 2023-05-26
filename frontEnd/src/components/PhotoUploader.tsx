@@ -1,5 +1,6 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import styles from './PhotoUploader.module.css'
+import Button from "./Button";
 
 interface Photo {
   id: string;
@@ -65,19 +66,19 @@ const PhotoUploader: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <form onSubmit={handleSubmit}>
         <input type="file" onChange={handleFileChange} />
-        <button type="submit">Upload</button>
+        <Button type="submit">Upload</Button>
       </form>
-      
+
       {existingPhotos.length > 0 && (
         <div>
           <h2>Existing Photos:</h2>
           {existingPhotos.map((photo) => (
             <div key={photo.id} className = {styles.photo}>
               <img src={photo.url} alt="Existing Photo" />
-              <button onClick={() => handleDelete(photo.id)}>Delete</button>
+              <Button onClick={() => handleDelete(photo.id)}>Delete</Button>
             </div>
           ))}
         </div>
