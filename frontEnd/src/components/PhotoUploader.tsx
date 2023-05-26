@@ -51,18 +51,21 @@ const PhotoUploader: React.FC = () => {
   };
 
   const handleDelete = (photoId: string) => {
-    fetch(`/api/photo/${photoId}`, {
-      method: 'DELETE',
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('Delete successful:', data);
-        // Do something with the server's response
+    const confirmation = window.confirm('Are you sure you want to delete this photo?');
+    if (confirmation) {
+      fetch(`/api/photo/${photoId}`, {
+        method: 'DELETE',
       })
-      .catch((error) => {
-        console.error('Error during delete:', error);
-        // Handle error
-      });
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('Delete successful:', data);
+          // Do something with the server's response
+        })
+        .catch((error) => {
+          console.error('Error during delete:', error);
+          // Handle error
+        });
+    }
   };
 
   return (
@@ -78,7 +81,7 @@ const PhotoUploader: React.FC = () => {
           {existingPhotos.map((photo) => (
             <div key={photo.id} className = {styles.photo}>
               <img src={photo.url} alt="Existing Photo" />
-              <Button onClick={() => handleDelete(photo.id)}>Delete</Button>
+              <Button className={styles.delete} onClick={() => handleDelete(photo.id)}>X</Button>
             </div>
           ))}
         </div>
