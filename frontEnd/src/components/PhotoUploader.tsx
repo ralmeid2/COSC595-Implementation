@@ -11,6 +11,7 @@ const PhotoUploader: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [existingPhotos, setExistingPhotos] = useState<Photo[]>([]);
 
+
   useEffect(() => {
     fetch('/api/photo')
       .then((response) => response.json())
@@ -51,6 +52,7 @@ const PhotoUploader: React.FC = () => {
   };
 
   const handleDelete = (photoId: string) => {
+    // Confirm the user wants to delete the photo
     const confirmation = window.confirm('Are you sure you want to delete this photo?');
     if (confirmation) {
       fetch(`/api/photo/${photoId}`, {
@@ -59,6 +61,11 @@ const PhotoUploader: React.FC = () => {
         .then((response) => response.json())
         .then((data) => {
           console.log('Delete successful:', data);
+
+          // Update the existingPhotos state to reload the current images by filtering out the deleted photo
+          const updatedPhotos = existingPhotos.filter(photo => photo.id !== photoId);
+          setExistingPhotos(updatedPhotos);
+
           // Do something with the server's response
         })
         .catch((error) => {
