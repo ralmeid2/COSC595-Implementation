@@ -1,5 +1,5 @@
-.checkList {
-    padding-left: 14%;
+/* .checkList {
+    padding-left: 21%;
     padding-top: 2%;
     padding-right: 10%;
     padding-bottom: 5%;
@@ -8,6 +8,15 @@
     display: flexbox;
     margin: 10px;
     justify-content: space-between;
+} */
+
+.checkList {
+    list-style: none;
+    margin: 20px 200px;
+    display: flex;
+    margin-left: 21%;
+    flex-direction: column;
+    font-size: 16px;
 }
 
 .container {
@@ -40,7 +49,14 @@
     color: white;
 }
 
+
+
 .item {
-    padding: 10px;
-    font-size: 18px;
+    padding: 10px 0;
+    font-size: 22px;
+}
+
+.item:hover {
+    color: #dc1515;
+    cursor: pointer;
 }

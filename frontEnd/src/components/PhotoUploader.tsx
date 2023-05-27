@@ -1,5 +1,6 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import styles from './PhotoUploader.module.css'
+import Button from "./Button";
 
 interface Photo {
   id: string;
@@ -9,6 +10,7 @@ interface Photo {
 const PhotoUploader: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [existingPhotos, setExistingPhotos] = useState<Photo[]>([]);
+
 
   useEffect(() => {
     fetch('/api/photo')
@@ -50,34 +52,43 @@ const PhotoUploader: React.FC = () => {
   };
 
   const handleDelete = (photoId: string) => {
-    fetch(`/api/photo/${photoId}`, {
-      method: 'DELETE',
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('Delete successful:', data);
-        // Do something with the server's response
+    // Confirm the user wants to delete the photo
+    const confirmation = window.confirm('Are you sure you want to delete this photo?');
+    if (confirmation) {
+      fetch(`/api/photo/${photoId}`, {
+        method: 'DELETE',
       })
-      .catch((error) => {
-        console.error('Error during delete:', error);
-        // Handle error
-      });
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('Delete successful:', data);
+
+          // Update the existingPhotos state to reload the current images by filtering out the deleted photo
+          const updatedPhotos = existingPhotos.filter(photo => photo.id !== photoId);
+          setExistingPhotos(updatedPhotos);
+
+          // Do something with the server's response
+        })
+        .catch((error) => {
+          console.error('Error during delete:', error);
+          // Handle error
+        });
+    }
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <form onSubmit={handleSubmit}>
         <input type="file" onChange={handleFileChange} />
-        <button type="submit">Upload</button>
+        <Button type="submit">Upload</Button>
       </form>
-      
+
       {existingPhotos.length > 0 && (
         <div>
           <h2>Existing Photos:</h2>
           {existingPhotos.map((photo) => (
             <div key={photo.id} className = {styles.photo}>
               <img src={photo.url} alt="Existing Photo" />
-              <button onClick={() => handleDelete(photo.id)}>Delete</button>
+              <Button className={styles.delete} onClick={() => handleDelete(photo.id)}>X</Button>
             </div>
           ))}
         </div>

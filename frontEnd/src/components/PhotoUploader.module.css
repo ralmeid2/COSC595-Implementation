@@ -1,3 +1,8 @@
+.container {
+    width: 90%;
+    margin: 50px auto;
+}
+
 .photo {
     width: 200px;
     float:left;
@@ -9,6 +14,7 @@
 .photo img {
   width:100%;
 }
+
 .delete {
   position:absolute;
   right:5px;
@@ -19,9 +25,11 @@
   height: 30px;
   border: 2px solid rgb(18, 18, 64);
   color: rgb(18, 18, 64);
+  text-align: center;
 }
 .delete:hover {
-  border: 2px solid red;
-  color: red!important;
+  border: 2px solid #af2828;
+  background-color: #af2828;
+    color: #fff;
 }
 
