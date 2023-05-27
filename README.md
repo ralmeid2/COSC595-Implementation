@@ -1,19 +1,33 @@
-GOMOKU-FULLSTACK: A Simple Full Stack Web App that Allows you to Play Gomoku, a Japanese Board Game
-Author: Claire Grady
-Version 1.0
+# St Edmund's College Display
+#### Authors: Andy Taylor, Ben Burton, Claire Grady. Kevin Murphy, Renan Massari, Sandeep Kaur, and Sharon Harrison
 
-1. install dependencies: yarn
-2. cd into the gomoku_service directory
-3. start the server: yarn run dev
-4. cd into the gomoku_react directory
-5. start the app: yarn start
-6. go to localhost: 3000
-7. server is hosted on port 8080
+#### Version 1.0
+
+### First run (or after installing new dependencies):
+1. `cd` into backEnd directory
+2. install dependencies: `yarn`
+3. `cd` into frontEnd directory
+4. install dependencies: `yarn`
+
+### To run the app:
+
+1. `cd` into the backEnd directory
+2. start the server: `yarn run dev`
+3. `cd` into the frontEnd directory
+4. start the app: `yarn start`
+
+Client will be running on http://localhost:3000 and server will be running on http://localhost:8080
+
+### Routes:
+* `/display`: The display page for the app
+* `/admin-options`: Can select different display modes and broadcast messages
+* `/add`: Can add a new daily notice
+* `/edit`: Can edit a daily notice
+* `/delete`: Can delete a daily notice
+* `/photo`: Can upload and remove photos from the database
 
 Postman Collection Link: https://www.getpostman.com/collections/1393d5f5a1c6e2396bbd
 
 MongoDB Credentials: email: clairegrady@me.com password: cosc594groupa
 
 User Credentials for Gomoku: username: admin and password: admin have been setup. Alternatively, you can just register as a new user.
-
-test
