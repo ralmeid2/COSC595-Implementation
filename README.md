@@ -13,7 +13,7 @@
 
 1. `cd` into the backEnd directory
 2. start the server: `yarn run dev`
-3. `cd` into the frontEnd directory
+3. `cd` into the frontEnd directory (in another terminal window)
 4. start the app: `yarn start`
 
 Client will be running on http://localhost:3000 and server will be running on http://localhost:8080
