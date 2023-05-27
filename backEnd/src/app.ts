@@ -4,6 +4,7 @@
 import dailyNoticesHandler from './handler/dailyNotices.handler'
 import photoHandler from './handler/photo.handler';
 import authHandler from './handler/auth.handler';
+import eventsHandler from './handler/events.handler';
 import weatherHandler from './handler/weather.handler';
 import optionsHandler from './handler/options.handler';
 
@@ -18,5 +19,6 @@ import optionsHandler from './handler/options.handler';
  app.use('/api/weather', weatherHandler)
  app.use('/api/photo', photoHandler)
  app.use('/api/options', optionsHandler)
+ app.use('/api/events', eventsHandler)
 
  export default app;

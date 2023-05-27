@@ -10,3 +10,7 @@
     border-radius:10px;
     font-size:25px;
 }
+
+.eventList {
+    list-style-type: none;
+}
