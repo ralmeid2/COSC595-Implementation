@@ -11,3 +11,21 @@
     font-size:25px;
     margin-bottom:20px;
 }
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.clock {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.period {
+    font-size: 4rem;
+    color: #042b5e;
+    font-weight: bold;
+    text-align: left;
+}

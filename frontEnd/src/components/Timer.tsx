@@ -1,16 +1,32 @@
 import style from './Timer.module.css'
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+
+// Please see https://github.com/wojtekmaj/react-clock for Clock documentation
+import Clock from 'react-clock'
+import 'react-clock/dist/Clock.css'
 
 interface TimerProps {
     isFullScreen: boolean;
 }
 
 export default function Timer ({ isFullScreen }: TimerProps) {
-    
+  const [value, setValue] = useState(new Date());
+
+  useEffect(() => {
+    const interval = setInterval(() => setValue(new Date()), 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
     const containerStyle = isFullScreen? style.fullScreen : style.multiScreen
-    
+
     return <div className = {containerStyle}>
-        <h1>{getCurrentPeriod()}</h1>
+      <div className={style.container}>
+        <Clock value={value} className={style.clock} />
+        <div className={style.period}>{getCurrentPeriod()}</div>
+      </div>
     </div>
 }
 
@@ -42,7 +58,7 @@ const getCurrentPeriod = () => {
     return "See you tomorrow"
 }
 
-const timetable = 
+const timetable =
     [
         {
             name:"Before period 1",
