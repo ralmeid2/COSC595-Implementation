@@ -45,13 +45,13 @@ eventsHandler.get('/', async (req: Request, res: Response) => {
             if (!comp.jCal[2][i][1][6][3].startsWith("Week")){
                 list.push({
                     event:comp.jCal[2][i][1][6][3],
-                    date: `${days[listDate.getDay()]}, ${months[listDate.getMonth()]} ${listDate.getDate()}` 
+                    date: `${days[listDate.getDay()-1]}, ${months[listDate.getMonth()]} ${listDate.getDate()}` 
                 })
             }
             
         }
     }
-
+    console.log()
     list = list.slice(0,6)
     console.log(list)
 
