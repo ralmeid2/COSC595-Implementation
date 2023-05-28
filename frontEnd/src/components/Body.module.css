@@ -18,8 +18,9 @@
 .rightSide {
     width:500px;
     float:left;
-    display:block;
+    display:grid;
     margin-left:20px;
+    margin-bottom: 20px;
 }
 
 .componentContainer {

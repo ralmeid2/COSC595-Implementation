@@ -1,10 +1,6 @@
 import { useEffect, useState } from 'react';
 import style from './Body.module.css';
-import Timer from './Timer';
-import Header from './Header';
-import PointsChart from './PointsChart';
-import Slideshow from './Slideshow';
-import Upcoming from './Upcoming';
+import { Timer, Header, PointsChart, Slideshow, Upcoming, SaintOfTheDay } from '../components'
 import { DailyNotice } from '../types';
 import DailyNoticesView from './DailyNotices';
 import Broadcast from './Broadcast';
@@ -63,6 +59,7 @@ export default function Body() {
         events: React.ReactNode;
         notices: React.ReactNode;
         broadcast: React.ReactNode;
+        saintOfTheDay: React.ReactNode;
     } | null>(null);
 
     //get the daily notices
@@ -112,7 +109,7 @@ export default function Body() {
         return <div>Loading...</div>;
     }
 
-    const { multiComponentView, timer, points, events, notices, broadcast } = options;
+    const { multiComponentView, timer, points, events, notices, broadcast, saintOfTheDay } = options;
 
     if (multiComponentView) {
         //layout for showing all components on a single screen
@@ -127,6 +124,7 @@ export default function Body() {
                     </div>
                     <div className={style.rightSide}>
                         <DailyNoticesView isFullScreen={isFullScreen} noticesData={noticesData} isLoading={dailyNoticesLoading} />
+                        <SaintOfTheDay isFullScreen={isFullScreen} />
                     </div>
                 </div>
                 <Slideshow />
@@ -149,6 +147,9 @@ export default function Body() {
         }
         if (broadcast) {
             componentsToShow.push(<Broadcast />);
+        }
+        if (saintOfTheDay) {
+            componentsToShow.push(<SaintOfTheDay isFullScreen={isFullScreen}/>)
         }
         return (
             <div>
