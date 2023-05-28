@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Button, Input, Message } from '../components'
+import { Button, Input, Message, Header } from '../components'
 import { UserContext } from '../context'
 import style from './Login.module.css'
 
@@ -27,6 +27,8 @@ export default function SignUp() {
   }
 
   return (
+  <body>
+    <Header/>
     <form
       className={style.container}
       onSubmit={(e) => {
@@ -72,5 +74,6 @@ export default function SignUp() {
         Sign Up
       </Button>
     </form>
+    </body>
   )
 }

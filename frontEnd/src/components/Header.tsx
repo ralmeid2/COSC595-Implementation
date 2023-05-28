@@ -48,7 +48,7 @@ export default function Header() {
     if (user) {
       if (location.pathname === '/'){
       return <>
-       <button className={style.action} onClick={() => navigate('dashboard')}>Dashboard</button>
+       <button className={style.action} onClick={() => navigate('/admin')}><div className={style.text}>Admin</div></button>
        <button className={style.action} onClick={() => {logout()
         navigate('/')}}>Logout</button>
       </>
@@ -57,7 +57,7 @@ export default function Header() {
       }
       else{
         return <>
-       <button className={style.action} onClick={() => navigate('home')}>Home</button>
+       <button className={style.action} onClick={() => navigate('/')}><div className={style.text}>Home</div></button>
        <button className={style.action} onClick={() => {logout()
         navigate('/')}}>Logout</button>
       </>
@@ -65,9 +65,15 @@ export default function Header() {
     }
     else {
       return location.pathname !== '/login' ? (
-        <button className={style.action} onClick={() => navigate('login')}>Login</button>
+        <>
+        <button className={style.action} onClick={() => navigate('/admin')}><div className={style.text}>Admin</div></button>
+        <button className={style.action} onClick={() => navigate('/login')}><div className={style.text}>Login</div></button>
+        </>
       ): (
-        <button className={style.action} onClick={() => navigate('sign-up')}>Sign Up</button>
+        <>
+        <button className={style.action} onClick={() => navigate('/admin')}><div className={style.text}>Admin</div></button>
+        <button className={style.action} onClick={() => navigate('/sign-up')}><div className={style.text}>Sign Up</div></button>
+        </>
       )
     }
   }

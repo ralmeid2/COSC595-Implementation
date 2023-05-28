@@ -43,13 +43,13 @@ export default function Delete() {
       <body>
       <AdminMenu />
       <div className={styles.list} >
-      <h1>Please click on an item to delete it</h1>
+      <h1>Please Click on an Item to Delete it</h1>
           {dailyNotices.map(
             ({ _id, title, message, startDate, expiryDate }) => {
                 return (
                   <div className={styles.item} key={_id} onClick={() => deleteHandler(_id)}>
                                 <span >
-                                    {title} {message} {startDate} {expiryDate}
+                                    {title} {message} 
                                 </span>
                   </div>
                 )

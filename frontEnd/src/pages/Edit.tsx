@@ -145,13 +145,13 @@ export default function Edit() {
                 <AdminMenu/>
 
                 <div className={style.checkList}>
-                  <h1>Please click on an item to edit it</h1>
+                  <h1>Please Click on an Item to Edit it</h1>
                     {dailyNotices.map(
                         ({ _id, title, message, startDate, expiryDate }) => {
                             return (
                                 <div className={style.item} key={_id} onClick={() => radioHandler(_id)} >
                                 
-                                    {title} {message} {startDate} {expiryDate}
+                                    {title} {message}
                                 </div>
                             )
                         }

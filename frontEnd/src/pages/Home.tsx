@@ -1,14 +1,9 @@
-import { Header } from '../components'
+import { Body } from '../components'
 
 export default function Home() {
 
     return (
-        <body>
-            <Header />
-            <div>
-                Welcome to the Home Page!
-            </div>
-        </body>
+       <Body></Body>
     )
 }
 

@@ -27,7 +27,7 @@ export default function AdminMenu() {
         navigate('/edit')
     }
     const goToDisplay = async () => {
-        navigate('/display')
+        navigate('/')
     }
 
 
