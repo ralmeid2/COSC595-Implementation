@@ -12,6 +12,11 @@
     margin-bottom:20px;
 }
 
+.pointsTitle {
+    font-size: 1.5rem;
+    color: #042b5e;
+}
+
 h1 {
     line-height:50px;
     padding:0px;

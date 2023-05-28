@@ -70,7 +70,7 @@ const PointsChart: React.FC<CanvasProps> = ({ houses, isFullScreen }) => {
 
   return (
     <div className = {containerStyle}>
-      <h3>House Points</h3>
+      <h3 className={style.pointsTitle}>House Points</h3>
       {isFullScreen ? (
         <canvas height={600} width={1080} ref={canvasRef} />
       ) : (
