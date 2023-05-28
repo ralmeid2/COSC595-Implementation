@@ -11,6 +11,28 @@
     font-size:25px;
 }
 
+.eventTitle {
+    font-size: 1.5rem;
+    color: #042b5e;
+}
+
 .eventList {
     list-style-type: none;
+}
+
+.eventItem {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 5px;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.eventName {
+    text-align: left;
+}
+
+.eventDate {
+    text-align: left;
 }
