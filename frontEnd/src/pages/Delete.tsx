@@ -1,6 +1,5 @@
 import { useState, useCallback, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Button, Input, Message, AdminMenu } from '../components'
+import { AdminMenu } from '../components'
 import { del, get } from '../utils/http'
 import { DailyNotice } from '../types/DailyNotice'
 import styles from './Delete.module.css'
@@ -10,7 +9,7 @@ export default function Delete() {
 
     useEffect(() => {
         fetchDailyNotices()
-    }, [])
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     const deleteHandler = (id: string) => {
         const confirm = window.confirm("Are you sure you want to delete this notice?")

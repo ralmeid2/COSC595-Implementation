@@ -51,9 +51,7 @@ eventsHandler.get('/', async (req: Request, res: Response) => {
             
         }
     }
-    console.log()
     list = list.slice(0,6)
-    console.log(list)
 
 
     // Send the events as JSON in the response

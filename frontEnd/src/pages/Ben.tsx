@@ -17,7 +17,6 @@ export default function Ben(){
 
 
     const updateDailyNotice = async () => {
-      console.log(dailyNotices[3]._id)
       try{
         const res = await put (`/api/dailyNotices`, {
           id: dailyNotices[3]._id,
@@ -26,8 +25,6 @@ export default function Ben(){
           startDate: startDate,
           expiryDate: expiryDate
         })
-        console.log(title)
-        console.log(res)
         return res
       } catch (err) {
         return err
@@ -55,9 +52,9 @@ export default function Ben(){
 
     const getWeather = async () => {
       try{
-        const res = await get (`/api/weather`)
-        console.log(res)
+        await get (`/api/weather`)
       } catch (err) {
+        console.log("here")
         console.log(err)
         return err
       }
