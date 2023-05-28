@@ -45,13 +45,13 @@ eventsHandler.get('/', async (req: Request, res: Response) => {
             if (!comp.jCal[2][i][1][6][3].startsWith("Week")){
                 list.push({
                     event:comp.jCal[2][i][1][6][3],
-                    date: `${days[listDate.getDay()-1]}, ${months[listDate.getMonth()]} ${listDate.getDate()}` 
+                    date: `${months[listDate.getMonth()]} ${listDate.getDate()}` 
                 })
             }
             
         }
     }
-    list = list.slice(0,6)
+    list = list.slice(0,5)
 
 
     // Send the events as JSON in the response

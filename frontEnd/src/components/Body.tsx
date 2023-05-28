@@ -37,7 +37,7 @@ function ConditionalRendering({ components }: ConditionalRenderingProps) {
 }
 
 export default function Body() {
-    
+
     const [isFullScreen, setIsFullScreen] = useState(false);
     //these are house points, this will eventually come from the school database. 
     const houses = [
@@ -117,13 +117,18 @@ export default function Body() {
             <>
                 <Header />
                 <div className={style.componentContainer}>
-                    <div className={style.LeftSide}>
-                        <Timer isFullScreen={isFullScreen} />
-                        <PointsChart houses={houses} isFullScreen={isFullScreen} />
-                        <Upcoming isFullScreen={isFullScreen}/>
+                    <div className={style.firstRow}>
+                        <div className={style.LeftSide}>
+                            <Timer isFullScreen={isFullScreen} />
+                            <PointsChart houses={houses} isFullScreen={isFullScreen} />
+                        </div>
+                        <div className={style.rightSide}>
+                            <DailyNoticesView isFullScreen={isFullScreen} noticesData={noticesData} isLoading={dailyNoticesLoading} />
+                        </div>
                     </div>
-                    <div className={style.rightSide}>
-                        <DailyNoticesView isFullScreen={isFullScreen} noticesData={noticesData} isLoading={dailyNoticesLoading} />
+
+                    <div className={style.secondRow}>
+                        <Upcoming isFullScreen={isFullScreen} />
                         <SaintOfTheDay isFullScreen={isFullScreen} />
                     </div>
                 </div>
@@ -143,13 +148,13 @@ export default function Body() {
             componentsToShow.push(<DailyNoticesView isFullScreen={isFullScreen} noticesData={noticesData} isLoading={dailyNoticesLoading} />);
         }
         if (events) {
-            componentsToShow.push(<Upcoming isFullScreen={isFullScreen}/>);
+            componentsToShow.push(<Upcoming isFullScreen={isFullScreen} />);
         }
         if (broadcast) {
             componentsToShow.push(<Broadcast />);
         }
         if (saintOfTheDay) {
-            componentsToShow.push(<SaintOfTheDay isFullScreen={isFullScreen}/>)
+            componentsToShow.push(<SaintOfTheDay isFullScreen={isFullScreen} />)
         }
         return (
             <div>

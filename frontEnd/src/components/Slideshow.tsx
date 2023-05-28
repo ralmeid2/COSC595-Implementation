@@ -12,6 +12,8 @@ const Slideshow: React.FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
+        //get all the photos in the photo location
+        //might want to add categories here
         const fetchPhotos = async () => {
             try {
                 const response = await fetch('/api/photo');
@@ -30,7 +32,8 @@ const Slideshow: React.FC = () => {
 
         fetchPhotos();
     }, []);
-
+    //photos change every 10 seconds
+    //could be worth adding some animation here
     useEffect(() => {
         if (photos.length === 0) return;
 
@@ -50,7 +53,7 @@ const Slideshow: React.FC = () => {
     if (photos.length === 0) {
         return <p>No photos available.</p>;
     }
-
+    
     return (
         <div className={style.slideshow}>
             <img src={photos[currentIndex].url} alt="Slideshow" />

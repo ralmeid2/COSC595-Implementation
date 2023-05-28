@@ -27,7 +27,7 @@ const Upcoming: React.FC<EventListProps> = ({ isFullScreen }) => {
 
   return (
     <div className={containerStyle}>
-      <h2 className={style.eventTitle}>Upcoming Events</h2>
+      <h2 className={style.eventTitle}>UPCOMING EVENTS</h2>
       <ul className={style.eventList}>
         {events.map((event, index) => (
           <li key={index}>

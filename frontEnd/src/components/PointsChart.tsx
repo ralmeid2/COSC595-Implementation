@@ -12,6 +12,7 @@ interface CanvasProps {
   isFullScreen: boolean;
 }
 
+//the points chart uses a canvas element
 const PointsChart: React.FC<CanvasProps> = ({ houses, isFullScreen }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -38,26 +39,31 @@ const PointsChart: React.FC<CanvasProps> = ({ houses, isFullScreen }) => {
     let chartWidth = canvasWidth - chartMarginLeft - chartMarginRight;
     let chartHeight = canvasHeight - chartMarginTop - chartMarginBottom;
 
-    // Draw numbers on the canvas
+    //get just the houses and their respective points
     let pointsArray = houses.map((house) => house.points);
+    //work out the maximum amount of points
     let maxPoints = Math.max(...pointsArray);
+    //set a top value for the chart scale above maxpoints
     let topValue = maxPoints + (50 - (maxPoints % 50));
+    //work out intervals for chart labels
     let interval = chartHeight / 4;
+    //we need this to keep the chart the same size regardless of point amount
     let pixelPointRatio = chartHeight / topValue;
-
+    //set up and draw chart values
     ctx.fillText(topValue.toString(), 20, 20);
     ctx.beginPath();
     ctx.moveTo(chartMarginLeft, chartMarginTop);
     ctx.lineTo(chartMarginLeft + chartWidth, chartMarginTop);
     ctx.strokeStyle = '#ccc';
-    for (let i = 1; i < 5; i++) {
+    for (let i = 1; i < 5; i++) 
+    {
       ctx.moveTo(chartMarginLeft, chartMarginTop + i * interval);
       ctx.lineTo(chartMarginLeft + chartWidth, chartMarginTop + i * interval);
       ctx.fillText((topValue - (i * topValue) / 4).toString(), 20, chartMarginTop + i * interval);
     }
     ctx.stroke();
     let barInterval = chartWidth / houses.length;
-
+    //draw bars for each house
     houses.forEach((house, index) => {
       ctx.fillStyle = house.color;
       let x = chartMarginLeft + index * barInterval;
@@ -72,9 +78,9 @@ const PointsChart: React.FC<CanvasProps> = ({ houses, isFullScreen }) => {
     <div className = {containerStyle}>
       <h3 className={style.pointsTitle}>House Points</h3>
       {isFullScreen ? (
-        <canvas height={600} width={1080} ref={canvasRef} />
+        <canvas height={1920} width={1080} ref={canvasRef} />
       ) : (
-        <canvas height={300} width={500} ref={canvasRef} />
+        <canvas height={200} width={500} ref={canvasRef} />
       )}
     </div>
   );

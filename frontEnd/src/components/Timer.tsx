@@ -1,6 +1,5 @@
 import style from './Timer.module.css'
 import React, {useEffect, useState} from 'react'
-
 // Please see https://github.com/wojtekmaj/react-clock for Clock documentation
 import Clock from 'react-clock'
 import 'react-clock/dist/Clock.css'
@@ -30,17 +29,8 @@ export default function Timer ({ isFullScreen }: TimerProps) {
     </div>
 }
 
-function getMillis() {
-    var now = new Date(),
-    then = new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate(),
-        0,0,0),
-    diff = now.getTime() - then.getTime();
-    return diff
-}
-
+//uses the current time to search through the timetable array and return appropriate period
+//TODO: add a countdown to the next class if it is not classtime.
 const getCurrentPeriod = () => {
     let now = new Date()
     for (const period of timetable) {
@@ -58,6 +48,7 @@ const getCurrentPeriod = () => {
     return "See you tomorrow"
 }
 
+//information about the school timetable
 const timetable =
     [
         {

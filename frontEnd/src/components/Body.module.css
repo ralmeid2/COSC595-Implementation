@@ -9,24 +9,21 @@
 }
 
 .leftSide {
-    width:500px;
-    margin:20px;
+    flex:50%;
     float:left;
     display:block;
 }
 
 .rightSide {
-    width:500px;
+    flex:50%;
     float:left;
     display:grid;
     margin-left:20px;
-    margin-bottom: 20px;
 }
 
 .componentContainer {
-    width: 1080px;
-    display:flex;
-    padding:20px
+    width: 1040px;
+    padding: 20px;
 }
 
 .clearfix::after {
@@ -40,4 +37,12 @@
     text-align: center;
     font-size: 60px;
 }
-
+.firstRow{
+    display:flex;
+    height:708px;
+    margin-bottom: 20px;
+}
+.secondRow{
+    display:flex;
+    height:280px;
+}

@@ -1,6 +1,9 @@
 .slideshow img {
     display: inline-block;
-    width: 1080px;
+    width: 1040px;
+    height:590px;
     margin-left: 20px;
     border-radius:20px;
+    object-fit: cover;
+
 }
