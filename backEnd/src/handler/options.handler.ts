@@ -11,8 +11,7 @@ optionsHandler.post('/', validateSchema(updateOptionsSchema), async (req: Reques
   const optionsJSON = JSON.stringify(options, null, 2);
 
   // Path to the options.json file
-  const filePath = path.join(__dirname, 'options.json');
-
+  const filePath = path.join(__dirname, '../../', 'options.json');
   // Write the options JSON to the file
   fs.writeFile(filePath, optionsJSON, (err) => {
     if (err) {
@@ -27,7 +26,7 @@ optionsHandler.post('/', validateSchema(updateOptionsSchema), async (req: Reques
 
 optionsHandler.get('/', (req: Request, res: Response) => {
   // Path to the options.json file
-  const filePath = path.join(__dirname, 'options.json');
+  const filePath = path.join(__dirname, '../../', 'options.json');
 
   // Read the options JSON from the file
   fs.readFile(filePath, 'utf-8', (err, data) => {
@@ -43,7 +42,8 @@ optionsHandler.get('/', (req: Request, res: Response) => {
 
 optionsHandler.get('/message', (req: Request, res: Response) => {
     // Path to the options.json file
-    const filePath = path.join(__dirname, 'options.json');
+    
+  const filePath = path.join(__dirname, '../../', 'options.json');
   
     // Read the options JSON from the file
     fs.readFile(filePath, 'utf-8', (err, data) => {

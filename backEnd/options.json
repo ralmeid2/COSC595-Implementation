@@ -5,5 +5,5 @@
   "notices": false,
   "multiComponentView": true,
   "broadcast": true,
-  "broadcastMessage": "This is a Test Message"
+  "broadcastMessage": "This is a test message"
 }
