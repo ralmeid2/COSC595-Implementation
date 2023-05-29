@@ -1,4 +1,5 @@
 import style from './Edit.module.css'
+import styles from './Admin.module.css'
 import { useState, useCallback, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button, Input, AdminMenu } from '../components'
@@ -140,7 +141,7 @@ export default function Edit() {
         )
     } else {
         return (
-            <div>
+            <div className = {styles.adminPage}>
 
                 <AdminMenu/>
 

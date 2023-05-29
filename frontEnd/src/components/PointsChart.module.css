@@ -3,6 +3,23 @@
     text-align:center;
 }
 
+.multiScreen img {
+    width:60px;
+}
+.multiScreen .houseEmblem {
+    width:60px;
+    margin-right:10px;
+    float:left;
+    display: block;
+}
+.multiScreen .houseEmblem p {
+    margin:0px;
+
+}
+.multiScreen .emblemHolder {
+    margin-left: 50px;
+}
+
 .multiScreen {
     text-align:center;
     box-shadow: 2px 2px 10px #888888;

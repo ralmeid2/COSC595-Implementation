@@ -3,6 +3,7 @@ import { AdminMenu } from '../components'
 import { del, get } from '../utils/http'
 import { DailyNotice } from '../types/DailyNotice'
 import styles from './Delete.module.css'
+import style from './Admin.module.css'
 
 export default function Delete() {
     const [dailyNotices, setDailyNotices] = useState<DailyNotice[]>([])
@@ -39,22 +40,22 @@ export default function Delete() {
     }
 
     return (
-      <body>
-      <AdminMenu />
-      <div className={styles.list} >
-      <h1>Please Click on an Item to Delete it</h1>
-          {dailyNotices.map(
-            ({ _id, title, message, startDate, expiryDate }) => {
-                return (
-                  <div className={styles.item} key={_id} onClick={() => deleteHandler(_id)}>
+        <div className={style.adminPage}>
+            <AdminMenu />
+            <div className={styles.list} >
+                <h1>Please Click on an Item to Delete it</h1>
+                {dailyNotices.map(
+                    ({ _id, title, message, startDate, expiryDate }) => {
+                        return (
+                            <div className={styles.item} key={_id} onClick={() => deleteHandler(_id)}>
                                 <span >
-                                    {title} {message} 
+                                    {title} {message}
                                 </span>
-                  </div>
-                )
-            }
-          )}
-      </div>
-      </body>
+                            </div>
+                        )
+                    }
+                )}
+            </div>
+        </div>
     )
 }

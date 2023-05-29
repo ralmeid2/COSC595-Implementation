@@ -8,6 +8,12 @@
     border: 3rem;
 }
 
+.adminPage {
+    min-height: 1200px;
+    background-color: #fff;
+    padding:20px 0;
+}
+
 .buttonContainer {
     display: flex;
     flex-direction: row;
