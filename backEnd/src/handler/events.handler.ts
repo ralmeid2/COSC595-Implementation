@@ -17,7 +17,6 @@ const eventsHandler: Router = express.Router();
 
     The API route is /api/events/
 
-
     The 5 closest upcoming events are returned in JSON format in the following format:
     {
         events: [

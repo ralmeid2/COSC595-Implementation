@@ -1,12 +1,12 @@
 import express, { Request, Response, Router } from 'express';
 import fs from 'fs';
 import path from 'path';
-
+import validateSchema from '../middleware/validateSchema';
+import { updateOptionsSchema } from '../schema/options.schema';
 const optionsHandler: Router = express.Router();
 
-optionsHandler.post('/', async (req: Request, res: Response) => {
+optionsHandler.post('/', validateSchema(updateOptionsSchema), async (req: Request, res: Response) => {
   const options = req.body.options;
-
   // Convert options object to JSON string
   const optionsJSON = JSON.stringify(options, null, 2);
 
@@ -56,8 +56,5 @@ optionsHandler.get('/message', (req: Request, res: Response) => {
       }
     });
   });
-  
-  
-
 
 export default optionsHandler;
