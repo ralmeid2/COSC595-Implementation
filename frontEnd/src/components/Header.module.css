@@ -9,12 +9,11 @@
     text-transform: uppercase;
     width: 1040px;
     height: 295px;
-    
+
 }
 
 .container {
     display: flex;
-    max-height: 300px;
     justify-content: space-between;
     margin: auto;
 }
@@ -27,14 +26,13 @@
 .action {
     background-color: transparent;
     border: none;
-    color: #4f4747;
+    color: #fff;
     font-size: 1rem;
     font-weight: 700;
-    text-align: right;
     cursor: pointer;
-    width: 1080px;
 }
 
 .logo {
-    width: 450px
+    margin:40px;
+    width: 520px;
 }
