@@ -1,6 +1,6 @@
 {
   "timer": false,
-  "points": true,
+  "points": false,
   "events": false,
   "notices": false,
   "multiComponentView": true,
