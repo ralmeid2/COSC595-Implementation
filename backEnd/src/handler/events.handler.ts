@@ -9,13 +9,14 @@ const eventsHandler: Router = express.Router();
     The calendar is retrieved from:
     https://sec.act.edu.au/?post_type=tribe_events&tribe-bar-date=2023-05-27&ical=1&eventDisplay=list
 
-    The route is /api/events/
-
-    which returns a .ics universal calendar file format in the text field of the response. 
+    which returns a .ics universal calendar file format in the text field of the response.
 
     We use the ICAL library to parse this data, see:
 
     https://www.npmjs.com/package/ical
+
+    The API route is /api/events/
+
 
     The 5 closest upcoming events are returned in JSON format in the following format:
     {
