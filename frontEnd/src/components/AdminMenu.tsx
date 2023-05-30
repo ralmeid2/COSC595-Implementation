@@ -30,7 +30,7 @@ export default function AdminMenu() {
         navigate('/')
     }
 
-    if (location.pathname === '/admin'){
+    if (window.location.pathname === '/admin'){
         return(
                 <div>
                     <div className={style.buttonContainerAdmin}>
