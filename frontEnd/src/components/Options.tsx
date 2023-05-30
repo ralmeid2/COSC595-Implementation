@@ -2,7 +2,9 @@ import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 
 import Button from "./Button";
 import styles from './Options.module.css';
-
+//Multicomponent view controls whether to display default view
+//All other options control whether the screen should cycle through components in full screen mode
+//broadcast message can be added to display any message on the full screen. 
 interface OptionData {
   timer: boolean;
   points: boolean;

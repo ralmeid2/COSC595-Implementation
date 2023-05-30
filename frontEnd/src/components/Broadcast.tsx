@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import style from './Body.module.css';
 
-
+//broadcast message is set on the admin options page
+//broadcas is used to display a single message on the screen
 export default function Broadcast() {
   const [message, setMessage] = useState('');
 

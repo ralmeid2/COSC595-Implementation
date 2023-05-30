@@ -52,6 +52,7 @@ export default function Body() {
     const [noticesData, setNoticesData] = useState<Array<DailyNotice>>([]);
     const [dailyNoticesLoading, setDailyNoticesLoading] = useState<boolean>(true);
     //these are the display options which dictate how the display should look
+    //user sets these on the admin options page
     const [options, setOptions] = useState<{
         multiComponentView: boolean;//controls switch between all components showing on one screen and full screen single component mode
         timer: React.ReactNode;
@@ -136,7 +137,7 @@ export default function Body() {
             </>
         );
     } else {
-        //
+        //add components to show to a component array, if in single screen mode
         const componentsToShow: React.ReactNode[] = [];
         if (timer) {
             componentsToShow.push(<Timer isFullScreen={isFullScreen} />);

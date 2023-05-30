@@ -45,6 +45,7 @@ export default function Header() {
     }, []);
 
   const getActions = () => {
+    //the menu options aren't needed on the 'display' route
     if (user) {
       if (location.pathname === '/'){
       return <>

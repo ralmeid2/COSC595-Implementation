@@ -13,6 +13,7 @@ const PhotoUploader: React.FC = () => {
 
 
   useEffect(() => {
+    //get all photos that have already been uploaded
     fetch('/api/photo')
       .then((response) => response.json())
       .then((data) => {
