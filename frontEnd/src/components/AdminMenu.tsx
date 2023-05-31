@@ -30,45 +30,81 @@ export default function AdminMenu() {
         navigate('/')
     }
 
-
-
-
-    return (
-        <div>
-            <div className={style.buttonContainer}>
-                <Button onClick={addDailyNotice}
-                    type="submit"
-                >
-                    Add Daily Notice
-                </Button>
-                <Button onClick={photoAdmin}
-                    type="submit"
-                >
-                    Add/Edit Photos
-                </Button>
-                <Button onClick={displayOptions}
-                    type="submit"
-                >
-                    Display Options
-                </Button>
-                <Button onClick={editDailyNotice}
-                    type="submit"
-                >
-                    Edit Daily Notice
-                </Button>
-                <Button onClick={deleteDailyNotice}
-                    type="submit"
-                >
-                    Delete Daily Notice
-                </Button>
-                <Button onClick={goToDisplay}
-                    type="submit"
-                >
-                    Go To Display
-                </Button>
+    if (window.location.pathname === '/admin'){
+        return(
+                <div>
+                    <div className={style.buttonContainerAdmin}>
+                        <Button onClick={addDailyNotice}
+                            type="submit"
+                        >
+                            Add Daily Notice
+                        </Button>
+                        <Button onClick={photoAdmin}
+                            type="submit"
+                        >
+                            Add/Edit Photos
+                        </Button>
+                        <Button onClick={displayOptions}
+                            type="submit"
+                        >
+                            Display Options
+                        </Button>
+                        <Button onClick={editDailyNotice}
+                            type="submit"
+                        >
+                            Edit Daily Notice
+                        </Button>
+                        <Button onClick={deleteDailyNotice}
+                            type="submit"
+                        >
+                            Delete Daily Notice
+                        </Button>
+                        <Button onClick={goToDisplay}
+                            type="submit"
+                        >
+                            Go To Display
+                        </Button>
+                    </div>
+                </div>
+        )
+    }else{
+        return (
+            <div>
+                <div className={style.buttonContainer}>
+                    <Button onClick={addDailyNotice}
+                        type="submit"
+                    >
+                        Add Daily Notice
+                    </Button>
+                    <Button onClick={photoAdmin}
+                        type="submit"
+                    >
+                        Add/Edit Photos
+                    </Button>
+                    <Button onClick={displayOptions}
+                        type="submit"
+                    >
+                        Display Options
+                    </Button>
+                    <Button onClick={editDailyNotice}
+                        type="submit"
+                    >
+                        Edit Daily Notice
+                    </Button>
+                    <Button onClick={deleteDailyNotice}
+                        type="submit"
+                    >
+                        Delete Daily Notice
+                    </Button>
+                    <Button onClick={goToDisplay}
+                        type="submit"
+                    >
+                        Go To Display
+                    </Button>
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
 
 }
 
