@@ -5,12 +5,15 @@ import { getWeatherSchema } from '../schema/weather.schema';
 const weatherHandler = express.Router();
 const axios = require('axios')
 
+/*
+    Route handler for getting the current weather information from the Weather service.
+    No information should be sent with the request. 
+    For response details, see /service/weather.service
+*/
+
 weatherHandler.get("/", validateSchema(getWeatherSchema), async (req: Request, res: Response) => {
-    const params = `?latitude=52.52&longitude=13.41&current_weather=true&hourly=temperature_2m,relativehumidity_2m,windspeed_10m`
-    const weatherApiurl = `https://api.open-meteo.com/v1/forecast`
     const response = await getWeather()
     return res.status(200).send(response)
-
 });
 
 export default weatherHandler;

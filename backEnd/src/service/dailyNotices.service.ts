@@ -1,6 +1,10 @@
-
 import mongoose, { DocumentDefinition, FilterQuery, Types } from "mongoose";
 import dailyNoticesModel, { DailyNoticesDocument } from "../model/dailyNotices.model";
+
+/*
+  The service defines functions that can are called by the daily notices handler
+  to interact with the database. 
+*/
 
 export async function getDailyNoticesByDocId(id: string) {
     return await dailyNoticesModel.find({ _id: id} ).lean()
