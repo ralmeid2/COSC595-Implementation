@@ -1,3 +1,7 @@
+/*
+  DailyNotices data type.
+*/
+
 export type DailyNotices = {
     _id: string
     title: string

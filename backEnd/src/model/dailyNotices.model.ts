@@ -1,6 +1,13 @@
 import { DailyNotices } from './../types/DailyNotices';
 import mongoose, { Document } from "mongoose";
 
+/*
+    Data model class for the daily notices. 
+    
+    This is how mongoose interacts with the MongoDB database and enforces 
+    a schema.
+*/
+
 export interface DailyNoticesDocument extends Document {
     id: DailyNoticesDocument["_id"]
     title: string;

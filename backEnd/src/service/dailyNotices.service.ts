@@ -14,7 +14,6 @@ export async function getAllDailyNotices(){
   return await dailyNoticesModel.find()
 }
 
-
 export async function getOne(query: FilterQuery<DailyNoticesDocument>){
     return await dailyNoticesModel.findOne(query)
 }

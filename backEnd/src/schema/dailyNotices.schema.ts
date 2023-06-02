@@ -1,6 +1,17 @@
 import { object, string, number, array, TypeOf, any } from 'zod';
 import mongoose from 'mongoose';
 
+/* 
+    Schemas to ensure that requests routed to the dailynotices
+    handlers conform to the required schema. 
+
+    If a field is not present, an error is returned to the client. 
+
+    For update/create requests, all fields are required.
+
+    For get requests, an ID is required. 
+*/ 
+
 const payload = {
     body: object ({
         title: string({
@@ -26,9 +37,7 @@ const getParams = {
   }),
 }
 
-
-
-//this works for getting ALL dailyNotices
+//this works for getting ALL dailyNotices - no schema enforced
 export const getDailyNoticesSchema = object ({
     
 })
@@ -43,8 +52,6 @@ export const createDailyNoticesSchema = object({
 export const updateDailyNoticesSchema = object({
     ...getParams,
 })
-
-
 
 export type getGamesByIdInput = TypeOf<typeof getDailyNoticesByIdSchema>
 export type CreateGamesInput = TypeOf<typeof createDailyNoticesSchema>

@@ -1,6 +1,16 @@
 import { object, string, number, array, TypeOf, boolean, any } from 'zod';
 import mongoose from 'mongoose';
 
+/* 
+    Schema to ensure that requests routed to the options
+    handler conforms to the required schema. 
+
+    If a field is not present, an error is returned to the client. 
+
+    To update the options, all fields must are required and 
+    should be of the required type.  
+*/ 
+
 const payload = {
     body: object ({
         options: object({
