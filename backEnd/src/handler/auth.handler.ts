@@ -5,6 +5,18 @@ import { createUser, getUserByUsername } from '../service/auth.service'
 import { LoginInput, RegisterInput, registerSchema } from '../schema/auth.schema'
 import { signJwt } from "../util/jwt"
 
+
+/*
+    Handler for the authorisation routes. 
+
+    It is not necessary to log in to use the app's functionality, but this is here to represent
+    the fact that authorisation will be necessary in the final solution. 
+
+    Routes:
+    /register - for new account creation. username and password fields should be sent in the request body. 
+    /login - for login, username and password fields should be sent in the request body.
+*/
+
 const authHandler = express.Router()
 
 authHandler.post('/register', validateSchema(registerSchema), async (req: Request<{},{}, RegisterInput['body']>, res: Response) => {
