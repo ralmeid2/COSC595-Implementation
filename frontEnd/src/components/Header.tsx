@@ -17,9 +17,11 @@ export default function Header() {
     } | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
+    // Get the weather data from the backend API and store it in state
     useEffect(() => {
       const fetchWeatherData = async () => {
         try {
+          // While the fetch is ongoing, set isLoading to true so it shows a loading message
           setIsLoading(true);
           const response = await fetch("/api/weather");
 
@@ -29,6 +31,7 @@ export default function Header() {
 
         const data = await response.json();
 
+        // Store the weather data in state
         setWeatherData({
           current_temp: data.current_temp,
           weathercode: data.weathercode,
@@ -36,6 +39,8 @@ export default function Header() {
 
         } catch (error) {
           console.error("There was a problem with the fetch operation:", error);
+
+        // Remove the loading message after the fetch has finished
         } finally {
           setIsLoading(false);
         }
