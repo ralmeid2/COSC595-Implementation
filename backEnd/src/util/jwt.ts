@@ -1,5 +1,9 @@
 import jwt, { SignOptions } from 'jsonwebtoken'
 
+/*
+  Web token functionality used to authorise users.
+*/
+
 export const signJwt = (payload: Object, options: SignOptions = {}) => {
   const privateKey = process.env.accessTokenPrivateKey as string
   return jwt.sign(payload, privateKey, {

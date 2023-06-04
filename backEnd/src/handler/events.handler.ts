@@ -8,6 +8,7 @@ const eventsHandler: Router = express.Router();
     Route handler for returning events from the school's publically available calendar. 
     The calendar is retrieved from:
     https://sec.act.edu.au/?post_type=tribe_events&tribe-bar-date=2023-05-27&ical=1&eventDisplay=list
+    with today's date substituted in the correct place in the URL.
 
     which returns a .ics universal calendar file format in the text field of the response.
 
@@ -17,7 +18,7 @@ const eventsHandler: Router = express.Router();
 
     The API route is /api/events/
 
-    The 5 closest upcoming events are returned in JSON format in the following format:
+    The 3 closest upcoming events are returned in JSON format in the following format:
     {
         events: [
             {
@@ -29,7 +30,9 @@ const eventsHandler: Router = express.Router();
 */
 
 eventsHandler.get('/', async (req: Request, res: Response) => {
-    const webcalLink = 'https://sec.act.edu.au/?post_type=tribe_events&tribe-bar-date=2023-05-27&ical=1&eventDisplay=list';
+    const today = new Date().toJSON().slice(0, 10);
+    
+    const webcalLink = 'https://sec.act.edu.au/?post_type=tribe_events&tribe-bar-date='+today+'&ical=1&eventDisplay=list';
 
     // Fetch the data from the webcal link
     const response = await fetch(webcalLink);
@@ -75,8 +78,8 @@ eventsHandler.get('/', async (req: Request, res: Response) => {
             
         }
     }
-    // only return the first 5 events
-    list = list.slice(0,5)
+    // only return the first 3 events
+    list = list.slice(0,3)
 
     // Send the events as JSON in the response
     res.json({events:list});

@@ -19,15 +19,13 @@
 Client will be running on http://localhost:3000 and server will be running on http://localhost:8080
 
 ### Routes:
-* `/display`: The display page for the app
+* `/api/display`: The display page for the app
 * `/admin-options`: Can select different display modes and broadcast messages
 * `/add`: Can add a new daily notice
 * `/edit`: Can edit a daily notice
 * `/delete`: Can delete a daily notice
 * `/photo`: Can upload and remove photos from the database
 
-Postman Collection Link: https://www.getpostman.com/collections/1393d5f5a1c6e2396bbd
-
 MongoDB Credentials: email: clairegrady@me.com password: cosc594groupa
 
-User Credentials for Gomoku: username: admin and password: admin have been setup. Alternatively, you can just register as a new user.
+User Credentials: username: admin and password: admin have been setup. Alternatively, you can just register as a new user.
