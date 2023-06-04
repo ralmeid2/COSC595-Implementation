@@ -19,7 +19,7 @@
 Client will be running on http://localhost:3000 and server will be running on http://localhost:8080
 
 ### Routes:
-* `/api/display`: The display page for the app
+* `/display`: The display page for the app
 * `/admin-options`: Can select different display modes and broadcast messages
 * `/add`: Can add a new daily notice
 * `/edit`: Can edit a daily notice
