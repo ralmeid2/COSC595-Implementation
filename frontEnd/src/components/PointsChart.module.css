@@ -21,4 +21,15 @@ h1 {
     line-height:50px;
     padding:0px;
 }
- 
+
+.emblemHolder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.emblemHolder img {
+    width: 55px;
+    height: 65px;
+}
