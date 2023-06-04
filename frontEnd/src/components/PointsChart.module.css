@@ -24,12 +24,16 @@ h1 {
 
 .emblemHolder {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    gap: 20px;
+    margin: 0 25px
 }
 
 .emblemHolder img {
-    width: 55px;
-    height: 65px;
+    width: 60px;
+    height: 70px;
+}
+
+.emblemHolder p {
+    font-size: 1rem;
 }
