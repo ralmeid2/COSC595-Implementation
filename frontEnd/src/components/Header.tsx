@@ -58,7 +58,7 @@ export default function Header() {
        <button className={style.action} onClick={() => {logout()
         navigate('/')}}>Logout</button>
       </>
-      } else if (location.pathname = '/display'){
+      } else if (location.pathname === '/display'){
         return false
       }
       else{
