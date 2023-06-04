@@ -1,7 +1,6 @@
 import style from './AdminMenu.module.css'
 import { useNavigate } from 'react-router-dom'
-import { Button, Input, Message } from '../components'
-import { post } from '../utils/http'
+import { Button } from '../components'
 
 
 
@@ -70,7 +69,7 @@ export default function AdminMenu() {
     }else{
         return (
             <div>
-                <div className={style.buttonContainer}>
+                <div className={style.buttonContainerAdmin}>
                     <Button onClick={addDailyNotice}
                         type="submit"
                     >

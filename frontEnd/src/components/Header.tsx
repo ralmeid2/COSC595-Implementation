@@ -54,7 +54,7 @@ export default function Header() {
     if (user) {
       if (location.pathname === '/'){
       return <>
-       <button className={style.action} onClick={() => navigate('/edit')}><div className={style.text}>Admin</div></button>
+       <button className={style.action} onClick={() => navigate('/admin')}><div className={style.text}>Admin</div></button>
        <button className={style.action} onClick={() => {logout()
         navigate('/')}}>Logout</button>
       </>
