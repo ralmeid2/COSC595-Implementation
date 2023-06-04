@@ -1,6 +1,5 @@
-import style from './Admin.module.css'
+import style from './Edit.module.css'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { Button, Input, Message, AdminMenu } from '../components'
 import { post } from '../utils/http'
 
@@ -36,7 +35,7 @@ export default function Add(){
 
 
     return (
-      <div className = {style.adminPage}>
+      <div>
         <AdminMenu />
         <form id = "input"
           className={style.container}

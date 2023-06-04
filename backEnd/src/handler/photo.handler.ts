@@ -4,21 +4,6 @@ import cors from 'cors';
 import fs from 'fs';
 import path from 'path';
 
-/*
-  Route handler for uploading, viewing and deleting photos for displaying on the dashboard. 
-  Photos are currently stored in frontEnd/public/uploads which is a prototype solution. 
-  The final implemenation may be different. 
-
-  There is no checking on the backend for file type, size, etc. 
-
-  File handling is done with the multer library, 
-  https://www.npmjs.com/package/multer
-
-  The photo is uploaded as form data - see frontEnd/src/components/PhotoUploader
-
-*/
-
-
 const photoHandler = express.Router();
 
 photoHandler.use(cors());
@@ -35,7 +20,6 @@ const upload = multer({ storage });
 
 photoHandler.post('/', upload.single('photo'), (req: Request, res: Response) => {
   // File received and saved successfully
-  console.log("hit the route")
   return res.json({ message: 'File uploaded successfully' });
 });
 

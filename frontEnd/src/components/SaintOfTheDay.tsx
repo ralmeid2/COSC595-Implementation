@@ -14,7 +14,6 @@ const tempSaint = "Saint Veronica, celebrated on June 3rd, showed compassion to 
         <div className={containerStyle}>
             <h2 className={style.eventTitle}>Saint of the Day</h2>
             <div className={style.photo}><img src={veronica} alt = "Veronica" width="70" height="70"/></div>
-            {/* <div className={style.square}></div> */}
             <div className={style.circleLarge}></div>
             <div className={style.text}>{tempSaint}</div>
         </div>
