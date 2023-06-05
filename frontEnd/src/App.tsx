@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { Home, Login, SignUp, Add, Edit, Delete, Ben, Admin, Display, Photo, AdminOptions } from './pages'
+import { Home, Login, SignUp, Add, Edit, Delete, Admin, Display, Photo, AdminOptions } from './pages'
 import { UserProvider } from './components'
 import './App.css';
 
@@ -17,11 +17,10 @@ function App() {
         <Route path="add" element={ <Add /> }/>
         <Route path="edit" element={ <Edit /> }/>
         <Route path="delete" element={ <Delete /> }/>
-        <Route path="ben" element={ <Ben /> }/>
         <Route path="display" element={<Display />}/>
         <Route path="admin-options" element={<AdminOptions />}/>
       </Routes>
-    </main> 
+    </main>
     </UserProvider>
   );
 }
