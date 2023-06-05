@@ -1,5 +1,5 @@
 import style from './SaintOfTheDay.module.css'
-import veronica from '../components/veronica.jpeg'
+import veronica from '../images/veronica.jpeg'
 
 interface EventListProps {
     isFullScreen: boolean;
