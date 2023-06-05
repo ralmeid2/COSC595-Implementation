@@ -41,7 +41,7 @@ export default function AdminMenu() {
                         <Button onClick={photoAdmin}
                             type="submit"
                         >
-                            Add/Edit Photos
+                            Add/Remove Photos
                         </Button>
                         <Button onClick={displayOptions}
                             type="submit"
@@ -78,7 +78,7 @@ export default function AdminMenu() {
                     <Button onClick={photoAdmin}
                         type="submit"
                     >
-                        Add/Edit Photos
+                        Add/Remove Photos
                     </Button>
                     <Button onClick={displayOptions}
                         type="submit"
