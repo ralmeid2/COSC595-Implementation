@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.error {
+    color: red;
+    font-weight: bolder;
+    font-size: 1.5rem;
+}
