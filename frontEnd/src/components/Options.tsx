@@ -1,10 +1,12 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 
 import Button from "./Button";
+import Form from "./Form";
+import Input from "./Input";
 import styles from './Options.module.css';
 //Multicomponent view controls whether to display default view
 //All other options control whether the screen should cycle through components in full screen mode
-//broadcast message can be added to display any message on the full screen. 
+//broadcast message can be added to display any message on the full screen.
 interface OptionData {
   timer: boolean;
   points: boolean;
@@ -79,10 +81,10 @@ const Options: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.optionsForm}>
+    <Form onSubmit={handleSubmit}>
       <h1>Select Display Mode</h1>
       <label className={styles.label}>
-        <input
+        <Input
           type="checkbox"
           name="multiComponentView"
           className={styles.checkbox}
@@ -162,7 +164,7 @@ const Options: React.FC = () => {
       </label>
       <br />
       <Button type="submit">Submit</Button>
-    </form>
+    </Form>
   );
 
 

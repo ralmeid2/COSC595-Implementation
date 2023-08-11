@@ -1,6 +1,6 @@
-import style from './Edit.module.css'
+import style from './Add.module.css'
 import { useState } from 'react'
-import { Button, Input, Message, AdminMenu } from '../components'
+import { Button, Input, Message, AdminMenu, Form } from '../components'
 import { post } from '../utils/http'
 
 
@@ -37,7 +37,7 @@ export default function Add(){
     return (
       <div>
         <AdminMenu />
-        <form id = "input"
+        <Form
           className={style.container}
           onSubmit={(e) => {
             e.preventDefault()
@@ -92,7 +92,7 @@ export default function Add(){
           </Button>
 
 
-        </form>
+        </Form>
         </div>
       )
 
