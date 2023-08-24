@@ -14,6 +14,7 @@ interface OptionData {
   notices: boolean;
   multiComponentView: boolean;
   broadcast: boolean;
+  marketing:boolean;
   broadcastMessage: string;
 }
 
@@ -25,6 +26,7 @@ const Options: React.FC = () => {
     notices: false,
     multiComponentView: false,
     broadcast: false,
+    marketing:false,
     broadcastMessage: '',
   });
 
@@ -165,6 +167,17 @@ const Options: React.FC = () => {
         />
       </label>
       <br />
+      <label className={styles.label}>
+        Marketing:
+        <input
+          type="checkbox"
+          name="marketing"
+          className={styles.checkbox}
+          checked={options.marketing}
+          onChange={handleCheckboxChange}
+        />
+      </label>
+      <br />      
       <label className={styles.label}>
         Broadcast Message:
         <textarea

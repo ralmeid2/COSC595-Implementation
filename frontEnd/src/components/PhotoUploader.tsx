@@ -5,12 +5,13 @@ import Button from "./Button";
 interface Photo {
   id: string;
   url: string;
+  category: string;
 }
 
 const PhotoUploader: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [existingPhotos, setExistingPhotos] = useState<Photo[]>([]);
-
+  const [selectedCategory, setSelectedCategory] = useState<string>(''); // Add this state
 
   useEffect(() => {
     //get all photos that have already been uploaded
@@ -35,7 +36,7 @@ const PhotoUploader: React.FC = () => {
     if (selectedFile) {
       const formData = new FormData();
       formData.append('photo', selectedFile);
-
+      formData.append('category', selectedCategory); // Include the category in the form data
       fetch('/api/photo', {
         method: 'POST',
         body: formData,
@@ -80,18 +81,26 @@ const PhotoUploader: React.FC = () => {
     <div className={styles.container}>
       <form onSubmit={handleSubmit}>
         <input type="file" onChange={handleFileChange} />
+        <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
+            <option value="marketing">Marketing</option>
+            <option value="slideshow">Slideshow</option>
+            <option value="wallOfFame">Wall of Fame</option>
+        </select>
+
         <Button type="submit">Upload</Button>
       </form>
 
       {existingPhotos.length > 0 && (
         <div>
           <h2>Existing Photos:</h2>
-          {existingPhotos.map((photo) => (
-            <div key={photo.id} className = {styles.photo}>
-              <img src={photo.url} alt="Existing Photo" />
-              <Button className={styles.delete} onClick={() => handleDelete(photo.id)}>X</Button>
+          {
+          existingPhotos.map((photo) => (
+            <div key={photo.id} className={styles.photo}>
+                <img src={photo.url} alt="Existing Photo" />
+                <p>Category: {photo.category}</p> {/* Display the category */}
+                <Button className={styles.delete} onClick={() => handleDelete(photo.id)}>X</Button>
             </div>
-          ))}
+            ))}
         </div>
       )}
     </div>
