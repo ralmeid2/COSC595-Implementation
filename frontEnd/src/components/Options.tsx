@@ -28,6 +28,9 @@ const Options: React.FC = () => {
     broadcastMessage: '',
   });
 
+  const [submitMessage, setSubmitMessage] = useState<string>('');
+  const [submitMessageClass, setSubmitMessageClass] = useState<string>('');
+
   useEffect(() => {
     fetch('/api/options')
       .then((response) => response.json())
@@ -69,14 +72,22 @@ const Options: React.FC = () => {
       body: JSON.stringify({ options }),
     })
       .then((response) => {
+        setTimeout(() => {
+          setSubmitMessage('');
+          setSubmitMessageClass('');
+        }, 3000);
         if (response.ok) {
-          // Handle success or show a success message
+          setSubmitMessage('Options saved successfully.');
+          setSubmitMessageClass('success');
         } else {
+          setSubmitMessage('Error occurred during submission.');
+          setSubmitMessageClass('error');
           throw new Error('Error occurred during submission.');
         }
       })
       .catch((error) => {
-        // Handle error or show an error message
+        setSubmitMessage(`Error occurred during submission: ${error}`);
+        setSubmitMessageClass('error');
       });
   };
 
@@ -163,6 +174,7 @@ const Options: React.FC = () => {
         />
       </label>
       <br />
+      <div className={styles[submitMessageClass]}>{submitMessage}</div>
       <Button type="submit">Submit</Button>
     </Form>
   );
