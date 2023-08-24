@@ -19,7 +19,7 @@ function App() {
         <Route path="delete" element={ <Delete /> }/>
         <Route path="display" element={<Display />}/>
         <Route path="admin-options" element={<AdminOptions />}/>
-        <Route path="option-display/:pageId" element={<OptionDisplay />}/>
+        <Route path="fullscreen/:pageId" element={<OptionDisplay />}/>
       </Routes>
     </main>
     </UserProvider>
