@@ -4,6 +4,7 @@ import { Timer, Header, PointsChart, Slideshow, Upcoming, SaintOfTheDay } from '
 import { DailyNotice } from '../types';
 import DailyNoticesView from './DailyNotices';
 import Broadcast from './Broadcast';
+import houses from '../shared/houses.json';
 
 interface ConditionalRenderingProps {
   components: React.ReactNode[];
@@ -33,14 +34,6 @@ function ConditionalRendering({ components }: ConditionalRenderingProps) {
 
 export default function Body() {
   const [isFullScreen, setIsFullScreen] = useState(false);
-  const houses = [
-    { name: 'Clancy', points: 100, color: '#FCDF15' },
-    { name: 'Haydon', points: 75, color: '#DF3F33' },
-    { name: 'Mulrooney', points: 120, color: '#68D0E9' },
-    { name: 'O\'Brien', points: 90, color: '#DEDEDE' },
-    { name: 'Rice', points: 90, color: '#1E8A4E' },
-    { name: 'Tracy', points: 90, color: '#1A2B95' },
-  ];
 
   const [noticesData, setNoticesData] = useState<Array<DailyNotice>>([]);
   const [dailyNoticesLoading, setDailyNoticesLoading] = useState<boolean>(true);
