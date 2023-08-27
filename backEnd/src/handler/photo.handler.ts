@@ -27,7 +27,7 @@ const storage = multer.diskStorage({
     const category = req.body.category; // Access the category
     const filename = photoFile.filename; 
     console.log(filename)
-    const jsonFilePath = '../frontEnd/public/photo-manifest.json'; // Replace with the actual path to your JSON file
+    const jsonFilePath = '../frontEnd/public/photo-manifest.json';
     
     let existingData = [];
     try {
@@ -39,12 +39,10 @@ const storage = multer.diskStorage({
     }
     
     existingData.push({name:filename,category:category});
-    // Write the updated data back to the JSON file
     try {
         fs.writeFileSync(jsonFilePath, JSON.stringify(existingData, null, 2));
         console.log('Data added to JSON file');
     } catch (error) {
-        // Handle the error if data cannot be written to the file
     }
     return res.json({
       message: 'File uploaded successfully',
@@ -52,36 +50,18 @@ const storage = multer.diskStorage({
     });
   });
 
-  photoHandler.get('/', (req: Request, res: Response) => {
-    const uploadsFolderPath = path.join('../frontEnd/public/uploads/'); 
-    const jsonFilePath = '../frontEnd/public/photo-manifest.json'; // Replace with the actual path to your JSON file
+  photoHandler.get('/:category', (req: Request, res: Response) => {
+    const jsonFilePath = '../frontEnd/public/photo-manifest.json'; 
+    let photos = [];
+    const jsonData = fs.readFileSync(jsonFilePath, 'utf-8');
+    photos = JSON.parse(jsonData);
+    if (req.params.category == "all") {
+        return res.json(photos);
+    } else {
+        const filteredPhotos = photos.filter(photo => photo.category === req.params.category);
+        return res.json(filteredPhotos);
+    }
 
-    fs.readdir(uploadsFolderPath, (error, files) => {
-      if (error) {
-        console.error('Error retrieving photos:', error);
-        return res.status(500).json({ message: 'Error retrieving photos' });
-      }
-      let existingData = [];
-      try {
-        const jsonData = fs.readFileSync(jsonFilePath, 'utf-8');
-        existingData = JSON.parse(jsonData);
-      } catch (error) {
-
-      }
-      const photos = files.map((file) => ({
-        id: file,
-        url: `uploads/${file}`,
-        category: " "
-      }));
-      photos.forEach(photo => {
-        existingData.forEach(item =>{
-            if (item.name == photo.id) {
-                photo.category = item.category
-            }
-        })
-      })
-      return res.json(photos);
-    });
   });
   
   photoHandler.delete('/:id', (req: Request, res: Response) => {
@@ -104,7 +84,6 @@ const storage = multer.diskStorage({
         fs.writeFileSync(jsonFilePath, JSON.stringify(filtered, null, 2));
         console.log('Edited photo manifest');
     } catch (error) {
-        // Handle the error if data cannot be written to the file
     }
 
     fs.unlink(filePath, (error) => {
@@ -113,7 +92,6 @@ const storage = multer.diskStorage({
         return res.status(500).json({ message: 'Error deleting file' });
       }
   
-      // File deleted successfully
       return res.json({ message: 'File deleted successfully' });
     });
   });

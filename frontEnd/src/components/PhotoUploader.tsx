@@ -3,7 +3,7 @@ import styles from './PhotoUploader.module.css'
 import Button from "./Button";
 
 interface Photo {
-  id: string;
+  name: string;
   url: string;
   category: string;
 }
@@ -15,7 +15,7 @@ const PhotoUploader: React.FC = () => {
 
   useEffect(() => {
     //get all photos that have already been uploaded
-    fetch('/api/photo')
+    fetch('/api/photo/all')
       .then((response) => response.json())
       .then((data) => {
         setExistingPhotos(data);
@@ -65,7 +65,7 @@ const PhotoUploader: React.FC = () => {
           console.log('Delete successful:', data);
 
           // Update the existingPhotos state to reload the current images by filtering out the deleted photo
-          const updatedPhotos = existingPhotos.filter(photo => photo.id !== photoId);
+          const updatedPhotos = existingPhotos.filter(photo => photo.name !== photoId);
           setExistingPhotos(updatedPhotos);
 
           // Do something with the server's response
@@ -95,10 +95,10 @@ const PhotoUploader: React.FC = () => {
           <h2>Existing Photos:</h2>
           {
           existingPhotos.map((photo) => (
-            <div key={photo.id} className={styles.photo}>
-                <img src={photo.url} alt="Existing Photo" />
+            <div key={photo.name} className={styles.photo}>
+                <img src= {"uploads/"+photo.name} alt="Existing Photo" />
                 <p>Category: {photo.category}</p> {/* Display the category */}
-                <Button className={styles.delete} onClick={() => handleDelete(photo.id)}>X</Button>
+                <Button className={styles.delete} onClick={() => handleDelete(photo.name)}>X</Button>
             </div>
             ))}
         </div>

@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import style from './Slideshow.module.css'
 
 interface PhotoItem {
-    id: string;
-    url: string;
+    name: string;
 }
 
 const Slideshow: React.FC = () => {
@@ -16,9 +15,10 @@ const Slideshow: React.FC = () => {
         //might want to add categories here
         const fetchPhotos = async () => {
             try {
-                const response = await fetch('/api/photo');
+                const response = await fetch('/api/photo/slideshow');
                 if (response.ok) {
                     const data = await response.json();
+                    alert(JSON.stringify(data))
                     setPhotos(data);
                 } else {
                     console.error('Failed to fetch photos:', response.status);
@@ -56,7 +56,7 @@ const Slideshow: React.FC = () => {
     
     return (
         <div className={style.slideshow}>
-            <img src={photos[currentIndex].url} alt="Slideshow" />
+            <img src={"/uploads/" + photos[currentIndex].name} alt="Slideshow" />
         </div>
     );
 };
