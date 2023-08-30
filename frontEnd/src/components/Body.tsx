@@ -109,7 +109,7 @@ export default function Body() {
   if (multiComponentView) {
     return (
       <>
-        <Header />
+        <Header isFullScreen={isFullScreen} />
         <div className={style.componentContainer}>
           <div className={style.firstRow}>
             <div className={style.LeftSide}>
@@ -126,7 +126,7 @@ export default function Body() {
             <SaintOfTheDay isFullScreen={isFullScreen} />
           </div>
         </div>
-        <Slideshow />
+        <Slideshow isFullScreen={isFullScreen} />
       </>
     );
   } else {

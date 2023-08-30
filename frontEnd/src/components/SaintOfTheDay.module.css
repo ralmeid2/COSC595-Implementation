@@ -1,6 +1,10 @@
 .fullScreen {
     font-size: xx-large;
     text-align: center;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .multiScreen {
@@ -30,8 +34,12 @@
     padding-left: 10px;
 }
 
+.fullScreen .text {
+    padding-left: 0;
+}
+
 .eventItem {
-    display: grid !important;
+    display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
     margin-bottom: 5px;
@@ -57,6 +65,17 @@
     border-radius: 50%;
   }
 
+.fullScreen .photo {
+    display: flex;
+    justify-content: center;
+    padding-right: 0;
+}
+
+.fullScreen .photo img {
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+}
 
 .circleLarge {
     border-color: white;
@@ -69,6 +88,10 @@
     position: absolute;
     margin-left: 5px;
     margin-top: 5px;
+}
+
+.fullScreen .circleLarge {
+    display: none;
 }
 
 .overlay {

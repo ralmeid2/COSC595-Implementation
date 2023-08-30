@@ -5,7 +5,11 @@ interface PhotoItem {
     name: string;
 }
 
-const Slideshow: React.FC = () => {
+interface SlideshowProps {
+    isFullScreen: boolean;
+}
+
+const Slideshow = ({isFullScreen}: SlideshowProps) => {
     const [photos, setPhotos] = useState<PhotoItem[]>([]);
     const [currentIndex, setCurrentIndex] = useState<number>(0);
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -18,7 +22,7 @@ const Slideshow: React.FC = () => {
                 const response = await fetch('/api/photo/slideshow');
                 if (response.ok) {
                     const data = await response.json();
-                    alert(JSON.stringify(data))
+                    // alert(JSON.stringify(data))
                     setPhotos(data);
                 } else {
                     console.error('Failed to fetch photos:', response.status);
@@ -53,11 +57,13 @@ const Slideshow: React.FC = () => {
     if (photos.length === 0) {
         return <p>No photos available.</p>;
     }
-    
+
     return (
+      <div className={isFullScreen ? style.fullScreen : ''}>
         <div className={style.slideshow}>
             <img src={"/uploads/" + photos[currentIndex].name} alt="Slideshow" />
         </div>
+      </div>
     );
 };
 

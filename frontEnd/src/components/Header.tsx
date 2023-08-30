@@ -6,7 +6,11 @@ import style from './Header.module.css'
 import Weather from './Weather'
 import logo from '../images/logo-white.svg'
 
-export default function Header() {
+interface HeaderProps {
+  isFullScreen: boolean;
+}
+
+export default function Header({isFullScreen}: HeaderProps) {
   const navigate = useNavigate()
   const location = useLocation()
   const { user, logout } = useContext(UserContext)
@@ -84,17 +88,21 @@ export default function Header() {
     }
   }
 
+  const containerStyle = isFullScreen ? style.fullScreen : style.multiScreen
+
   return (
-    <header className={style.header}>
-      <div className={style.container}>
-        <Link to="/">
-            <img src={logo} alt="logo" className={style.logo} />
-        </Link>
-        <Weather isLoading={isLoading} weatherData={weatherData}/>
-        <div className={style.actions}>
-          { getActions() }
+    <div className={containerStyle}>
+      <header className={style.header}>
+        <div className={style.container}>
+          <Link to="/">
+              <img src={logo} alt="logo" className={style.logo} />
+          </Link>
+          <Weather isLoading={isLoading} weatherData={weatherData}/>
+          <div className={style.actions}>
+            { getActions() }
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </div>
   )
 }

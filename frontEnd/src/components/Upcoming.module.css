@@ -1,6 +1,6 @@
 .fullScreen {
-    font-size: xx-large;
     text-align: center;
+    height: 100vh;
 }
 
 .multiScreen {
@@ -18,12 +18,21 @@
     color: #042b5e;
 }
 
+.fullScreen .eventTitle {
+    padding-top: 100px;
+}
+
 .eventList {
     list-style-type: none;
 }
 
+.fullScreen .eventList {
+    padding-top: 20px;
+
+}
+
 .eventItem {
-    display: grid !important;
+    display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
     margin-bottom: 5px;
@@ -31,8 +40,17 @@
     font-size: 1.2rem;
 }
 
+.fullScreen li {
+    margin-bottom: 20px;
+}
+
 .eventName {
     text-align: left;
+}
+
+.fullScreen .eventName {
+    text-align: right;
+    margin-right: 40px;
 }
 
 .eventDate {

@@ -1,6 +1,11 @@
 .fullScreen {
-    font-size: xx-large;
-    text-align: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.fullScreen .container {
+    flex-direction: column;
 }
 
 .multiScreen {
@@ -28,6 +33,11 @@
     display: block;
 }
 
+.fullScreen .clock {
+    width: 300px !important;
+    height: 300px !important;
+}
+
 .period {
     display: flex;
     justify-content: center;
@@ -37,4 +47,13 @@
     width:60%;
     font-weight: bold;
     text-align: center;
+}
+
+.fullScreen .period {
+    width: 100%;
+    padding-top: 20px;
+}
+
+.notF{
+    display: none;
 }

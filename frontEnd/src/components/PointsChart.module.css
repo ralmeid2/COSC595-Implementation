@@ -1,6 +1,12 @@
 .fullScreen {
     font-size: 200%;
     text-align:center;
+    height: 100vh;
+}
+
+.fullScreen canvas {
+    height: 70vh;
+    width: 90vw;
 }
 
 .multiScreen {

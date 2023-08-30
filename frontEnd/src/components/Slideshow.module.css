@@ -7,3 +7,19 @@
     object-fit: cover;
 
 }
+
+.fullScreen {
+    height: 100vh;
+    display: flex;
+}
+
+.fullScreen .slideshow {
+    margin: auto 0;
+}
+
+.fullScreen .slideshow img {
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+    margin-left: 0;
+}

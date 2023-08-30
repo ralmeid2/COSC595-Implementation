@@ -30,7 +30,7 @@ export default function Login() {
 
     return (
         <body>
-            <Header />
+            <Header isFullScreen={false}/>
             <form
                 className={style.container}
                 onSubmit={(e) => {

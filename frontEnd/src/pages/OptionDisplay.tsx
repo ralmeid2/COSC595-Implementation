@@ -52,7 +52,7 @@ export default function OptionDisplay() {
 
   return (
     <>
-      {PageComponent ? <PageComponent isFullScreen={false} houses={houses} noticesData={noticesData} isLoading={dailyNoticesLoading} /> : <div>Component not found</div>}
+      {PageComponent ? <PageComponent isFullScreen={true} houses={houses} noticesData={noticesData} isLoading={dailyNoticesLoading} /> : <div>Component not found</div>}
     </>
   );
 }

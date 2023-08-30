@@ -28,7 +28,7 @@ export default function SignUp() {
 
   return (
   <body>
-    <Header/>
+    <Header isFullScreen={false}/>
     <form
       className={style.container}
       onSubmit={(e) => {
