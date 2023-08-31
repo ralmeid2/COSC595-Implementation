@@ -1,7 +1,8 @@
 import express, { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import validateSchema from '../middleware/validateSchema';
-import { createDailyNotices, getDailyNoticesByDocId, updateDailyNotices, updateDailyNotices2, getAllDailyNotices, getOne, deleteDailyNoticesById } from '../service/dailyNotices.service';
+import { } from '../service/dailyNotices.service';
+import { deleteDailyNoticesById, getAllDailyNotices, createDailyNotices, getDailyNoticesByDocId, updateDailyNotices } from '../service/dailyNoticesJson.service';
 import { createDailyNoticesSchema, updateDailyNoticesSchema, getDailyNoticesByIdSchema, getDailyNoticesSchema } from '../schema/dailyNotices.schema';
 const dailyNoticesHandler = express.Router();
 let gameId: number;
@@ -12,6 +13,7 @@ dailyNoticesHandler.get("/", validateSchema(getDailyNoticesSchema), async (req: 
         const dn = await getAllDailyNotices();
         return res.status(200).send(dn);
     } catch (err) {
+        console.log("err")
         return res.status(500).send(err);
     }
 });
@@ -37,7 +39,7 @@ dailyNoticesHandler.put("/:id", validateSchema(getDailyNoticesSchema), async (re
     try {
         const id = req.params.id
         const update = req.body
-        const result = await updateDailyNotices2(id, { ...update })
+        const result = await updateDailyNotices(id, { ...update })
         res.status(200).send(result)
     } catch (err) {
         console.log(err)
