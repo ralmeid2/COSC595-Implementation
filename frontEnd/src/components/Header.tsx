@@ -1,5 +1,4 @@
-import { UserContext } from '../context'
-import {useContext, useEffect, useState} from 'react'
+import { useEffect, useState} from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import style from './Header.module.css'
 
@@ -13,7 +12,6 @@ interface HeaderProps {
 export default function Header({isFullScreen}: HeaderProps) {
   const navigate = useNavigate()
   const location = useLocation()
-  const { user, logout } = useContext(UserContext)
 
   const [weatherData, setWeatherData] = useState<{
         current_temp: number;
@@ -55,36 +53,17 @@ export default function Header({isFullScreen}: HeaderProps) {
 
   const getActions = () => {
     //the menu options aren't needed on the 'display' route
-    if (user) {
-      if (location.pathname === '/'){
+    if (location.pathname === '/'){
       return <>
-       <button className={style.action} onClick={() => navigate('/admin')}><div className={style.text}>Admin</div></button>
-       <button className={style.action} onClick={() => {logout()
-        navigate('/')}}>Logout</button>
+        <button className={style.action} onClick={() => navigate('/admin')}><div className={style.text}>Admin</div></button>
       </>
-      } else if (location.pathname === '/display'){
-        return false
-      }
-      else{
-        return <>
-       <button className={style.action} onClick={() => navigate('/')}><div className={style.text}>Home</div></button>
-       <button className={style.action} onClick={() => {logout()
-        navigate('/')}}>Logout</button>
-      </>
-      }
+    } else if (location.pathname === '/display'){
+      return false
     }
-    else {
-      return location.pathname !== '/login' ? (
-        <>
-        <button className={style.action} onClick={() => navigate('/admin')}><div className={style.text}>Admin</div></button>
-        <button className={style.action} onClick={() => navigate('/login')}><div className={style.text}>Login</div></button>
-        </>
-      ): (
-        <>
-        <button className={style.action} onClick={() => navigate('/admin')}><div className={style.text}>Admin</div></button>
-        <button className={style.action} onClick={() => navigate('/sign-up')}><div className={style.text}>Sign Up</div></button>
-        </>
-      )
+    else{
+      return <>
+      <button className={style.action} onClick={() => navigate('/')}><div className={style.text}>Home</div></button>
+      </>
     }
   }
 
