@@ -1,10 +1,10 @@
 {
   "timer": true,
-  "points": true,
-  "events": true,
-  "notices": true,
+  "points": false,
+  "events": false,
+  "notices": false,
   "multiComponentView": true,
   "broadcast": true,
   "broadcastMessage": "This is a test message",
-  "marketing": true
+  "marketing": false
 }

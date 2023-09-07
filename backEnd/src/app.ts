@@ -6,6 +6,7 @@ import photoHandler from './handler/photo.handler';
 import eventsHandler from './handler/events.handler';
 import weatherHandler from './handler/weather.handler';
 import optionsHandler from './handler/options.handler';
+import housepointsHandler from './handler/housepoints.handler';
 
 /* 
     The Express.js App. 
@@ -24,5 +25,6 @@ app.use('/api/weather', weatherHandler)
 app.use('/api/photo', photoHandler)
 app.use('/api/options', optionsHandler)
 app.use('/api/events', eventsHandler)
+app.use('/api/housepoints', housepointsHandler)
 
 export default app;

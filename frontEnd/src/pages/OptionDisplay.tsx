@@ -1,7 +1,6 @@
 import {useParams} from "react-router-dom";
 
 import { Timer, Header, PointsChart, Slideshow, Upcoming, SaintOfTheDay, DailyNoticesView } from '../components'
-import houses from '../shared/houses.json';
 import {useEffect, useState} from "react";
 import {DailyNotice} from "../types";
 
@@ -24,6 +23,7 @@ export default function OptionDisplay() {
   // Note: copied from Body.tsx. TODO: refactor to use a custom hook
   const [noticesData, setNoticesData] = useState<Array<DailyNotice>>([]);
   const [dailyNoticesLoading, setDailyNoticesLoading] = useState<boolean>(true);
+ 
   useEffect(() => {
     const fetchNoticesData = async () => {
       try {
@@ -52,7 +52,7 @@ export default function OptionDisplay() {
 
   return (
     <>
-      {PageComponent ? <PageComponent isFullScreen={true} houses={houses} noticesData={noticesData} isLoading={dailyNoticesLoading} /> : <div>Component not found</div>}
+      {PageComponent ? <PageComponent isFullScreen={true} noticesData={noticesData} isLoading={dailyNoticesLoading} /> : <div>Component not found</div>}
     </>
   );
 }

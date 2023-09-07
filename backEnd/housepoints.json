@@ -1,0 +1,8 @@
+[
+  { "name": "Clancy", "points": 100, "color": "#FCDF15" },
+  { "name": "Haydon", "points": 75, "color": "#DF3F33" },
+  { "name": "Mulrooney", "points": 120, "color": "#68D0E9" },
+  { "name": "O'Brien", "points": 90, "color": "#DEDEDE" },
+  { "name": "Rice", "points": 90, "color": "#1E8A4E" },
+  { "name": "Tracy", "points": 90, "color": "#1A2B95" }
+]

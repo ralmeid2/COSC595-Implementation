@@ -39,10 +39,7 @@
 }
 .firstRow{
     display:flex;
-    height:708px;
+    height:988px;
     margin-bottom: 20px;
 }
-.secondRow{
-    display:flex;
-    height:280px;
-}
+

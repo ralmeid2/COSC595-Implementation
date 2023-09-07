@@ -1,28 +1,50 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import style from './PointsChart.module.css';
-import logo from '../images/logo-white.svg'
+import logo from '../images/logo-white.svg';
 
 interface House {
-    name: string;
-    points: number;
-    color: string;
+  name: string;
+  points: number;
+  color: string;
 }
 
 interface CanvasProps {
-    houses: House[];
-    isFullScreen: boolean;
+  isFullScreen: boolean;
 }
 
-//the points chart uses a canvas element
-const PointsChart: React.FC<CanvasProps> = ({ houses, isFullScreen }) => {
-    const canvasRef = useRef<HTMLCanvasElement | null>(null);
+// The PointsChart component now fetches data from the API using vanilla fetch
+const PointsChart: React.FC<CanvasProps> = ({ isFullScreen }) => {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const [houses, setHouses] = useState<House[]>([]);
 
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Fetch data from the API using vanilla fetch
+        const response = await fetch('/api/housepoints');
 
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return;
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json(); // Parse the JSON response
+        alert(JSON.stringify(data))
+        setHouses(data); // Update the state with the fetched data
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData(); // Call the fetchData function when the component mounts
+  }, []);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
 
         // Clear the canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -70,29 +92,29 @@ const PointsChart: React.FC<CanvasProps> = ({ houses, isFullScreen }) => {
             let y = chartMarginTop + (topValue - house.points) * pixelPointRatio;
             ctx.fillRect(x, y, barInterval * 0.75, house.points * pixelPointRatio);
         });
-    }, [houses, isFullScreen]);
 
-    const containerStyle = isFullScreen ? style.fullScreen : style.multiScreen;
+  }, [houses, isFullScreen]);
 
-    return (
-        <div className={containerStyle}>
-            <h3 className={style.pointsTitle}>House Points</h3>
-            {isFullScreen ? (
-                <canvas height={1920} width={1080} ref={canvasRef} />
-            ) : (
-                <canvas height={200} width={500} ref={canvasRef} />
-            )}
-            <div className = {style.emblemHolder}>
-                {houses.map((house, index) => (
-                    <div key={index} className={style.houseEmblem}>
-                        <img src={'../houses/' + house.name + '.png'}></img>
-                        <p>{house.points}</p>
-                    </div>
-                ))}
-            </div>
+  const containerStyle = isFullScreen ? style.fullScreen : style.multiScreen;
 
-        </div>
-    );
+  return (
+    <div className={containerStyle}>
+      <h3 className={style.pointsTitle}>House Points</h3>
+      {isFullScreen ? (
+        <canvas height={1920} width={1080} ref={canvasRef} />
+      ) : (
+        <canvas height={200} width={500} ref={canvasRef} />
+      )}
+      <div className={style.emblemHolder}>
+        {houses.map((house, index) => (
+          <div key={index} className={style.houseEmblem}>
+            <img src={`../houses/${house.name}.png`} alt={house.name} />
+            <p>{house.points}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
-export default PointsChart
+export default PointsChart;

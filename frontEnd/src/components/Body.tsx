@@ -4,7 +4,6 @@ import { Timer, Header, PointsChart, Slideshow, Upcoming, SaintOfTheDay } from '
 import { DailyNotice } from '../types';
 import DailyNoticesView from './DailyNotices';
 import Broadcast from './Broadcast';
-import houses from '../shared/houses.json';
 
 interface ConditionalRenderingProps {
   components: React.ReactNode[];
@@ -114,17 +113,15 @@ export default function Body() {
           <div className={style.firstRow}>
             <div className={style.LeftSide}>
               <Timer isFullScreen={isFullScreen} />
-              <PointsChart houses={houses} isFullScreen={isFullScreen} />
+              <PointsChart isFullScreen={isFullScreen} />
+              <Upcoming isFullScreen={isFullScreen} />
+
             </div>
             <div className={style.rightSide}>
               <DailyNoticesView isFullScreen={isFullScreen} noticesData={noticesData} isLoading={dailyNoticesLoading} />
             </div>
           </div>
 
-          <div className={style.secondRow}>
-            <Upcoming isFullScreen={isFullScreen} />
-            <SaintOfTheDay isFullScreen={isFullScreen} />
-          </div>
         </div>
         <Slideshow isFullScreen={isFullScreen} />
       </>
@@ -135,7 +132,7 @@ export default function Body() {
       componentsToShow.push(<Timer isFullScreen={isFullScreen} />);
     }
     if (points) {
-      componentsToShow.push(<PointsChart houses={houses} isFullScreen={isFullScreen} />);
+      componentsToShow.push(<PointsChart isFullScreen={isFullScreen} />);
     }
     if (notices) {
       componentsToShow.push(<DailyNoticesView isFullScreen={isFullScreen} noticesData={noticesData} isLoading={dailyNoticesLoading} />);
@@ -146,9 +143,7 @@ export default function Body() {
     if (broadcast) {
       componentsToShow.push(<Broadcast />);
     }
-    if (saintOfTheDay) {
-      componentsToShow.push(<SaintOfTheDay isFullScreen={isFullScreen} />);
-    }
+
     return (
       <div>
         <ConditionalRendering components={componentsToShow} />
