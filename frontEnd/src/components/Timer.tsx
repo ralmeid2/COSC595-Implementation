@@ -31,7 +31,7 @@ export default function Timer ({ isFullScreen }: TimerProps) {
 
 //uses the current time to search through the timetable array and return appropriate period
 //TODO: add a countdown to the next class if it is not classtime.
-const getCurrentPeriod = () => {
+export const getCurrentPeriod = () => {
     let now = new Date()
     for (const period of timetable) {
         let periodEnd = new Date(
@@ -49,7 +49,7 @@ const getCurrentPeriod = () => {
 }
 
 //information about the school timetable
-const timetable =
+export const timetable =
     [
         {
             name:"Before period 1",
