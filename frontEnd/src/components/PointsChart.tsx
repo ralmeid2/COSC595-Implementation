@@ -28,7 +28,7 @@ const PointsChart: React.FC<CanvasProps> = ({ isFullScreen }) => {
         }
 
         const data = await response.json(); // Parse the JSON response
-        alert(JSON.stringify(data))
+        // alert(JSON.stringify(data))
         setHouses(data); // Update the state with the fetched data
       } catch (error) {
         console.error('Error fetching data:', error);

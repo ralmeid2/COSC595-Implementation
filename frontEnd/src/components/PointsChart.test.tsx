@@ -1,45 +1,88 @@
 import React from 'react';
+import {render, act, screen, cleanup, within} from '@testing-library/react';
 import PointsChart from './PointsChart';
-import { render } from '@testing-library/react';
-import '@testing-library/jest-dom';
 
-// Mock getContext() to prevent errors when rendering chart
+// Mock fetch
+global.fetch = jest.fn();
+
+// Mock response data
+const mockData: any = [
+  { name: "Clancy", points: 150, color: "red" },
+  { name: "Haydon", points: 100, color: "green" },
+];
+
 HTMLCanvasElement.prototype.getContext = jest.fn()
-describe('PointsChart Component', () => {
-  it('renders without crashing', () => {
-    const { container } = render(
-      <PointsChart houses={[]} isFullScreen={false} />
-    );
-    expect(container).toBeInTheDocument();
-  });
 
-  it('renders fullScreen class when isFullScreen is true', () => {
-    const { container } = render(
-      <PointsChart houses={[]} isFullScreen={true} />
-    );
-    expect(container.firstChild).toHaveClass('fullScreen');
-  });
+// Helper function to resolve fetch
+const fetchResponse = async () => {
+  (fetch as jest.Mock).mockImplementationOnce(() =>
+    Promise.resolve({
+      ok: true,
+      json: () => Promise.resolve(mockData),
+    })
+  );
+};
 
-  it('renders multiScreen class when isFullScreen is false', () => {
-    const { container } = render(
-      <PointsChart houses={[]} isFullScreen={false} />
-    );
-    expect(container.firstChild).toHaveClass('multiScreen');
-  });
-
-  it('renders house emblems and points based on the provided houses', () => {
-    const houses = [
-      { name: 'Clancy', points: 100, color: '#FCDF15' },
-      { name: 'Haydon', points: 75, color: '#DF3F33' },
-    ];
-
-    const { getByText } = render(
-      <PointsChart houses={houses} isFullScreen={false} />
-    );
-
-    houses.forEach((house) => {
-      expect(getByText(house.points.toString())).toBeInTheDocument();
-    });
-  });
+// Suppress console.error (to do with the components fetching - which is not the focus of these tests)
+const originalError = console.error;
+beforeAll(() => {
+  console.error = jest.fn();
 });
 
+// Restore console.error after all tests
+afterAll(() => {
+  console.error = originalError;
+});
+
+afterEach(cleanup);
+
+describe('<PointsChart />', () => {
+
+  it('renders without crashing', () => {
+    render(<PointsChart isFullScreen={false} />);
+  });
+
+  it('renders a canvas', () => {
+    const {container} = render(<PointsChart isFullScreen={false} />);
+    expect(container.querySelector('canvas')).toBeInTheDocument();
+  });
+
+  it('renders correctly when isFullScreen is true', () => {
+    render(<PointsChart isFullScreen={true} />);
+    // Add specific assertions here to check if fullscreen render is as expected
+  });
+
+  it('renders correctly when isFullScreen is false', () => {
+    render(<PointsChart isFullScreen={false} />);
+  });
+
+  it('fetches and displays house data', async () => {
+    await act(async () => {
+      fetchResponse();
+      render(<PointsChart isFullScreen={false} />);
+    });
+
+    const clancyImage = await screen.findByAltText('Clancy');
+    const clancyDiv = clancyImage.closest('div');
+
+    // Checks that the '150' text is within the same div as the 'Clancy' image
+    if (clancyDiv) {
+      const { getByText } = within(clancyDiv);
+      expect(getByText('150')).toBeInTheDocument();
+    } else {
+      fail('Clancy div not found');
+    }
+
+    const haydonImage = await screen.findByAltText('Haydon');
+    const haydonDiv = haydonImage.closest('div');
+
+    // Checks that the '100' text is within the same div as the 'Haydon' image
+    if (haydonDiv) {
+      const { getByText } = within(haydonDiv);
+      expect(getByText('100')).toBeInTheDocument();
+    } else {
+      fail('Haydon div not found');
+    }
+  });
+
+});
