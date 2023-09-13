@@ -2,6 +2,7 @@ import React from 'react';
 import {render, screen, waitFor, act, findByText} from '@testing-library/react';
 import OptionDisplay from './OptionDisplay';
 import fetchMock from 'jest-fetch-mock';
+import {suppressConsole} from "../testing/suppressConsole";
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -13,16 +14,7 @@ beforeEach(() => {
   fetchMock.mockResponse(JSON.stringify({})); // We don't care about fetch responses in this suite
 });
 
-// Suppress console.error (to do with the components fetching - which is not the focus of these tests)
-const originalError = console.error;
-beforeAll(() => {
-  console.error = jest.fn();
-});
-
-// Restore console.error after all tests
-afterAll(() => {
-  console.error = originalError;
-});
+suppressConsole()
 
 // Test for different child components based on pageId
 describe('Child Component Rendering', () => {

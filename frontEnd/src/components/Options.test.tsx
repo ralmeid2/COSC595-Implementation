@@ -2,6 +2,7 @@ import React from 'react';
 import { render, fireEvent, act, screen, waitFor } from '@testing-library/react';
 import Options from './Options';
 import ReactDOM from "react-dom/client";
+import {suppressConsole} from "../testing/suppressConsole";
 
 // Mock global fetch
 global.fetch = jest.fn();
@@ -20,16 +21,7 @@ const fetchResponse = async (data: any) => {
   );
 };
 
-// Suppress console.error (to do with the components fetching - which is not the focus of these tests)
-const originalError = console.error;
-beforeAll(() => {
-  console.error = jest.fn();
-});
-
-// Restore console.error after all tests
-afterAll(() => {
-  console.error = originalError;
-});
+suppressConsole()
 
 beforeEach(() => {
   (global.fetch as jest.Mock) = jest.fn(() =>

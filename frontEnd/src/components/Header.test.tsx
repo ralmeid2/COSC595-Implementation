@@ -2,6 +2,7 @@ import React from 'react';
 import { render, fireEvent, act, waitFor } from '@testing-library/react';
 import Header from './Header'; // Replace this import with your actual import
 import { MemoryRouter, Route } from 'react-router-dom';
+import {suppressConsole} from "../testing/suppressConsole";
 
 // Mock fetch
 global.fetch = jest.fn();
@@ -23,18 +24,7 @@ jest.mock('react-router-dom', () => ({
   useLocation: jest.fn(),
 }));
 
-// Suppress console.error (to do with the components fetching - which is not the focus of these tests)
-const originalError = console.error;
-beforeAll(() => {
-  console.error = jest.fn();
-});
-
-// Restore console.error after all tests
-afterAll(() => {
-  console.error = originalError;
-});
-
-
+suppressConsole()
 
 describe('<Header />', () => {
   it('renders without crashing', () => {
