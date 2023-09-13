@@ -1,3 +1,8 @@
+
+
+
+
+
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 
 import Button from "./Button";
@@ -188,7 +193,7 @@ const Options: React.FC = () => {
       </label>
       <br />
       <div className={styles[submitMessageClass]}>{submitMessage}</div>
-      <Button type="submit">Submit</Button>
+      <Button type="submit">Update Admin Options</Button>
     </Form>
   );
 

@@ -5,14 +5,22 @@
   },
   {
     "name": "ricky_stuart.jpg",
-    "category": "wallOfFame"
+    "category": "walloffame"
   },
   {
     "name": "zac_woolford.jpg",
-    "category": "wallOfFame"
+    "category": "walloffame"
   },
   {
     "name": "junior_school.jpg",
     "category": "slideshow"
+  },
+  {
+    "name": "savethedates.jpg",
+    "category": "marketing"
+  },
+  {
+    "name": "bands.jpg",
+    "category": "marketing"
   }
 ]

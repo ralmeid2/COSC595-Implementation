@@ -1,4 +1,4 @@
-import { Options, AdminMenu } from '../components'
+import { Options, AdminMenu, PointsForm } from '../components'
 import style from './Admin.module.css'
 
 
@@ -8,6 +8,7 @@ export default function AdminOptions() {
         <div className = {style.adminPage} >
             <AdminMenu />
             <Options />
+            <PointsForm />
         </div>
     )
 }

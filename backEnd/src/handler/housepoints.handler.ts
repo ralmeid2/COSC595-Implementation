@@ -51,13 +51,14 @@ housepointsHandler.get('/', (req: Request, res: Response) => {
   });
 });
 
-housepointsHandler.post('/', validateSchema(updateOptionsSchema), async (req: Request, res: Response) => {
-  const options = req.body.options;
+housepointsHandler.post('/',  async (req: Request, res: Response) => {
+  const housepoints = req.body.houses;
+  console.log(housepoints)
   // Convert options object to JSON string
-  const optionsJSON = JSON.stringify(options, null, 2);
+  const housepointsJSON = JSON.stringify(housepoints, null, 2);
 
   // Write the options JSON to the file
-  fs.writeFile(filePath, optionsJSON, (err) => {
+  fs.writeFile(filePath, housepointsJSON, (err) => {
     if (err) {
       console.error('Error writing to file:', err);
       res.status(500).send('Error occurred during submission.');

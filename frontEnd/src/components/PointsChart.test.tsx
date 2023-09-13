@@ -8,21 +8,21 @@ HTMLCanvasElement.prototype.getContext = jest.fn()
 describe('PointsChart Component', () => {
   it('renders without crashing', () => {
     const { container } = render(
-      <PointsChart houses={[]} isFullScreen={false} />
+      <PointsChart isFullScreen={false} />
     );
     expect(container).toBeInTheDocument();
   });
 
   it('renders fullScreen class when isFullScreen is true', () => {
     const { container } = render(
-      <PointsChart houses={[]} isFullScreen={true} />
+      <PointsChart  isFullScreen={true} />
     );
     expect(container.firstChild).toHaveClass('fullScreen');
   });
 
   it('renders multiScreen class when isFullScreen is false', () => {
     const { container } = render(
-      <PointsChart houses={[]} isFullScreen={false} />
+      <PointsChart isFullScreen={false} />
     );
     expect(container.firstChild).toHaveClass('multiScreen');
   });
@@ -34,7 +34,7 @@ describe('PointsChart Component', () => {
     ];
 
     const { getByText } = render(
-      <PointsChart houses={houses} isFullScreen={false} />
+      <PointsChart isFullScreen={false} />
     );
 
     houses.forEach((house) => {

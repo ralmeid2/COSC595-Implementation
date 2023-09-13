@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom";
 
-import { Timer, Header, PointsChart, Slideshow, Upcoming, SaintOfTheDay, DailyNoticesView } from '../components'
+import { Timer, Header, PointsChart, Slideshow, Upcoming, WallOfFame, Marketing, DailyNoticesView } from '../components'
 import {useEffect, useState} from "react";
 import {DailyNotice} from "../types";
 
@@ -12,7 +12,8 @@ const urlComponents =
     "notices": DailyNoticesView,
     "header": Header,
     "slideshow": Slideshow,
-    "saintoftheday": SaintOfTheDay
+    "marketing": Marketing,
+    "walloffame": WallOfFame
   }
 
 type UrlComponentName = keyof typeof urlComponents;

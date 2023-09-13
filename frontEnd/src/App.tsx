@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { Home, Login, SignUp, Add, Edit, Delete, Admin, Display, Photo, AdminOptions, OptionDisplay } from './pages'
+import { Home, Login, SignUp, Add, Edit, Delete, Admin, Display, Photo, AdminOptions, OptionDisplay} from './pages'
 import './App.css';
 
 function App() {

@@ -11,7 +11,7 @@ interface Photo {
 const PhotoUploader: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [existingPhotos, setExistingPhotos] = useState<Photo[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<string>(''); // Add this state
+  const [selectedCategory, setSelectedCategory] = useState<string>('marketing');
 
   useEffect(() => {
     //get all photos that have already been uploaded
@@ -84,7 +84,7 @@ const PhotoUploader: React.FC = () => {
         <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
             <option value="marketing">Marketing</option>
             <option value="slideshow">Slideshow</option>
-            <option value="wallOfFame">Wall of Fame</option>
+            <option value="walloffame">Wall of Fame</option>
         </select>
 
         <Button type="submit">Upload</Button>
