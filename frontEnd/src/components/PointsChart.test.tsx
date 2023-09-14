@@ -40,12 +40,13 @@ describe('<PointsChart />', () => {
   });
 
   it('renders correctly when isFullScreen is true', () => {
-    render(<PointsChart isFullScreen={true} />);
-    // Add specific assertions here to check if fullscreen render is as expected
+    const {container} = render(<PointsChart isFullScreen={true} />);
+    expect(container.firstChild).toHaveClass('fullScreen');
   });
 
   it('renders correctly when isFullScreen is false', () => {
-    render(<PointsChart isFullScreen={false} />);
+    const {container} = render(<PointsChart isFullScreen={false} />);
+    expect(container.firstChild).toHaveClass('multiScreen');
   });
 
   it('fetches and displays house data', async () => {
