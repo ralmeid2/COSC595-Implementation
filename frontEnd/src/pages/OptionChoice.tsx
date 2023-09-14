@@ -6,6 +6,7 @@ import style from './OptionChoice.module.css';
 export default function OptionChoice() {
   const [imagePaths, setImagePaths] = useState<Record<string, string>>({});
 
+  // Load all images from the components folder
   useEffect(() => {
     async function loadImagePaths() {
       const paths: Record<string, string> = {};
@@ -28,7 +29,10 @@ export default function OptionChoice() {
     <div className={style.gridContainer}>
       {Object.keys(urlComponents).map((key) => {
         if (Object.prototype.hasOwnProperty.call(urlComponents, key)) {
+          // The key is guaranteed to be a keyof typeof urlComponents (i.e. "timer", "points", etc.)
           const componentKey = key as keyof typeof urlComponents;
+          // componentName is the name of the component (i.e. "Timer", "PointsChart", etc.)
+          /** NOTE: .name MIGHT BE LOST ONCE IN PRODUCTION AND CODE IS MINIFIED. MIGHT HAVE TO USE `componentKey` as the name **/
           const componentName = urlComponents[componentKey].name;
           return (
             <Link to={`/fullscreen/${componentKey}`} key={componentKey}>
