@@ -5,11 +5,11 @@ interface PhotoItem {
     name: string;
 }
 
-interface SlideshowProps {
+interface WallOfFameProps {
     isFullScreen: boolean;
 }
 
-const Slideshow = ({isFullScreen}: SlideshowProps) => {
+const WallOfFame = ({isFullScreen}: WallOfFameProps) => {
     const [photos, setPhotos] = useState<PhotoItem[]>([]);
     const [currentIndex, setCurrentIndex] = useState<number>(0);
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -61,10 +61,10 @@ const Slideshow = ({isFullScreen}: SlideshowProps) => {
     return (
       <div className={isFullScreen ? style.fullScreen : ''}>
         <div className={style.slideshow}>
-            <img src={"/uploads/" + photos[currentIndex].name} alt="Slideshow" />
+            <img src={"/uploads/" + photos[currentIndex].name} alt="WallOfFame" />
         </div>
       </div>
     );
 };
 
-export default Slideshow;
+export default WallOfFame;
