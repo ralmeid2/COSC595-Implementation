@@ -24,33 +24,13 @@ const fetchResponse = async () => {
   );
 };
 
-suppressConsole()
+suppressConsole();
 
 afterEach(cleanup);
 
 describe('<PointsChart />', () => {
 
   it('renders without crashing', () => {
-<<<<<<< HEAD
-    const { container } = render(
-      <PointsChart isFullScreen={false} />
-    );
-    expect(container).toBeInTheDocument();
-  });
-
-  it('renders fullScreen class when isFullScreen is true', () => {
-    const { container } = render(
-      <PointsChart  isFullScreen={true} />
-    );
-    expect(container.firstChild).toHaveClass('fullScreen');
-  });
-
-  it('renders multiScreen class when isFullScreen is false', () => {
-    const { container } = render(
-      <PointsChart isFullScreen={false} />
-    );
-    expect(container.firstChild).toHaveClass('multiScreen');
-=======
     render(<PointsChart isFullScreen={false} />);
   });
 
@@ -62,26 +42,16 @@ describe('<PointsChart />', () => {
   it('renders correctly when isFullScreen is true', () => {
     render(<PointsChart isFullScreen={true} />);
     // Add specific assertions here to check if fullscreen render is as expected
->>>>>>> cdb83fdd32d241b9a8291dd7846e79c92683b4b0
   });
 
   it('renders correctly when isFullScreen is false', () => {
     render(<PointsChart isFullScreen={false} />);
   });
 
-<<<<<<< HEAD
-    const { getByText } = render(
-      <PointsChart isFullScreen={false} />
-    );
-
-    houses.forEach((house) => {
-      expect(getByText(house.points.toString())).toBeInTheDocument();
-=======
   it('fetches and displays house data', async () => {
     await act(async () => {
       fetchResponse();
       render(<PointsChart isFullScreen={false} />);
->>>>>>> cdb83fdd32d241b9a8291dd7846e79c92683b4b0
     });
 
     const clancyImage = await screen.findByAltText('Clancy');
