@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express'; 
+import express, { Request, Response } from 'express';
 import validateSchema from '../middleware/validateSchema';
 import { getWeather } from '../service/weather.service';
 import { getWeatherSchema } from '../schema/weather.schema';

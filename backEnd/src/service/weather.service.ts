@@ -22,17 +22,32 @@ import { resourceLimits } from "worker_threads"
 const axios = require('axios').default;
 const params = `?latitude=52.52&longitude=13.41&current_weather=true&hourly=temperature_2m,relativehumidity_2m,windspeed_10m`
 const weatherApiurl = `https://api.open-meteo.com/v1/forecast`
+let currentData: weatherData
 type ResponseType = { data: any }
+type weatherData = {
+  current_temp: string,
+  weathercode: string,
+  time: string
+}
+let lastRetrievalTime = Date.now()
+let timeout = 60000 // we only call once per minute
 
 export async function getWeather() {
   try {
-    const response: ResponseType = await axios.get(weatherApiurl+params)
-    const output = {
-      current_temp: response.data.current_weather.temperature,
-      weathercode: response.data.current_weather.weathercode,
-      time: response.data.current_weather.time
+    if (!currentData || Date.now() - lastRetrievalTime > timeout) {
+      const response: ResponseType = await axios.get(weatherApiurl + params)
+      console.log("making new weather request")
+      currentData = {
+        current_temp: response.data.current_weather.temperature,
+        weathercode: response.data.current_weather.weathercode,
+        time: response.data.current_weather.time
+      }
+      lastRetrievalTime = Date.now()
+      return currentData
+    } else {
+      console.log('returning cached weather data')
+      return currentData
     }
-    return output
   } catch (err) {
     console.log(err)
   }
