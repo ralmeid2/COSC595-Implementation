@@ -1,21 +1,11 @@
 import {useParams} from "react-router-dom";
 
-import { Timer, Header, PointsChart, Slideshow, Upcoming, WallOfFame, Marketing, DailyNoticesView } from '../components'
 import {useEffect, useState} from "react";
 import {DailyNotice} from "../types";
+import {urlComponents} from "../shared/urlComponents";
 
-const urlComponents =
-  {
-    "timer": Timer,
-    "points": PointsChart,
-    "events": Upcoming,
-    "notices": DailyNoticesView,
-    "header": Header,
-    "slideshow": Slideshow,
-    "marketing": Marketing,
-    "walloffame": WallOfFame
-  }
-
+// UrlComponentName is a type representing the keys of the urlComponents object.
+// Using keyof typeof allows TypeScript to infer the keys, making it a type-safe way to ensure `pageId` will match one of the keys in urlComponents.
 type UrlComponentName = keyof typeof urlComponents;
 
 export default function OptionDisplay() {
@@ -24,7 +14,7 @@ export default function OptionDisplay() {
   // Note: copied from Body.tsx. TODO: refactor to use a custom hook
   const [noticesData, setNoticesData] = useState<Array<DailyNotice>>([]);
   const [dailyNoticesLoading, setDailyNoticesLoading] = useState<boolean>(true);
- 
+
   useEffect(() => {
     const fetchNoticesData = async () => {
       try {
@@ -53,8 +43,8 @@ export default function OptionDisplay() {
 
   return (
     <>
+      {/* If adding a new component that requires any props, add the props down below */}
       {PageComponent ? <PageComponent isFullScreen={true} noticesData={noticesData} isLoading={dailyNoticesLoading} /> : <div>Component not found</div>}
     </>
   );
 }
-

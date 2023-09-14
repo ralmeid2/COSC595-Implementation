@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { Home, Login, SignUp, Add, Edit, Delete, Admin, Display, Photo, AdminOptions, OptionDisplay} from './pages'
+import { Home, Login, SignUp, Add, Edit, Delete, Admin, Display, Photo, AdminOptions, OptionDisplay, OptionChoice} from './pages'
 import './App.css';
 
 function App() {
@@ -17,6 +17,7 @@ function App() {
         <Route path="delete" element={ <Delete /> }/>
         <Route path="display" element={<Display />}/>
         <Route path="admin-options" element={<AdminOptions />}/>
+        <Route path="fullscreen" element={<OptionChoice />} />
         <Route path="fullscreen/:pageId" element={<OptionDisplay />}/>
       </Routes>
     </main>

@@ -1,0 +1,12 @@
+.gridContainer {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.gridItem {
+    border: 1px solid #ccc;
+    padding: 16px;
+    text-align: center;
+}
