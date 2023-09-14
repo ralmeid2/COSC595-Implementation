@@ -6,7 +6,6 @@ export const urlComponents =
     "points": PointsChart,
     "events": Upcoming,
     "notices": DailyNoticesView,
-    "header": Header,
     "slideshow": Slideshow,
     "marketing": Marketing,
     "walloffame": WallOfFame

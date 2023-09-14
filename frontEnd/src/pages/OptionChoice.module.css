@@ -1,12 +1,25 @@
 .gridContainer {
     height: 100%;
+    margin-top: 200px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
+    padding: 20px;
 }
 
 .gridItem {
     border: 1px solid #ccc;
     padding: 16px;
     text-align: center;
+}
+
+.gridItem:hover {
+    border: 1px solid #1554dc;
+    box-shadow: 0 0 10px #1554dc;
+}
+
+.image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
 }
