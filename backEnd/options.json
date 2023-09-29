@@ -6,5 +6,5 @@
   "multiComponentView": true,
   "broadcast": true,
   "broadcastMessage": "This is a test message",
-  "marketing": false
+  "marketing": true
 }
