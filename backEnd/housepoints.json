@@ -1,7 +1,7 @@
 [
   {
     "name": "Clancy",
-    "points": 1200,
+    "points": 89,
     "color": "#FCDF15"
   },
   {
@@ -21,12 +21,12 @@
   },
   {
     "name": "Rice",
-    "points": 7000,
+    "points": 700,
     "color": "#1E8A4E"
   },
   {
     "name": "Tracy",
-    "points": 90,
+    "points": 100,
     "color": "#1A2B95"
   }
 ]
