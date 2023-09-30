@@ -7,7 +7,10 @@ import { put, get } from '../utils/http'
 import { DailyNotice } from '../types/DailyNotice'
 
 
-
+/**
+ * Can edit a daily notice in the database
+ * Route: /edit
+ */
 export default function Edit() {
     const navigate = useNavigate()
     const [title, setTitle] = useState("")
@@ -151,7 +154,7 @@ export default function Edit() {
                         ({ _id, title, message, startDate, expiryDate }) => {
                             return (
                                 <div className={style.item} key={_id} onClick={() => radioHandler(_id)} >
-                                
+
                                     {title} {message}
                                 </div>
                             )

@@ -4,7 +4,10 @@ import { Button, Input, Message, AdminMenu, Form } from '../components'
 import { post } from '../utils/http'
 
 
-
+/**
+ * Can add a daily notice to the database
+ * Route: /add
+ */
 export default function Add(){
     const [title, setTitle] = useState("")
     const [message, setMessage] = useState("")
@@ -97,4 +100,3 @@ export default function Add(){
       )
 
 }
-

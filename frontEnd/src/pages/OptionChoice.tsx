@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 import { urlComponents } from '../shared/urlComponents';
 import style from './OptionChoice.module.css';
 
+/**
+ * Displays all the components that can be displayed in fullscreen mode. Can click on a component to go to the fullscreen mode of that component.
+ * Route: /fullscreen
+ * Add to frontEnd/src/shared/urlComponents.ts to add a new component to the grid.
+ */
 export default function OptionChoice() {
   const [imagePaths, setImagePaths] = useState<Record<string, string>>({});
 

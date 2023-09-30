@@ -5,6 +5,10 @@ import { DailyNotice } from '../types/DailyNotice'
 import styles from './Delete.module.css'
 import style from './Admin.module.css'
 
+/**
+ * Can delete a daily notice from the database
+ * Route: /delete
+ */
 export default function Delete() {
     const [dailyNotices, setDailyNotices] = useState<DailyNotice[]>([])
 

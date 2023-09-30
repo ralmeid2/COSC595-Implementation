@@ -8,6 +8,12 @@ import {urlComponents} from "../shared/urlComponents";
 // Using keyof typeof allows TypeScript to infer the keys, making it a type-safe way to ensure `pageId` will match one of the keys in urlComponents.
 type UrlComponentName = keyof typeof urlComponents;
 
+/**
+ * The fullscreen view for a component. The component is determined by the `pageId` parameter in the URL.
+ * Route: /fullscreen/:componentName
+ * See frontEnd/src/shared/urlComponents.ts for a list of all components.
+ * Fullscreen CSS styles are defined within each component's style.css file.
+ */
 export default function OptionDisplay() {
   const { pageId } = useParams<{ pageId: UrlComponentName }>();
 

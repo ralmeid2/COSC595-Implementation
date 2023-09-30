@@ -3,6 +3,12 @@ import { Header, AdminMenu } from '../components'
 
 import styles from './Admin.module.css'
 
+/**
+ * The Photo page
+ * Route: /photo
+ * Accessed by admins only
+ * Can upload photos, remove existing ones, and add a category to a photo
+ */
 export default function Photo() {
 
     return (
@@ -12,4 +18,3 @@ export default function Photo() {
         </div>
     )
 }
-
