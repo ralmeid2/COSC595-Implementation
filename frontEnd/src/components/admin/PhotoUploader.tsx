@@ -1,13 +1,16 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import styles from './PhotoUploader.module.css'
-import Button from "./Button";
+import Button from "../utility/Button";
 
 interface Photo {
   name: string;
   url: string;
   category: string;
 }
-
+//this component is used to add photos 
+//photos are categorised for marketing, slideshow, and hall of fame
+//TODO: sort photos to display in their category within the uploader
+//TODO: some kind of archiving of photos 
 const PhotoUploader: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [existingPhotos, setExistingPhotos] = useState<Photo[]>([]);

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import style from './PointsChart.module.css';
-import logo from '../images/logo-white.svg';
 
 interface House {
   name: string;
@@ -12,7 +11,7 @@ interface CanvasProps {
   isFullScreen: boolean;
 }
 
-// The PointsChart component now fetches data from the API using vanilla fetch
+// The PointsChart component now fetches data from the API using fetch
 const PointsChart: React.FC<CanvasProps> = ({ isFullScreen }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [houses, setHouses] = useState<House[]>([]);
@@ -20,7 +19,7 @@ const PointsChart: React.FC<CanvasProps> = ({ isFullScreen }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch data from the API using vanilla fetch
+        // Fetch data from the API using fetch
         const response = await fetch('/api/housepoints');
 
         if (!response.ok) {

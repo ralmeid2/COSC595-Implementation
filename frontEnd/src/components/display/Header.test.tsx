@@ -2,7 +2,7 @@ import React from 'react';
 import { render, fireEvent, act, waitFor } from '@testing-library/react';
 import Header from './Header'; // Replace this import with your actual import
 import { MemoryRouter, Route } from 'react-router-dom';
-import {suppressConsole} from "../testing/suppressConsole";
+import {suppressConsole} from "../../testing/suppressConsole";
 
 // Mock fetch
 global.fetch = jest.fn();

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import style from './Upcoming.module.css'
 
+//this component gets a list of the 3 closest upcoming events for display
+
 interface Event {
     event: string;
     date: string;

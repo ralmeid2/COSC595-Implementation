@@ -1,6 +1,6 @@
 import style from './AdminMenu.module.css'
 import { useNavigate } from 'react-router-dom'
-import { Button } from '../components'
+import { Button } from '..'
 
 
 

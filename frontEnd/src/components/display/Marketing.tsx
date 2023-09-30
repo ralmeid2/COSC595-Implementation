@@ -8,6 +8,7 @@ interface PhotoItem {
 interface SlideshowProps {
     isFullScreen: boolean;
 }
+//photos for this component are uploaded from the photo uploader app. 
 
 const Marketing = ({isFullScreen}: SlideshowProps) => {
     const [photos, setPhotos] = useState<PhotoItem[]>([]);
@@ -15,14 +16,12 @@ const Marketing = ({isFullScreen}: SlideshowProps) => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        //get all the photos in the photo location
-        //might want to add categories here
+        //get all the marketing photos in the photo location. The category is determined by /marketing
         const fetchPhotos = async () => {
             try {
                 const response = await fetch('/api/photo/marketing');
                 if (response.ok) {
                     const data = await response.json();
-                    // alert(JSON.stringify(data))
                     setPhotos(data);
                 } else {
                     console.error('Failed to fetch photos:', response.status);

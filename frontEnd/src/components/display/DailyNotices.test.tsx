@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, act, screen } from '@testing-library/react';
 import DailyNoticesView from './DailyNotices';  // Make sure to import the component correctly
-import {DailyNotice} from "../types";  // Make sure to import the type correctly
+import {DailyNotice} from "../../types";  // Make sure to import the type correctly
 
 jest.useFakeTimers();  // Mock timers
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './DailyNotices.module.css';
-import {DailyNotice} from "../types";
+import {DailyNotice} from "../../types";
 
 const NOTICES_PER_PAGE = 5; // Number of notices to display per page
 const NOTICE_DISPLAY_TIME = 5000; // Time to display each notice in milliseconds

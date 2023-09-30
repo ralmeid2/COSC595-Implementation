@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import style from './Body.module.css';
-import { Timer, Header, PointsChart, Slideshow, Upcoming } from '../components'
-import { DailyNotice } from '../types';
+import { Timer, Header, PointsChart, Slideshow, Upcoming } from '..'
+import { DailyNotice } from '../../types';
 import DailyNoticesView from './DailyNotices';
 import Broadcast from './Broadcast';
 

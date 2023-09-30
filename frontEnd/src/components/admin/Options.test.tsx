@@ -2,7 +2,7 @@ import React from 'react';
 import { render, fireEvent, act, screen, waitFor } from '@testing-library/react';
 import Options from './Options';
 import ReactDOM from "react-dom/client";
-import {suppressConsole} from "../testing/suppressConsole";
+import {suppressConsole} from "../../testing/suppressConsole";
 
 // Mock global fetch
 global.fetch = jest.fn();

@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState, FormEvent, ChangeEvent } from 'react';
 import style from './PointsChart.module.css';
 import logo from '../images/logo-white.svg';
-import Button from "./Button";
-import Form from "./Form";
-import Input from "./Input";
+import Button from "../utility/Button";
+import Form from "../utility/Form";
+import Input from "../utility/Input";
+//create a form to update house points manually
+//this might come from an API to get real time data in the future
 
 interface House {
   name: string;
@@ -21,7 +23,6 @@ const PointsForm = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // 
         const response = await fetch('/api/housepoints');
 
         if (!response.ok) {

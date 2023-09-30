@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom'
 import style from './Header.module.css'
 
 import Weather from './Weather'
-import logo from '../images/logo-white.svg'
+import logo from '../../images/logo-white.svg'
 
 interface HeaderProps {
   isFullScreen: boolean;

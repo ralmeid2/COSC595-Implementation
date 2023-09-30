@@ -5,9 +5,9 @@
 
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 
-import Button from "./Button";
-import Form from "./Form";
-import Input from "./Input";
+import Button from "../utility/Button";
+import Form from "../utility/Form";
+import Input from "../utility/Input";
 import styles from './Options.module.css';
 //Multicomponent view controls whether to display default view
 //All other options control whether the screen should cycle through components in full screen mode
