@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import style from './Body.module.css';
-import { Timer, Header, PointsChart, Slideshow, Upcoming, SaintOfTheDay } from '../components'
+import { Timer, Header, PointsChart, Slideshow, Upcoming } from '../components'
 import { DailyNotice } from '../types';
 import DailyNoticesView from './DailyNotices';
 import Broadcast from './Broadcast';
@@ -47,7 +47,6 @@ export default function Body() {
     events: React.ReactNode;
     notices: React.ReactNode;
     broadcast: React.ReactNode;
-    saintOfTheDay: React.ReactNode;
   } | null>(null);
 
   useEffect(() => {
@@ -107,7 +106,7 @@ export default function Body() {
     return <div>Loading...</div>;
   }
 
-  const { multiComponentView, timer, points, events, notices, broadcast, saintOfTheDay } = options;
+  const { multiComponentView, timer, points, events, notices, broadcast} = options;
 
   if (multiComponentView) {
     return (

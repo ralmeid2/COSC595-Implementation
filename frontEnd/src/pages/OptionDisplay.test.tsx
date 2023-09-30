@@ -72,14 +72,6 @@ describe('Child Component Rendering', () => {
     // expect(slideshowElement).toHaveAttribute('src', /\/uploads\//);
   });
 
-  it('renders SaintOfTheDay component when pageId is saintoftheday', async () => {
-    mockUseParams.mockReturnValue({ pageId: 'saintoftheday' });
-
-    render(<OptionDisplay />);
-
-    expect(await screen.findByText('Saint of the Day')).toBeInTheDocument();
-  })
-
 });
 
 // Test for the 'Component not found' fallback
