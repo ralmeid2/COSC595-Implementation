@@ -25,7 +25,3 @@ Client will be running on http://localhost:3000 and server will be running on ht
 * `/edit`: Can edit a daily notice
 * `/delete`: Can delete a daily notice
 * `/photo`: Can upload and remove photos from the database
-
-MongoDB Credentials: email: clairegrady@me.com password: cosc594groupa
-
-User Credentials: username: admin and password: admin have been setup. Alternatively, you can just register as a new user.
