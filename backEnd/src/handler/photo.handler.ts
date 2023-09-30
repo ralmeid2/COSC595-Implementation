@@ -3,13 +3,35 @@ import multer from 'multer';
 import cors from 'cors';
 import fs from 'fs';
 import path from 'path';
+import { any } from 'zod';
 
 const photoHandler = express.Router();
 
 photoHandler.use(cors());
 
+/*  
+  Route handler for API requests relating to retrieving and sending photo file names to the front end.
+    
+    Base route is /api/photos
+    GET /api/photos/:category - returns JSON with the current housepoints for the requested category
+    POST /api/photos/ - saves photo and updates photo manifest with filename and category
+    DELETE /api/photos/ - deletes photo and updates photo manifest
+
+
+  A housepoints array should be sent in the body of the POST request, 
+  in the following format.
+
+
+  The current housepoints are stored in the housepoints.json folder
+  located at /backEnd/housepoints.json
+
+  See the documentation for a description of the intended functionality of each option.
+*/
+
 const storage = multer.diskStorage({
+    //using multer to upload the file to the specified location in the front end folder
     destination: (req: any, file: any, cb: any) => {
+      //path to photos location
       const destinationPath = `../frontEnd/public/uploads`;
       fs.mkdirSync(destinationPath, { recursive: true });
       cb(null, destinationPath);
@@ -22,24 +44,24 @@ const storage = multer.diskStorage({
   const upload = multer({ storage });
   
   photoHandler.post('/', upload.fields([{ name: 'photo' }, { name: 'category' }]), (req: Request, res: Response) => {
-    console.log(req.body)
-    const photoFile = req.files['photo'][0]; // Access the uploaded photo
-    const category = req.body.category; // Access the category
-    const filename = photoFile.filename; 
-    console.log(filename)
-    const jsonFilePath = '../frontEnd/public/photo-manifest.json';
-    
+    //first the data about the photo gets written to the manifest
+    const photoFile = req.files['photo'][0]; // The uploaded photo
+    const category = req.body.category; // The category
+    const filename = photoFile.filename; //The file name
+    const jsonFilePath = '../frontEnd/public/photo-manifest.json'; //location of photo manifest
     let existingData = [];
     try {
+      //read the file data from the photo manifest
       const jsonData = fs.readFileSync(jsonFilePath, 'utf-8');
       existingData = JSON.parse(jsonData);
     } catch (error) {
-
-
+        //error handling here
     }
     
+    //add the uploaded photo to the array of existing data
     existingData.push({name:filename,category:category});
     try {
+        //write the existing data back to the file
         fs.writeFileSync(jsonFilePath, JSON.stringify(existingData, null, 2));
         console.log('Data added to JSON file');
     } catch (error) {
@@ -49,12 +71,14 @@ const storage = multer.diskStorage({
       category: category,
     });
   });
-
+  //gets a list of all photos from a specified category
   photoHandler.get('/:category', (req: Request, res: Response) => {
     const jsonFilePath = '../frontEnd/public/photo-manifest.json'; 
     let photos = [];
+    //get a list of all the photos
     const jsonData = fs.readFileSync(jsonFilePath, 'utf-8');
     photos = JSON.parse(jsonData);
+    //filter to the required category
     if (req.params.category == "all") {
         return res.json(photos);
     } else {
@@ -64,10 +88,11 @@ const storage = multer.diskStorage({
 
   });
   
+  //deletes a photo and removes the information about it from the manifest
+  //the photo is found by name
   photoHandler.delete('/:id', (req: Request, res: Response) => {
     const id = req.params.id;
     const filePath = path.join('../frontEnd/public/uploads/'+ id);
- 
     const jsonFilePath = '../frontEnd/public/photo-manifest.json';   
     let existingData = [];
     try {
@@ -78,7 +103,7 @@ const storage = multer.diskStorage({
 
 
     }
-    var filtered = existingData.filter(function(el) { return el.name != id; }); 
+    var filtered = existingData.filter(function(el:any) { return el.name != id; }); 
 
     try {
         fs.writeFileSync(jsonFilePath, JSON.stringify(filtered, null, 2));

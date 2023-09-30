@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import style from './Slideshow.module.css'
 
+//photo slideshow needs a list of photo names
+//the name corresponds to the file name in the /public/uploads folder
+
 interface PhotoItem {
     name: string;
 }

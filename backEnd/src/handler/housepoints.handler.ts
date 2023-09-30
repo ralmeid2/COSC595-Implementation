@@ -1,11 +1,10 @@
 import express, { Request, Response, Router } from 'express';
 import fs from 'fs';
 import path from 'path';
-import validateSchema from '../middleware/validateSchema';
-import { updateOptionsSchema } from '../schema/options.schema';
+
 const housepointsHandler: Router = express.Router();
 
-// Path to the options.json file
+// Path to the housepoints.json file
 const filePath = path.join(__dirname, '../../', 'housepoints.json');
 
 /*  
@@ -13,33 +12,26 @@ const filePath = path.join(__dirname, '../../', 'housepoints.json');
   for the front end.
     Base route is /api/options
 
-    GET /api/options/ - returns JSON with the current option settings
-    POST /api/options - updates the options to reflect what is sent
-    GET /api/options/message - returns JSON with the current broadcast message
+    GET /api/housepoints/ - returns JSON with the current housepoints
+    POST /api/housepoints/ - updates housepoints to reflect what is sent
 
-  An options object should be sent in the body of the POST request, 
+  A housepoints array should be sent in the body of the POST request, 
   in the following format.
 
-  body: {
-    options: {
-      timer: boolean
-      points: boolean
-      events: boolean
-      notices: boolean
-      multiComponentView: boolean
-      broadcast: boolean
-      broadcastMessage: string
-    }
-  } 
+  [{
+    "name": string,
+    "points": number,
+    "color": string
+  }]
 
-  The current options are stored in the options.json folder
-  located at /backEnd/options.json
+  The current housepoints are stored in the housepoints.json folder
+  located at /backEnd/housepoints.json
 
   See the documentation for a description of the intended functionality of each option.
 */
 
 housepointsHandler.get('/', (req: Request, res: Response) => {
-  // Read the options JSON from the file
+  // Read the housepoints JSON from the file
   fs.readFile(filePath, 'utf-8', (err, data) => {
     if (err) {
       console.error('Error reading file:', err);
@@ -54,10 +46,10 @@ housepointsHandler.get('/', (req: Request, res: Response) => {
 housepointsHandler.post('/',  async (req: Request, res: Response) => {
   const housepoints = req.body.houses;
   console.log(housepoints)
-  // Convert options object to JSON string
+  // Convert housepoints array to JSON string
   const housepointsJSON = JSON.stringify(housepoints, null, 2);
 
-  // Write the options JSON to the file
+  // Write the housepoints JSON to the file
   fs.writeFile(filePath, housepointsJSON, (err) => {
     if (err) {
       console.error('Error writing to file:', err);
