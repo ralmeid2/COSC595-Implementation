@@ -8,6 +8,14 @@ type FormProps = {
   className?: string;
 }
 
+/**
+ * Basic form component to be used in other components
+ * See Add.tsx or Options.tsx for examples on how to use this component
+ * @param children Form elements
+ * @param onSubmit Function to run when form is submitted
+ * @param errorMessage Error message to display if there is an error
+ * @param className CSS class name
+ */
 const Form = ({ children, onSubmit, errorMessage, className }: FormProps) => {
   return (
     <form

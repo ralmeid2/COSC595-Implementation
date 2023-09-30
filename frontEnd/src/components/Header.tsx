@@ -9,6 +9,12 @@ interface HeaderProps {
   isFullScreen: boolean;
 }
 
+/**
+ * Displays the header. This header is shown in the main multi-component view
+ * Has weather information fetched from the open-meteo API (see backend/weather.service.ts)
+ * @param isFullScreen
+ * @constructor
+ */
 export default function Header({isFullScreen}: HeaderProps) {
   const navigate = useNavigate()
   const location = useLocation()

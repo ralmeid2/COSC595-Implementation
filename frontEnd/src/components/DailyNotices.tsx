@@ -5,6 +5,14 @@ import {DailyNotice} from "../types";
 const NOTICES_PER_PAGE = 5; // Number of notices to display per page
 const NOTICE_DISPLAY_TIME = 5000; // Time to display each notice in milliseconds
 
+/**
+ * Displays the daily notices
+ * @param noticesData Array of DailyNotice objects
+ * @param isLoading Whether the notices are still loading
+ * @param isFullScreen Whether the notices are displayed in full screen
+ * Can change the number of notices displayed per page and the time to display each notice by changing the constants
+ * TODO: Change it to dynamically show the number of notices per page based on the length of the notices
+ */
 export default function DailyNoticesView({ isFullScreen, noticesData, isLoading }: DailyNoticesProps) {
 
   const [currentIndex, setCurrentIndex] = useState(0);

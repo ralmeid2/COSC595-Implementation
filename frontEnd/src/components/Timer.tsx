@@ -8,6 +8,14 @@ interface TimerProps {
     isFullScreen: boolean;
 }
 
+/**
+ * Period and time display
+ * @param isFullScreen - boolean to determine if the timer is in fullscreen mode
+ * @returns Timer component
+ * This component displays the current period and time
+ * It uses the getCurrentPeriod function to determine the current school period
+ * It uses the Clock component from react-clock to display the current time
+ * **/
 export default function Timer ({ isFullScreen }: TimerProps) {
   const [value, setValue] = useState(new Date());
 

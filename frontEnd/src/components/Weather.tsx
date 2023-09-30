@@ -20,7 +20,7 @@ export default function Weather({ weatherData, isLoading }: WeatherProps) {
     const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', hour12: true}));
 
     const weatherCodeToIcon = (code: number) => {
-        /*
+        /**
         Based on https://open-meteo.com/en/docs
         0	Clear sky
         1, 2, 3	Mainly clear, partly cloudy, and overcast
@@ -35,7 +35,7 @@ export default function Weather({ weatherData, isLoading }: WeatherProps) {
         85, 86	Snow showers slight and heavy
         95 *	Thunderstorm: Slight or moderate
         96, 99 *	Thunderstorm with slight and heavy hail
-         */
+         **/
 
         const currentHour = new Date().getHours();
 
@@ -59,7 +59,7 @@ export default function Weather({ weatherData, isLoading }: WeatherProps) {
             case [95, 96, 99].includes(code):
                 return <FaBolt />;
             default:
-                // Smiley face if we don't have an icon for the weather code
+                // Smiley face if we don't have an icon for the weather code (only if the API is updated, checked on 30/09/2023)
                 return <FaSmile />;
         }
     }
