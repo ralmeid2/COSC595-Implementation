@@ -134,7 +134,7 @@ describe('<Options />', () => {
 
 
     const { getByLabelText, getByText } = render(<Options />);
-    const submitButton = getByText('Submit');
+    const submitButton = getByText('Update Admin Options');
 
     await act(async () => {
       // fetch

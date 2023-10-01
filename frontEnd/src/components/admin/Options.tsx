@@ -1,8 +1,3 @@
-
-
-
-
-
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 
 import Button from "../utility/Button";
@@ -182,7 +177,7 @@ const Options: React.FC = () => {
           onChange={handleCheckboxChange}
         />
       </label>
-      <br />      
+      <br />
       <label className={styles.label}>
         Broadcast Message:
         <textarea
