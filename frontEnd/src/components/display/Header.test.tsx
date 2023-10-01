@@ -48,7 +48,7 @@ describe('<Header />', () => {
     const { getByText } = render(<MemoryRouter><Header isFullScreen={true} /></MemoryRouter>);
 
     await waitFor(() => {
-      expect(getByText(/25/)).toBeInTheDocument(); // Replace 25 with your weather temperature text representation
+      expect(getByText(/25/)).toBeInTheDocument();
     });
   });
 

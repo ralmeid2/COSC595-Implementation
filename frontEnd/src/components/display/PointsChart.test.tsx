@@ -1,10 +1,24 @@
 import React from 'react';
 import PointsChart from './PointsChart';
-import { render } from '@testing-library/react';
+import {render} from '@testing-library/react';
+import {suppressConsole} from "../../testing/suppressConsole";
 import '@testing-library/jest-dom';
 
 // Mock getContext() to prevent errors when rendering chart
 HTMLCanvasElement.prototype.getContext = jest.fn()
+
+global.fetch = jest.fn();
+suppressConsole();
+
+const fetchResponse = async (data: any) => {
+  (fetch as jest.Mock).mockImplementationOnce(() =>
+    Promise.resolve({
+      ok: true,
+      json: () => Promise.resolve(data),
+    })
+  );
+};
+
 describe('PointsChart Component', () => {
   it('renders without crashing', () => {
     const { container } = render(
@@ -27,19 +41,19 @@ describe('PointsChart Component', () => {
     expect(container.firstChild).toHaveClass('multiScreen');
   });
 
-  it('renders house emblems and points based on the provided houses', () => {
+  it('renders house emblems and points based on the provided houses', async() => {
     const houses = [
       { name: 'Clancy', points: 100, color: '#FCDF15' },
       { name: 'Haydon', points: 75, color: '#DF3F33' },
     ];
 
-    const { getByText } = render(
-      <PointsChart   isFullScreen={false} />
-    );
+    fetchResponse(houses);
 
-    houses.forEach((house) => {
-      expect(getByText(house.points.toString())).toBeInTheDocument();
-    });
+    const { findByText } = render(<PointsChart isFullScreen={false} />);
+
+    for (const house of houses) {
+      const pointElement = await findByText(house.points.toString());
+      expect(pointElement).toBeInTheDocument();
+    }
   });
 });
-
