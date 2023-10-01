@@ -30,12 +30,17 @@ describe('Timer Component', () => {
 
 describe('getCurrentPeriod function', () => {
   it('returns correct period based on the time', () => {
-    // Mock specific times and test if getCurrentPeriod() returns the expected value
-    const mockedDate = new Date(2023, 9, 7, 13, 0); // October 7, 2023, 13:00:00
-
-    jest
-      .spyOn(global.Date, 'now')
-      .mockReturnValueOnce(mockedDate.getTime());
+    jest.useFakeTimers();
+    const mockedDate = new Date(2023, 9, 7, 13, 4);
+    jest.setSystemTime(mockedDate);
+    // From Timer.tsx:
+    //    name: "Period 4",
+    //                finish:{
+    //                    hours:13,
+    //                    minutes:5
+    //                }
     expect(getCurrentPeriod()).toBe("Period 4");
+
+    jest.useRealTimers();
   });
 });
