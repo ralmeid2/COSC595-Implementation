@@ -28,6 +28,19 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "/src/App.tsx",
+      "/src/index.tsx",
+      "/src/reportWebVitals.ts",
+      "/src/setupProxy.js",
+      "index.ts",
+      "http.ts",
+      "/types/",
+      "useLocalStorage.ts",
+      "UserContext.ts"
+    ]
+  },
   "eslintConfig": {
     "extends": [
       "react-app"
