@@ -7,10 +7,10 @@ interface Photo {
   url: string;
   category: string;
 }
-//this component is used to add photos 
+//this component is used to add photos
 //photos are categorised for marketing, slideshow, and hall of fame
 //TODO: sort photos to display in their category within the uploader
-//TODO: some kind of archiving of photos 
+//TODO: some kind of archiving of photos
 const PhotoUploader: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [existingPhotos, setExistingPhotos] = useState<Photo[]>([]);
@@ -83,7 +83,8 @@ const PhotoUploader: React.FC = () => {
   return (
     <div className={styles.container}>
       <form onSubmit={handleSubmit}>
-        <input type="file" onChange={handleFileChange} />
+        <label className={styles.fileInput} htmlFor="fileInput">File</label>
+        <input id="fileInput" aria-label="file" type="file" onChange={handleFileChange} />
         <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
             <option value="marketing">Marketing</option>
             <option value="slideshow">Slideshow</option>
