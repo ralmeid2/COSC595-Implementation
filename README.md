@@ -25,3 +25,6 @@ Client will be running on http://localhost:3000 and server will be running on ht
 * `/edit`: Can edit a daily notice
 * `/delete`: Can delete a daily notice
 * `/photo`: Can upload and remove photos from the database
+
+### Test Coverage:
+* Please visit [this link](https://ralmeid2.github.io/COSC595-Coverage/) to see detailed test coverage information.
