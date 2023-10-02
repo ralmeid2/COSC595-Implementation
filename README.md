@@ -27,4 +27,4 @@ Client will be running on http://localhost:3000 and server will be running on ht
 * `/photo`: Can upload and remove photos from the database
 
 ### Test Coverage:
-* Please visit [this link](https://ralmeid2.github.io/COSC595-Coverage/) to see detailed test coverage information.
+* Please visit [this link](https://ralmeid2.github.io/COSC595-Coverage/) to see detailed frontend test coverage information.
