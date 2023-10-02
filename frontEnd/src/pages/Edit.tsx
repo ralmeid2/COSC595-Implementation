@@ -27,7 +27,10 @@ export default function Edit() {
     }, [])
 
     const putToDB = async () => {
-        const id = editDailyNotices[0]._id
+        let id = ""
+        if (editDailyNotices && editDailyNotices.length > 0) {
+            id = editDailyNotices[0]._id
+        }
         try {
             const res = await put(`/api/dailyNotices/${id}`, {
                 title: title,
