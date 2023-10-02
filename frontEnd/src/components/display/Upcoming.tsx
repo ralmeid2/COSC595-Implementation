@@ -28,7 +28,7 @@ const Upcoming: React.FC<EventListProps> = ({ isFullScreen }) => {
     const containerStyle = isFullScreen ? style.fullScreen : style.multiScreen
 
   return (
-    <div className={containerStyle}>
+    <div className={containerStyle} data-testid="upcoming">
       <h2 className={style.eventTitle}>UPCOMING EVENTS</h2>
       <ul className={style.eventList}>
         {events.map((event, index) => (

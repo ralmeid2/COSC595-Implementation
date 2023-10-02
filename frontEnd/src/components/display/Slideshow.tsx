@@ -62,7 +62,7 @@ const Slideshow = ({isFullScreen}: SlideshowProps) => {
     }
 
     return (
-      <div className={isFullScreen ? style.fullScreen : ''}>
+      <div data-testid="slideshow" className={isFullScreen ? style.fullScreen : ''}>
         <div className={style.slideshow}>
             <img src={"/uploads/" + photos[currentIndex].name} alt="Slideshow" />
         </div>
