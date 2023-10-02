@@ -1,5 +1,4 @@
 import { object, string, number, array, TypeOf, any } from 'zod';
-import mongoose from 'mongoose';
 
 /* 
     Schemas to ensure that requests routed to the dailynotices
@@ -10,10 +9,10 @@ import mongoose from 'mongoose';
     For update/create requests, all fields are required.
 
     For get requests, an ID is required. 
-*/ 
+*/
 
 const payload = {
-    body: object ({
+    body: object({
         title: string({
             required_error: "Title is required",
         }),
@@ -30,16 +29,16 @@ const payload = {
 }
 
 const getParams = {
-  params: object({
-    id: string({
-      required_error: 'Doc id is required',
+    params: object({
+        id: string({
+            required_error: 'Doc id is required',
+        }),
     }),
-  }),
 }
 
 //this works for getting ALL dailyNotices - no schema enforced
-export const getDailyNoticesSchema = object ({
-    
+export const getDailyNoticesSchema = object({
+
 })
 
 export const getDailyNoticesByIdSchema = object({

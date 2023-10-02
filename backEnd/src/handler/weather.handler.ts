@@ -3,7 +3,6 @@ import validateSchema from '../middleware/validateSchema';
 import { getWeather } from '../service/weather.service';
 import { getWeatherSchema } from '../schema/weather.schema';
 const weatherHandler = express.Router();
-const axios = require('axios')
 
 /*
     Route handler for getting the current weather information from the Weather service.
