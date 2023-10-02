@@ -2,20 +2,10 @@ import React from 'react';
 import { render, fireEvent, act, waitFor } from '@testing-library/react';
 import Header from './Header'; // Replace this import with your actual import
 import { MemoryRouter, Route } from 'react-router-dom';
-import {suppressConsole} from "../../testing/suppressConsole";
+import {suppressConsole, fetchResponse} from "../../testing";
 
 // Mock fetch
 global.fetch = jest.fn();
-
-// Helper function to resolve fetch
-const fetchResponse = async (data: any) => {
-  (fetch as jest.Mock).mockImplementationOnce(() =>
-    Promise.resolve({
-      ok: true,
-      json: () => Promise.resolve(data),
-    })
-  );
-};
 
 // Mock react-router hooks
 jest.mock('react-router-dom', () => ({

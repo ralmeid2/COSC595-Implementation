@@ -2,16 +2,11 @@ import { render, screen, waitFor, act } from '@testing-library/react';
 import React from 'react';
 import WallOfFame from './WallOfFame';
 import '@testing-library/jest-dom/extend-expect';
-import {suppressConsole} from "../../testing/suppressConsole";
+import {suppressConsole, fetchResponse} from "../../testing";
 
 global.fetch = jest.fn();
+
 suppressConsole();
-const fetchResponse = async (data: any) => {
-  (fetch as jest.Mock).mockResolvedValueOnce({
-    ok: true,
-    json: () => Promise.resolve(data),
-  });
-};
 
 describe('WallOfFame', () => {
   beforeEach(() => {

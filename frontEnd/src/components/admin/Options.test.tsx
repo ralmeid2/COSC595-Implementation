@@ -2,24 +2,12 @@ import React from 'react';
 import { render, fireEvent, act, screen, waitFor } from '@testing-library/react';
 import Options from './Options';
 import ReactDOM from "react-dom/client";
-import {suppressConsole} from "../../testing/suppressConsole";
+import {suppressConsole, fetchResponse} from "../../testing/index";
 
 // Mock global fetch
 global.fetch = jest.fn();
 
 let container: any;
-
-
-
-// Helper function to resolve fetch
-const fetchResponse = async (data: any) => {
-  (fetch as jest.Mock).mockImplementationOnce(() =>
-    Promise.resolve({
-      ok: true,
-      json: () => Promise.resolve(data),
-    })
-  );
-};
 
 suppressConsole()
 
@@ -27,7 +15,7 @@ beforeEach(() => {
   (global.fetch as jest.Mock) = jest.fn(() =>
     Promise.resolve({
       ok: true,
-      json: () => Promise.resolve({ /* your mocked data here */ }),
+      json: () => Promise.resolve({ }),
     })
   );
   container = document.createElement('div');

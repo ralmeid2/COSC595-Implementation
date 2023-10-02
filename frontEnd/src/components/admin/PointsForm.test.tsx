@@ -2,18 +2,11 @@ import React from 'react';
 import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import PointsForm from './PointsForm';
-import {suppressConsole} from "../../testing/suppressConsole";
+import {suppressConsole, fetchResponse} from "../../testing";
 
 global.fetch = jest.fn();
 suppressConsole();
-const fetchResponse = async (data: any) => {
-  (fetch as jest.Mock).mockImplementationOnce(() =>
-    Promise.resolve({
-      ok: true,
-      json: () => Promise.resolve(data),
-    })
-  );
-};
+
 
 describe('<PointsForm />', () => {
   beforeEach(() => {

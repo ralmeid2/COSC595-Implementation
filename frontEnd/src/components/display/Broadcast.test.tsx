@@ -2,17 +2,9 @@ import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import Broadcast from './Broadcast';
+import { fetchResponse } from '../../testing';
 
 global.fetch = jest.fn();
-
-const fetchResponse = async (data: any) => {
-  (fetch as jest.Mock).mockImplementationOnce(() =>
-    Promise.resolve({
-      ok: true,
-      json: () => Promise.resolve(data),
-    })
-  );
-};
 
 describe('<Broadcast />', () => {
   // Clear all mocks before each test

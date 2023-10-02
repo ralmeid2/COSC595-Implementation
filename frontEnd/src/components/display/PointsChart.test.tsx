@@ -1,7 +1,7 @@
 import React from 'react';
 import PointsChart from './PointsChart';
 import {render} from '@testing-library/react';
-import {suppressConsole} from "../../testing/suppressConsole";
+import {suppressConsole, fetchResponse} from "../../testing";
 import '@testing-library/jest-dom';
 
 // Mock getContext() to prevent errors when rendering chart
@@ -9,15 +9,6 @@ HTMLCanvasElement.prototype.getContext = jest.fn()
 
 global.fetch = jest.fn();
 suppressConsole();
-
-const fetchResponse = async (data: any) => {
-  (fetch as jest.Mock).mockImplementationOnce(() =>
-    Promise.resolve({
-      ok: true,
-      json: () => Promise.resolve(data),
-    })
-  );
-};
 
 describe('PointsChart Component', () => {
   it('renders without crashing', () => {

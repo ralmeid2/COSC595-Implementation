@@ -2,7 +2,7 @@ import React from 'react';
 import {render, screen, fireEvent, act, waitFor} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import PhotoUploader from './PhotoUploader';
-import {suppressConsole} from "../../testing/suppressConsole";
+import {suppressConsole, fetchResponse} from "../../testing";
 
 suppressConsole();
 
@@ -45,12 +45,7 @@ describe('<PhotoUploader />', () => {
 
   it('should be able to upload a file', async () => {
     // Mock the fetch call
-    (fetch as jest.Mock).mockImplementationOnce(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve({}),
-      })
-    );
+    fetchResponse({ ok: true, json: () => Promise.resolve({}) })
 
     render(<PhotoUploader />);
     const fileInput = screen.getByLabelText('File');

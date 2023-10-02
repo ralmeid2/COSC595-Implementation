@@ -2,18 +2,9 @@ import React from 'react';
 import { render, screen, act, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import Marketing from './Marketing';
-import {suppressConsole} from "../../testing/suppressConsole";
+import {suppressConsole, fetchResponse} from "../../testing";
 
 global.fetch = jest.fn();
-
-const fetchResponse = async (data: any) => {
-  (fetch as jest.Mock).mockImplementationOnce(() =>
-    Promise.resolve({
-      ok: true,
-      json: () => Promise.resolve(data),
-    })
-  );
-};
 
 suppressConsole();
 
