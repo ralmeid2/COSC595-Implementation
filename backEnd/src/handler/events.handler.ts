@@ -1,6 +1,4 @@
 
-//webcal://sec.act.edu.au/?post_type=tribe_events&tribe-bar-date=2023-05-27&ical=1&eventDisplay=list
-
 import express, { Request, Response, Router } from 'express';
 const eventsHandler: Router = express.Router();
 

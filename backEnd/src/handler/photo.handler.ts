@@ -16,15 +16,8 @@ photoHandler.use(cors());
     POST /api/photos/ - saves photo and updates photo manifest with filename and category
     DELETE /api/photos/ - deletes photo and updates photo manifest
 
-
-  A housepoints array should be sent in the body of the POST request, 
-  in the following format.
-
-
-  The current housepoints are stored in the housepoints.json folder
-  located at /backEnd/housepoints.json
-
-  See the documentation for a description of the intended functionality of each option.
+  The current photos are stored in the ../frontEnd/public/uploads folder
+  
 */
 
 const storage = multer.diskStorage({
