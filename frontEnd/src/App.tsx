@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { Home, Login, SignUp, Add, Edit, Delete, Admin, Display, Photo, AdminOptions, OptionDisplay, OptionChoice} from './pages'
+import { Home, Add, Edit, Delete, Admin, Display, Photo, AdminOptions, OptionDisplay, OptionChoice} from './pages'
 import './App.css';
 
 function App() {
@@ -9,8 +9,6 @@ function App() {
       <Routes>
         <Route path="/" element={ <Home /> }/>
         <Route path="photo" element={<Photo />}/>
-        <Route path="login" element={ <Login /> }/>
-        <Route path="sign-up" element={ <SignUp /> }/>
         <Route path="admin" element={ <Admin /> }/>
         <Route path="add" element={ <Add /> }/>
         <Route path="edit" element={ <Edit /> }/>
