@@ -4,4 +4,5 @@ export type DailyNotice = {
     message: string
     startDate: string
     expiryDate: string
+    height: number
 }
