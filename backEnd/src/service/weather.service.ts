@@ -36,7 +36,7 @@ export async function getWeather() {
   try {
     if (!currentData || Date.now() - lastRetrievalTime > timeout) {
       const response: ResponseType = await axios.get(weatherApiurl + params)
-      console.log("making new weather request")
+      console.log("Making new weather request.")
       currentData = {
         current_temp: response.data.current_weather.temperature,
         weathercode: response.data.current_weather.weathercode,
@@ -45,7 +45,7 @@ export async function getWeather() {
       lastRetrievalTime = Date.now()
       return currentData
     } else {
-      console.log('returning cached weather data')
+      console.log('Returning cached weather data.')
       return currentData
     }
   } catch (err) {

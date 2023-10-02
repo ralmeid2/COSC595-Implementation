@@ -3,7 +3,7 @@
   "points": true,
   "events": true,
   "notices": true,
-  "multiComponentView": false,
+  "multiComponentView": true,
   "broadcast": true,
   "broadcastMessage": "EMERGENCY",
   "marketing": true
