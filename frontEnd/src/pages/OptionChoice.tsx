@@ -41,7 +41,7 @@ export default function OptionChoice() {
           const componentName = urlComponents[componentKey].name;
           return (
             <Link to={`/fullscreen/${componentKey}`} key={componentKey}>
-              <div className={style.gridItem}>
+              <div className={style.gridItem} data-testid="grid-item">
                 {imagePaths[componentKey] && (
                   <img src={imagePaths[componentKey]} alt={componentName} className={style.image}/>
                 )}

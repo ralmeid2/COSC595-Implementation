@@ -150,7 +150,7 @@ export default function Edit() {
 
                 <div className={style.checkList}>
                   <h1>Please Click on an Item to Edit it</h1>
-                    {dailyNotices.map(
+                    {dailyNotices && dailyNotices.map(
                         ({ _id, title, message, startDate, expiryDate }) => {
                             return (
                                 <div className={style.item} key={_id} onClick={() => radioHandler(_id)} >
