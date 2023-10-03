@@ -37,6 +37,7 @@ dailyNoticesHandler.get("/", validateSchema(getDailyNoticesSchema), async (req: 
 });
 
 dailyNoticesHandler.post("/", validateSchema(createDailyNoticesSchema), async (req: Request, res: Response) => {
+    console.log(req.body)
     const r = req.body
     const newDailyNotice = await createDailyNotices(r)
     return res.status(200).send(newDailyNotice)

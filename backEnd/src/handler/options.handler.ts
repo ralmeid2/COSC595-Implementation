@@ -39,7 +39,6 @@ const filePath = path.join(__dirname, '../../', 'options.json');
 */
 
 optionsHandler.get('/', (req: Request, res: Response) => {
-  
   // Read the options JSON from the file
   fs.readFile(filePath, 'utf-8', (err, data) => {
     if (err) {
@@ -70,16 +69,16 @@ optionsHandler.post('/', validateSchema(updateOptionsSchema), async (req: Reques
 });
 
 optionsHandler.get('/message', (req: Request, res: Response) => {
-    // Read the options JSON from the file
-    fs.readFile(filePath, 'utf-8', (err, data) => {
-      if (err) {
-        console.error('Error reading file:', err);
-        res.status(500).send('Error occurred while fetching options.');
-      } else {
-        const options = JSON.parse(data);
-        res.json({message:options.broadcastMessage});
-      }
-    });
+  // Read the options JSON from the file
+  fs.readFile(filePath, 'utf-8', (err, data) => {
+    if (err) {
+      console.error('Error reading file:', err);
+      res.status(500).send('Error occurred while fetching options.');
+    } else {
+      const options = JSON.parse(data);
+      res.json({ message: options.broadcastMessage });
+    }
   });
+});
 
 export default optionsHandler;

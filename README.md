@@ -1,9 +1,11 @@
 # St Edmund's College Display
+
 #### Authors: Andy Taylor, Ben Burton, Claire Grady. Kevin Murphy, Renan Massari, Sandeep Kaur, and Sharon Harrison
 
-#### Version 1.0
+#### Version 2.0
 
 ### First run (or after installing new dependencies):
+
 1. `cd` into backEnd directory
 2. install dependencies: `yarn`
 3. `cd` into frontEnd directory
@@ -19,12 +21,14 @@
 Client will be running on http://localhost:3000 and server will be running on http://localhost:8080
 
 ### Routes:
-* `/display`: The display page for the app
-* `/admin-options`: Can select different display modes and broadcast messages
-* `/add`: Can add a new daily notice
-* `/edit`: Can edit a daily notice
-* `/delete`: Can delete a daily notice
-* `/photo`: Can upload and remove photos from the database
+
+- `/display`: The display page for the app
+- `/admin-options`: Can select different display modes and broadcast messages
+- `/add`: Can add a new daily notice
+- `/edit`: Can edit a daily notice
+- `/delete`: Can delete a daily notice
+- `/photo`: Can upload and remove photos from the database
 
 ### Test Coverage:
-* Please visit [this link](https://ralmeid2.github.io/COSC595-Coverage/) to see detailed frontend test coverage information.
+
+- Please visit [this link](https://ralmeid2.github.io/COSC595-Coverage/) to see detailed frontend test coverage information.

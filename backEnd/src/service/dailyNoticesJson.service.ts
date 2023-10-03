@@ -1,17 +1,14 @@
 import notices from '../data/dailynotices.json'
 import DailyNotices from '../types/DailyNotices'
 import fs from 'fs'
-import { DocumentDefinition, FilterQuery, Types } from "mongoose";
-import { DailyNoticesDocument } from "../model/dailyNotices.model";
 
 /*
   The service defines functions that can are called by the daily notices handler
-  to interact with the database. 
+  to interact with the 'database', which is a json text file.. 
 */
 
 export async function getDailyNoticesByDocId(id: string) {
     const notice = notices.find((n) => n._id === parseInt(id));
-    console.log(notice)
     return [notice];
 }
 
@@ -19,6 +16,9 @@ export async function getAllDailyNotices() {
     return notices
 }
 
+// note: notices aren't sorted so this is O(N)
+// if database retrieval gets too slow, this could
+// be improved. Unlikely to be an issue. 
 export async function updateDailyNotices(id: string,
     dailyNotice: DailyNotices
 ) {
