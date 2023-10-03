@@ -14,4 +14,12 @@
     flex-wrap: wrap;
     gap: 20px;
     margin-top: 20px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.buttonGroup {
+    display: flex;
+    gap: 20px;
 }
