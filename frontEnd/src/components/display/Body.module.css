@@ -4,7 +4,7 @@
 }
 
 .columnHolder {
-    width:1080px;
+    width:1920px;
 
 }
 
@@ -22,7 +22,7 @@
 }
 
 .componentContainer {
-    width: 1040px;
+    width: 1920px;
     padding: 20px;
 }
 
@@ -39,7 +39,7 @@
 }
 .firstRow{
     display:flex;
-    height:988px;
+    height:1040px;
     margin-bottom: 20px;
 }
 
