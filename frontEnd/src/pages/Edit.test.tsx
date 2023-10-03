@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, act, screen, waitFor } from '@testing-library/react';
+import { fireEvent, act, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Edit from './Edit';
 import * as httpUtils from '../utils/http';

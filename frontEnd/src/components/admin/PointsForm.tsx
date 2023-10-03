@@ -1,12 +1,10 @@
 import React, { useEffect, useRef, useState, FormEvent, ChangeEvent } from 'react';
 import style from './PointsForm.module.css'
-import logo from '../images/logo-white.svg';
 import Button from "../utility/Button";
 import Form from "../utility/Form";
-import Input from "../utility/Input";
+
 //create a form to update house points manually
 //this might come from an API to get real time data in the future
-
 interface House {
   name: string;
   points: number;
@@ -83,7 +81,7 @@ const PointsForm = () => {
     <>
     <Form onSubmit={handleSubmit}>
       <h1>Update House Points</h1>
-        <ul>
+        <ul className={style.ul}>
         {houses.map((house, index) => (
             <li className={style.li}>
               <label>

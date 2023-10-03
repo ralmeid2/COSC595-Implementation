@@ -1,5 +1,4 @@
-import { render, fireEvent, waitFor } from '@testing-library/react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { fireEvent, waitFor } from '@testing-library/react';
 import Add from './Add';
 import { post as originalPost } from '../utils/http';
 import {suppressConsole, renderWithRouter} from "../testing";

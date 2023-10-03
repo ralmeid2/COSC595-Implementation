@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import {fetchResponse, suppressConsole} from "../../testing";
+import {suppressConsole} from "../../testing";
 import Body from './Body';
 
 suppressConsole();

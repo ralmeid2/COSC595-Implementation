@@ -16,6 +16,8 @@
 
 .fullScreen {
     font-size: 200%;
+    padding: 20px 50px 100px;
+    height:948px;
 }
 
 .multiScreen {
@@ -36,10 +38,18 @@
     margin-bottom: 15px;
 }
 
+.fullScreen .notice {
+    margin-bottom: 40px;
+}
+
 .noticeTitle {
     font-size: 2rem;
     font-weight: bold;
     color: #042b5e;
+}
+
+.fullScreen .noticeTitle {
+    font-size: 2rem;
 }
 
 .indicatorContainer {

@@ -1,5 +1,5 @@
 import { PhotoUploader } from '../components'
-import { Header, AdminMenu } from '../components'
+import { AdminMenu } from '../components'
 
 import styles from './Admin.module.css'
 

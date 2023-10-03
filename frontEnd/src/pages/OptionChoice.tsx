@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { urlComponents } from '../shared/urlComponents';
 import style from './OptionChoice.module.css';
-import {Button} from "../components";
 
 /**
  * Displays all the components that can be displayed in fullscreen mode. Can click on a component to go to the fullscreen mode of that component.
