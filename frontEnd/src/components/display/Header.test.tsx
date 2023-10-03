@@ -1,7 +1,7 @@
 import React from 'react';
-import { render, fireEvent, act, waitFor } from '@testing-library/react';
-import Header from './Header'; // Replace this import with your actual import
-import { MemoryRouter, Route } from 'react-router-dom';
+import { render, fireEvent, waitFor } from '@testing-library/react';
+import Header from './Header';
+import { MemoryRouter } from 'react-router-dom';
 import {suppressConsole, fetchResponse} from "../../testing";
 
 // Mock fetch

@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import { AdminMenu } from '../components'
 import { del, get } from '../utils/http'
-import { DailyNotice } from '../types/DailyNotice'
+import { DailyNotice } from '../types'
 import styles from './Delete.module.css'
 import style from './Admin.module.css'
 

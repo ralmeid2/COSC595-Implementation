@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, act, screen } from '@testing-library/react';
-import DailyNoticesView from './DailyNotices';  // Make sure to import the component correctly
-import {DailyNotice} from "../../types";  // Make sure to import the type correctly
+import DailyNoticesView from './DailyNotices';
+import {DailyNotice} from "../../types";
 
 jest.useFakeTimers();  // Mock timers
 
@@ -46,7 +46,7 @@ describe('<DailyNoticesView />', () => {
 
     // Simulate the passage of time to trigger a change in the current index
     act(() => {
-      jest.advanceTimersByTime(5000);  // This should match your NOTICE_DISPLAY_TIME
+      jest.advanceTimersByTime(5000);
     });
 
     expect(screen.getByText('Notice 2')).toBeInTheDocument();
@@ -55,7 +55,6 @@ describe('<DailyNoticesView />', () => {
   it('applies full screen style when isFullScreen is true', () => {
     const { container } = render(<DailyNoticesView isLoading={false} isFullScreen={true} noticesData={[]} />);
 
-    // Check if the fullScreen class is applied. Replace `fullScreen` with the actual class name if it's different
     expect(container.firstChild).toHaveClass('fullScreen');
   });
 });

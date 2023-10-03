@@ -1,5 +1,5 @@
 import React from 'react';
-import {render, screen, waitFor, act, findByText} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import OptionDisplay from './OptionDisplay';
 import fetchMock from 'jest-fetch-mock';
 import {suppressConsole} from "../testing/suppressConsole";

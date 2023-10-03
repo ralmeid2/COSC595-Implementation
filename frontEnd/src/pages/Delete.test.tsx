@@ -1,4 +1,4 @@
-import { render, fireEvent } from '@testing-library/react'
+import { fireEvent } from '@testing-library/react'
 import Delete from './Delete'
 import * as httpUtils from '../utils/http'
 import {renderWithRouter, suppressConsole} from "../testing";

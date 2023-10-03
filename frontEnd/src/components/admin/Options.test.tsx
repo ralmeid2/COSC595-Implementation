@@ -1,7 +1,6 @@
 import React from 'react';
-import { render, fireEvent, act, screen, waitFor } from '@testing-library/react';
+import { render, fireEvent, act, waitFor } from '@testing-library/react';
 import Options from './Options';
-import ReactDOM from "react-dom/client";
 import {suppressConsole, fetchResponse} from "../../testing/index";
 
 // Mock global fetch
