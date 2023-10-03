@@ -83,7 +83,7 @@ const PointsForm = () => {
     <>
     <Form onSubmit={handleSubmit}>
       <h1>Update House Points</h1>
-        <ul>
+        <ul className={style.ul}>
         {houses.map((house, index) => (
             <li className={style.li}>
               <label>
