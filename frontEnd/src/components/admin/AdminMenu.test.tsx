@@ -27,7 +27,7 @@ describe('<AdminMenu />', () => {
 
   it('renders correctly', () => {
     const buttons = screen.getAllByRole('button');
-    expect(buttons.length).toBe(6);
+    expect(buttons.length).toBe(7);
   });
 
   it('navigates to /add when Add Daily Notice button is clicked', () => {
@@ -61,7 +61,7 @@ describe('<AdminMenu />', () => {
   });
 
   it('navigates to / when Go To Display button is clicked', () => {
-    const displayButton = screen.getByText(/Go To Display/i);
+    const displayButton = screen.getByText(/Go To Main Display/i);
     fireEvent.click(displayButton);
     expect(mockNavigate).toHaveBeenCalledWith('/');
   });

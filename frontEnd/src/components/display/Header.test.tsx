@@ -50,7 +50,7 @@ describe('<Header />', () => {
     const { getByText } = render(<MemoryRouter><Header isFullScreen={true} /></MemoryRouter>);
 
     fireEvent.click(getByText('Admin'));
-    expect(navigate).toHaveBeenCalledWith('/admin');
+    expect(navigate).toHaveBeenCalledWith('/admin-options');
   });
 
   it('navigates to Home page when Home button is clicked', () => {
