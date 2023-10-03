@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import style from './Slideshow.module.css'
 
-//photo slideshow needs a list of photo names
-//the name corresponds to the file name in the /public/uploads folder
+//
+/**The photo slideshow gets photos from the photo handler
+ * 
+ * @param isFullScreen determines how the slideshow is displayed
+ * @param photos a list of photos availablephoto slideshow needs a list of photo names
+ * names corresponds to the file names in the /public/uploads folder
+ */
 
 interface PhotoItem {
     name: string;

@@ -33,7 +33,8 @@ function ConditionalRendering({ components }: ConditionalRenderingProps) {
 
 /**
  * The main component of the application.
- * It is responsible for fetching the data from the API and rendering the components.
+ * This is the landscape version of the main component. 
+ * It is responsible for fetching the data from the options handler API and rendering the components.
  * **/
 export default function Body() {
   const [isFullScreen, setIsFullScreen] = useState(false);

@@ -9,6 +9,10 @@ interface SlideshowProps {
     isFullScreen: boolean;
 }
 //photos for this component are uploaded from the photo uploader app. 
+/**
+ * Displays all images categorised as marketing.
+ * @param isFullScreen
+ */
 
 const Marketing = ({isFullScreen}: SlideshowProps) => {
     const [photos, setPhotos] = useState<PhotoItem[]>([]);

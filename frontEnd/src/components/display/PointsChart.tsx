@@ -10,7 +10,16 @@ interface House {
 interface CanvasProps {
   isFullScreen: boolean;
 }
-
+/**
+ * House points display
+ * @param isFullScreen - boolean to determine if the timer is in fullscreen mode
+ * @param houses - array of objects which contain information about each house including points.
+ * @returns Timer component
+ * This component displays a graph of the current house points for each house
+ * Each house has name, points, and color properties
+ * The houses info is retreived from the housepoints handler.
+ * The graph is rendered on a canvas dependent on state 
+ * **/
 // The PointsChart component now fetches data from the API using fetch
 const PointsChart: React.FC<CanvasProps> = ({ isFullScreen }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -71,7 +80,7 @@ const PointsChart: React.FC<CanvasProps> = ({ isFullScreen }) => {
         //we need this to keep the chart the same size regardless of point amount
         let pixelPointRatio = chartHeight / topValue;
         //set up and draw chart values
-        ctx.fillText(topValue.toString(), 20, 20);
+        //ctx.fillText(topValue.toString(), 20, 20);
         ctx.beginPath();
         ctx.moveTo(chartMarginLeft, chartMarginTop);
         ctx.lineTo(chartMarginLeft + chartWidth, chartMarginTop);
@@ -79,7 +88,7 @@ const PointsChart: React.FC<CanvasProps> = ({ isFullScreen }) => {
         for (let i = 1; i < 5; i++) {
             ctx.moveTo(chartMarginLeft, chartMarginTop + i * interval);
             ctx.lineTo(chartMarginLeft + chartWidth, chartMarginTop + i * interval);
-            ctx.fillText((topValue - (i * topValue) / 4).toString(), 20, chartMarginTop + i * interval);
+            //ctx.fillText((topValue - (i * topValue) / 4).toString(), 10, chartMarginTop + i * interval);
         }
         ctx.stroke();
         let barInterval = chartWidth / houses.length;
@@ -88,7 +97,7 @@ const PointsChart: React.FC<CanvasProps> = ({ isFullScreen }) => {
             ctx.fillStyle = house.color;
             let x = chartMarginLeft + index * barInterval;
             let y = chartMarginTop + (topValue - house.points) * pixelPointRatio;
-            ctx.fillRect(x, y, barInterval * 0.75, house.points * pixelPointRatio);
+            ctx.fillRect(x, y, barInterval * 0.8, house.points * pixelPointRatio);
         });
 
   }, [houses, isFullScreen]);

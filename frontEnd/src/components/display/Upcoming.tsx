@@ -2,7 +2,13 @@ import React, { useEffect, useState } from 'react';
 import style from './Upcoming.module.css'
 
 //this component gets a list of the 3 closest upcoming events for display
-
+/**
+ * Period and time display
+ * @param isFullScreen - boolean to determine if the timer is in fullscreen mode
+ * @param events - array of upcoming events
+ * @returns Upcoming events component
+ * 
+ * **/
 interface Event {
     event: string;
     date: string;
