@@ -1,0 +1,16 @@
+ul {
+    padding: 0;
+}
+
+li {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+li > input {
+    width: 25%;
+    padding: 5px;
+    text-align: center;
+}

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState, FormEvent, ChangeEvent } from 'react';
-import style from './PointsChart.module.css';
+import style from './PointsForm.module.css'
 import logo from '../images/logo-white.svg';
 import Button from "../utility/Button";
 import Form from "../utility/Form";
@@ -14,7 +14,7 @@ interface House {
 }
 
 
-// Produce a form populated with current housepoints 
+// Produce a form populated with current housepoints
 const PointsForm = () => {
   const [houses, setHouses] = useState<House[]>([]);
   const [submitMessage, setSubmitMessage] = useState<string>('');
@@ -45,8 +45,8 @@ const PointsForm = () => {
     const { name, value } = event.target;
     const updatedHouses = [...houses];
     const houseIndex = updatedHouses.findIndex((house) => house.name === name);
-    updatedHouses[houseIndex].points = parseInt(value) 
-    setHouses(updatedHouses); 
+    updatedHouses[houseIndex].points = parseInt(value)
+    setHouses(updatedHouses);
 
   };
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
@@ -81,16 +81,22 @@ const PointsForm = () => {
 
   return (
     <>
-    <h1>Update House Points</h1>
     <Form onSubmit={handleSubmit}>
+      <h1>Update House Points</h1>
         <ul>
         {houses.map((house, index) => (
-            <li><label>{house.name} <input 
-            key={index} 
-            value ={house.points}
-            name = {house.name} 
-            onChange={handleInputChange}
-            /></label><br/></li>
+            <li className={style.li}>
+              <label>
+                {house.name}
+              </label>
+              <input
+                key={index}
+                value ={house.points}
+                name = {house.name}
+                onChange={handleInputChange}
+              />
+              <br/>
+            </li>
         ))}
         </ul>
         <div>{submitMessage}</div>
