@@ -101,7 +101,7 @@ const PointsChart: React.FC<CanvasProps> = ({ isFullScreen }) => {
       {isFullScreen ? (
         <canvas height={1920} width={1080} ref={canvasRef} />
       ) : (
-        <canvas height={200} width={500} ref={canvasRef} />
+        <canvas height={300} width={800} ref={canvasRef} />
       )}
       <div className={style.emblemHolder}>
         {houses.map((house, index) => (

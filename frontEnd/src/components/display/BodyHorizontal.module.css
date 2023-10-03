@@ -1,0 +1,47 @@
+.container {
+    margin: 0 auto;
+    box-sizing: border-box;
+    font-size: 150%;
+    height: 1080px;
+    overflow-y: hidden;
+}
+
+.columnHolder {
+    width: 100%;
+
+}
+
+.leftSide {
+    flex:50%;
+    float:left;
+    display:block;
+}
+
+.rightSide {
+    flex:50%;
+    float:left;
+    display:grid;
+    margin-left:20px;
+}
+
+.componentContainer {
+    width: 1860px;
+    padding: 20px;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.bcmessage {
+    padding:40px;
+    text-align: center;
+    font-size: 60px;
+}
+.firstRow{
+    display:flex;
+    height:1040px;
+}
+
