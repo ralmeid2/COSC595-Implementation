@@ -1,5 +1,4 @@
 import { object, string, number, array, TypeOf, boolean, any } from 'zod';
-import mongoose from 'mongoose';
 
 /* 
     Schema to ensure that requests routed to the options
@@ -9,10 +8,10 @@ import mongoose from 'mongoose';
 
     To update the options, all fields must are required and 
     should be of the required type.  
-*/ 
+*/
 
 const payload = {
-    body: object ({
+    body: object({
         options: object({
             timer: boolean({
                 required_error: "timer is required",

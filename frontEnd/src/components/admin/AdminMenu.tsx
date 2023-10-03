@@ -29,6 +29,10 @@ export default function AdminMenu() {
         navigate('/')
     }
 
+    const fullscreenOptions = async () => {
+        navigate('/fullscreen')
+    }
+
     if (window.location.pathname === '/admin'){
         return(
                 <div>
@@ -68,42 +72,48 @@ export default function AdminMenu() {
         )
     }else{
         return (
-            <div>
                 <div className={style.buttonContainerAdmin}>
-                    <Button onClick={addDailyNotice}
-                        type="submit"
-                    >
-                        Add Daily Notice
-                    </Button>
-                    <Button onClick={photoAdmin}
-                        type="submit"
-                    >
-                        Add/Remove Photos
-                    </Button>
-                    <Button onClick={displayOptions}
-                        type="submit"
-                    >
-                        Display Options
-                    </Button>
-                    <Button onClick={editDailyNotice}
-                        type="submit"
-                    >
-                        Edit Daily Notice
-                    </Button>
-                    <Button onClick={deleteDailyNotice}
-                        type="submit"
-                    >
-                        Delete Daily Notice
-                    </Button>
-                    <Button onClick={goToDisplay}
-                        type="submit"
-                    >
-                        Go To Display
-                    </Button>
+                    <div className={style.buttonGroup}>
+                        <Button onClick={addDailyNotice}
+                                type="submit"
+                        >
+                            Add Daily Notice
+                        </Button>
+                        <Button onClick={photoAdmin}
+                                type="submit"
+                        >
+                            Add/Remove Photos
+                        </Button>
+                        <Button onClick={displayOptions}
+                                type="submit"
+                        >
+                            Display Options
+                        </Button>
+                        <Button onClick={editDailyNotice}
+                                type="submit"
+                        >
+                            Edit Daily Notice
+                        </Button>
+                        <Button onClick={deleteDailyNotice}
+                                type="submit"
+                        >
+                            Delete Daily Notice
+                        </Button>
+                    </div>
+                    <div className={style.buttonGroup}>
+                        <Button onClick={fullscreenOptions}
+                            type="submit"
+                        >
+                            Choose Full-Screen View
+                        </Button>
+                        <Button onClick={goToDisplay}
+                            type="submit"
+                        >
+                            Go To Main Display
+                        </Button>
+                    </div>
                 </div>
-            </div>
         )
     }
 
 }
-

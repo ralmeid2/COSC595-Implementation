@@ -5,6 +5,6 @@
   "notices": true,
   "multiComponentView": true,
   "broadcast": true,
-  "broadcastMessage": "This is a test message",
+  "broadcastMessage": "EMERGENCY",
   "marketing": true
 }

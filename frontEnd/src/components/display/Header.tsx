@@ -61,7 +61,7 @@ export default function Header({isFullScreen}: HeaderProps) {
     //the menu options aren't needed on the 'display' route
     if (location.pathname === '/'){
       return <>
-        <button className={style.action} onClick={() => navigate('/admin')}><div className={style.text}>Admin</div></button>
+        <button className={style.action} onClick={() => navigate('/admin-options')}><div className={style.text}>Admin</div></button>
       </>
     } else if (location.pathname === '/display'){
       return false

@@ -16,7 +16,6 @@ import housepointsHandler from './handler/housepoints.handler';
 
 dotenv.config();
 const app: Express = express();
-const port = process.env.PORT;
 app.use(express.json({ limit: '500kb' }));
 app.use('/api/dailyNotices', dailyNoticesHandler)
 app.use('/api/weather', weatherHandler)

@@ -43,7 +43,7 @@ housepointsHandler.get('/', (req: Request, res: Response) => {
   });
 });
 
-housepointsHandler.post('/',  async (req: Request, res: Response) => {
+housepointsHandler.post('/', async (req: Request, res: Response) => {
   const housepoints = req.body.houses;
   console.log(housepoints)
   // Convert housepoints array to JSON string
@@ -60,7 +60,5 @@ housepointsHandler.post('/',  async (req: Request, res: Response) => {
     }
   });
 });
-
-
 
 export default housepointsHandler;
