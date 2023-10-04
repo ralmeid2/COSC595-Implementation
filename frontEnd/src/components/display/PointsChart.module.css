@@ -25,7 +25,7 @@
 
 h1 {
     line-height:50px;
-    padding:0px;
+    padding:0;
 }
 
 .emblemHolder {
@@ -33,6 +33,10 @@ h1 {
     justify-content: space-around;
     align-items: center;
     margin: 0 25px
+}
+
+.fullScreen .emblemHolder {
+    width: 90vw;
 }
 
 .emblemHolder img {
