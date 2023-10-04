@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './DailyNotices.module.css';
 import {DailyNotice} from "../../types";
 
-const NOTICE_DISPLAY_TIME = 5000; // Time to display each notice page in milliseconds
+const NOTICE_DISPLAY_TIME = 15000; // Time to display each notice page in milliseconds
 
 /**
  * Displays the daily notices
@@ -70,7 +70,7 @@ export default function DailyNoticesView({ isFullScreen, noticesData, isLoading 
             }
         }
         setNoticeHeights(noticeHeights)
-    }, 2000)
+    }, 500)
 
     return () => {clearInterval(timer)}
 
@@ -161,6 +161,7 @@ export default function DailyNoticesView({ isFullScreen, noticesData, isLoading 
           <div className={styles.notice} key={index}>
             <div className={styles.noticeTitle}>{notice.title}</div>
             <div className={styles.noticeContent}>{notice.message}</div>
+            <div className={styles.noticeAuthor}>- {notice.author}</div>
           </div>
         ))}
          {/* dislay only the current page of notices*/}
@@ -170,6 +171,7 @@ export default function DailyNoticesView({ isFullScreen, noticesData, isLoading 
           <div className={styles.notice} key={index}>
             <div className={styles.noticeTitle}>{notice.title}</div>
             <div className={styles.noticeContent}>{notice.message}</div>
+            <div className={styles.noticeAuthor}>- {notice.author}</div>
           </div>
         ))}      </div>
         <div className={styles.indicatorContainer}>

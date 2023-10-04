@@ -14,6 +14,7 @@ import { DailyNotice } from '../types/DailyNotice'
 export default function Edit() {
     const navigate = useNavigate()
     const [title, setTitle] = useState("")
+    const [author, setAuthor] = useState("")
     const [message, setMessage] = useState("")
     const [startDate, setStartDate] = useState("")
     const [expiryDate, setExpiryDate] = useState("")
@@ -34,6 +35,7 @@ export default function Edit() {
         try {
             const res = await put(`/api/dailyNotices/${id}`, {
                 title: title,
+                author: author,
                 message: message,
                 startDate: startDate,
                 expiryDate: expiryDate
@@ -72,6 +74,7 @@ export default function Edit() {
 
     const populateForm = async (d: DailyNotice[]) => {
         setTitle(d[0].title)
+        setAuthor(d[0].author)
         setMessage(d[0].message)
         setStartDate(d[0].startDate)
         setExpiryDate(d[0].expiryDate)
@@ -103,6 +106,15 @@ export default function Edit() {
                         value={title}
                         onChange={(e) => {
                             setTitle(e.target.value)
+                        }}
+                    />
+                    Author
+                    <Input
+                        name="author"
+                        placeholder="Author"
+                        value={title}
+                        onChange={(e) => {
+                            setAuthor(e.target.value)
                         }}
                     />
                     Message

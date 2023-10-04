@@ -47,6 +47,10 @@
     font-weight: bold;
     color: #042b5e;
 }
+.noticeAuthor {
+    font-style: italic;
+    color:#666;
+}
 
 .fullScreen .noticeTitle {
     font-size: 2rem;

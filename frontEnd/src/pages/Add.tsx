@@ -10,6 +10,7 @@ import { post } from '../utils/http'
  */
 export default function Add(){
     const [title, setTitle] = useState("")
+    const [author, setAuthor] = useState("")
     const [message, setMessage] = useState("")
     const [startDate, setStartDate] = useState("")
     const [expiryDate, setExpiryDate] = useState("")
@@ -20,6 +21,7 @@ export default function Add(){
         try{
         const res = await post (`/api/dailyNotices`, {
             title: title,
+            author: author,
             message: message,
             startDate: startDate,
             expiryDate: expiryDate
@@ -48,6 +50,7 @@ export default function Add(){
           }}
         >
           {errorMessage && <Message variant="error" message={errorMessage} />}
+          Title:
           <Input
             name="title"
             placeholder="Title"
@@ -57,6 +60,17 @@ export default function Add(){
               setTitle(e.target.value)
             }}
           />
+          Author:
+          <Input
+            name="author"
+            placeholder="Author"
+            value={author}
+            onChange={(e) => {
+              setErrorMessage('')
+              setAuthor(e.target.value)
+            }}
+          />
+          Notice:
           <Input
             name="message"
             placeholder="Message"
@@ -66,7 +80,7 @@ export default function Add(){
               setMessage(e.target.value)
             }}
           />
-
+          Start Date:
           <Input
             name="startDate"
             placeholder="Start Date"
@@ -77,6 +91,7 @@ export default function Add(){
               setStartDate(e.target.value)
             }}
           />
+          Expiry Date:
            <Input
             name="expiryDate"
             placeholder="Expiry Date"

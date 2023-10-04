@@ -38,9 +38,9 @@ describe('<DailyNoticesView />', () => {
 
   it('displays notices and rotates them', async () => {
     const noticesData: DailyNotice[] = [
-      { startDate: '2022-01-01', expiryDate: '2022-12-31', title: 'Notice 1', message: 'Message 1', _id: '1', height: 100 },
-      { startDate: '2022-01-01', expiryDate: '2022-12-31', title: 'Notice 2', message: 'Message 2', _id: '2', height: 100 },
-      { startDate: '2022-01-01', expiryDate: '2022-12-31', title: 'Notice 3', message: 'Message 3', _id: '3', height: 100 },
+      { startDate: '2022-01-01', expiryDate: '2022-12-31', title: 'Notice 1', author: "Mr Nobody", message: 'Message 1', _id: '1', height: 100 },
+      { startDate: '2022-01-01', expiryDate: '2022-12-31', title: 'Notice 2', author: "Mr Nobody", message: 'Message 2', _id: '2', height: 100 },
+      { startDate: '2022-01-01', expiryDate: '2022-12-31', title: 'Notice 3', author: "Mr Nobody", message: 'Message 3', _id: '3', height: 100 },
     ];
 
     render(<DailyNoticesView isLoading={false} isFullScreen={false} noticesData={noticesData} />);
